@@ -1,0 +1,13 @@
+build/lib/HomogeneousModelParams.o build/lib/HomogeneousModelParams.dep : \
+ sources/lib/HomogeneousModelParams.cpp \
+ sources/include/HomogeneousModelParams.hpp sources/include/utils.hpp \
+ sources/include/params.hpp sources/include/ModelParams.hpp \
+ sources/include/NamedVector.hpp sources/include/Exception.hpp \
+ sources/include/DistributionStatistics.hpp \
+ sources/include/NamedMatrix.hpp \
+ sources/include/PreciseNonNegativeReal.hpp sources/include/utils.hpp \
+ sources/include/Model.hpp sources/include/Data.hpp \
+ sources/include/Simplex.hpp sources/include/Exception.hpp \
+ sources/include/MatrixDecomp.hpp sources/include/LAPACKvector.hpp \
+ sources/include/PreciseNonNegativeReal.hpp \
+ sources/include/InferredDataFit.hpp

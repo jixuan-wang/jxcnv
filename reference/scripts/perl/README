@@ -1,0 +1,68 @@
+Usage: compare_CNVs.pl truthFile.cnv testFile.cnv testFamFile.fam targetFile.txt
+
+The compare_CNVs.pl script compares CNV called by XHMM ("test") with CNV from another source ("truth"), taking into account the exome regions where XHMM CNV calls must reside.
+The analysis uses the "truth" CNV as an anchor and compares the "test" CNV to each of the "truth", giving an output of one row of metrics per "truth" CNV.
+
+Note that the .cnv files are in PLINK's cnv format, the .fam file in PLINK's .fam format, and the targetFile a list of targets (one per row formatted as, e.g., "1:69089-70010").
+
+
+The output header includes the following descriptions for the output columns:
+#SAMPLE= Sample ID of the "truth" CNV
+#CHR= Chromosome locus of the "truth" CNV
+#TYPE= Type of the "truth" CNV
+#TRUTH_CNV_START= Start position of the "truth" CNV
+#TRUTH_CNV_STOP= Stop position of the "truth" CNV
+#DIST= Distance between closest "test" CNV(s) and the "truth" CNV, in SAMPLE
+#NUM_CLOSEST_CNVS= Number of "test" CNV(s) in SAMPLE at distance DIST from the "truth" CNV
+#CLOSEST_CNVS= Loci of "test" CNV(s) in SAMPLE at distance DIST from the "truth" CNV
+#OVERLAP= Cumulative overlap (in bases) between closest "test" CNV(s) and the "truth" CNV
+#OVERLAP_FRAC= Fraction of the "truth" CNV cumulatively overlapped (in bases) between closest "test" CNV(s)
+#CLOSEST_TARGET_DIST= Distance between closest exome target(s) and the "truth" CNV
+#NUM_CLOSEST_TARGETS= Number of exome target(s) at distance CLOSEST_TARGET_DIST from the "truth" CNV
+#CLOSEST_TARGETS= Loci of exome target(s) at distance CLOSEST_TARGET_DIST from the "truth" CNV
+#NORMALIZED_DIST= DIST - CLOSEST_TARGET_DIST
+#NUM_CLOSEST_TARGETS_OVERLAPPED= How many of the "truth" CNV-overlapping targets (CLOSEST_TARGETS) are overlapped by some "test" CNV(s) that is closest to the "truth" CNV (CLOSEST_CNVS)?  [i.e., target-level sensitivity to "truth"]
+#NUM_TARGETS_OVERLAPPED= How many of the exome target(s) are overlapped by some "test" CNV(s) that are closest to the "truth" CNV [CLOSEST_CNVS]?  [i.e., target-level specificity to "truth"]
+#TARGETS_OVERLAPPED= The exome target(s) overlapped the "test" CNV(s) that are closest to the "truth" CNV [CLOSEST_CNVS]
+
+
+
+-- And, the following should be helpful in interpreting the output (assuming "test" = XHMM exome sequencing-based CNV calls):
+
+
+1.
+CLOSEST_TARGET_DIST == 0 <=> The exome sequencing has a target that overlaps the "truth" CNV
+DIST == 0 <=> some "test" CNV overlaps the "truth" CNV
+
+Thus:
+Sensitivity of XHMM ("test") to "truth" CNV =
+#("truth" CNV overlapped by "test" CNV) / #(all "truth" CNV with >=1 target) =
+#(DIST == 0) / #(DIST == 0  OR  CLOSEST_TARGET_DIST == 0)
+[ Note the logical OR in the denominator to account for (the unlikely) cases where the "test" CNV may overlap the "truth" CNV without the "truth" CNV actually overlapping any exome target, if the non-genic "truth" CNV signal exists in the neighboring exons. ]
+
+
+2.
+NORMALIZED_DIST = DIST - CLOSEST_TARGET_DIST
+[trying to correct for the fact that a "test" CNV may be close to the "truth" CNV, but can never be closer than the closest exome target; so subtracts this baseline distance]
+
+
+3.
+NUM_CLOSEST_TARGETS_OVERLAPPED = How many of the "truth" CNV-overlapping targets (CLOSEST_TARGETS) are overlapped by some "test" CNV(s) that is closest to the "truth" CNV (CLOSEST_CNVS)?
+[i.e., provides target-level sensitivity to the "truth" CNV -- did the "test" CNV(s) call most of the NUM_CLOSEST_TARGETS]
+
+NUM_TARGETS_OVERLAPPED= How many of the exome target(s) are overlapped by some "test" CNV(s) that are closest to the "truth" CNV [CLOSEST_CNVS]?
+[i.e., provides target-level specificity to "truth" CNV -- did the "test" CNV(s) call more than the NUM_CLOSEST_TARGETS]
+
+
+4. As a concrete example, let"s say:
+a) CLOSEST_TARGET_DIST = 0
+b) DIST = 0
+c) NUM_CLOSEST_TARGETS = 19
+d) NUM_CLOSEST_TARGETS_OVERLAPPED = 18
+e) NUM_TARGETS_OVERLAPPED = 23
+
+a) means that the "truth" CNV overlaps >= 1 exome target
+b) means that the "test" CNV(s) overlap the "truth" CNV
+c) means that 19 exome targets overlap the "truth" CNV
+d) 18 of these 19 exome targets are also in the "test" CNV(s)
+e) These 18 exome targets are found in "test" CNV(s) that overlap a total of 23 exome targets

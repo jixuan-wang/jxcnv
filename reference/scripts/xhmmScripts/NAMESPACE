@@ -1,0 +1,26 @@
+importFrom("gplots", heatmap.2)
+importFrom("plotrix", color.scale.lines)
+
+export(
+	XHMM_plots,
+	calcSegmentIntervals,
+	listOfNulls,
+	loadNamedVectorNoHeaderMayNotExist,
+	loadTargetsToGenes,
+	loadXCNVcalls,
+	loadXHMMdata,
+	pedigreeDataToBinarySampleProperties,
+	phenotypeDataToBinarySampleProperties,
+	plotAllChromosomeValues,
+	plot_XHMM_genes,
+	plot_XHMM_region,
+	plot_XHMM_targets,
+	readNamedMatrix,
+	readTableNoRowNames,
+	readPedigreeFile,
+	readPhenotypesFile,
+	scanVectorMayNotExist,
+	sourceDir,
+	targetsToChrBp1Bp2,
+	targetsToSizes
+	)

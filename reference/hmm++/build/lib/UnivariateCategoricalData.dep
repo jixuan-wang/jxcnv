@@ -1,0 +1,9 @@
+build/lib/UnivariateCategoricalData.o build/lib/UnivariateCategoricalData.dep : \
+ sources/lib/UnivariateCategoricalData.cpp \
+ sources/include/UnivariateCategoricalData.hpp sources/include/params.hpp \
+ sources/include/UnivariateData.hpp sources/include/Data.hpp \
+ sources/include/NamedVector.hpp sources/include/Exception.hpp \
+ sources/include/DistributionStatistics.hpp \
+ sources/include/CategoricalData.hpp sources/include/DeclareInputType.hpp \
+ sources/include/sqlwrap.hpp sources/include/sqlite3.h \
+ sources/include/Exception.hpp

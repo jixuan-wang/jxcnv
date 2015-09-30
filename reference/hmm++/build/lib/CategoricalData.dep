@@ -1,0 +1,3 @@
+build/lib/CategoricalData.o build/lib/CategoricalData.dep : sources/lib/CategoricalData.cpp \
+ sources/include/CategoricalData.hpp sources/include/params.hpp \
+ sources/include/Data.hpp sources/include/Exception.hpp

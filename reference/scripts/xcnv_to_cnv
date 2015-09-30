@@ -1,0 +1,18 @@
+#!/bin/csh -f
+
+if ( $#argv < 1 ) then
+  echo "Converts XHMM .xcnv format to PLINK .cnv format"
+  echo "Usage: xcnv_to_cnv [XCNV_FILE]"
+  exit 1
+endif
+
+
+set INPUT = $1
+
+cat $INPUT | \
+awk -F"\t" \
+    'BEGIN{OFS="\t"; print "FID","IID","CHR","BP1","BP2","TYPE","SCORE","SITE"} \
+    {if (NR==1) {for (i=1; i<=NF; i++) HD[$i]=i} \
+    else {split($(HD["INTERVAL"]),a,":"); chr=a[1]; gsub("^chr", "", chr); split(a[2],b,"-"); bp1=b[1]; bp2=b[2]; if (length(b) > 1) {bp2=b[2]} \
+    type=2; if ($(HD["CNV"]) == "DEL") {type=1} else if ($(HD["CNV"]) == "DUP") {type=3}; \
+    print $(HD["SAMPLE"]),1,chr,bp1,bp2,type,$(HD["Q_SOME"]),$(HD["NUM_TARG"])}}'

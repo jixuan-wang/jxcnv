@@ -1,0 +1,1035 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ADD_SEGMENT_CMD	InferredDataFit.hpp	189;"	d
+AM	CRandom.hpp	/^	static const double AM;$/;"	m	class:CRandom
+BLANK	utils.hpp	/^		static const string BLANK;$/;"	m	class:HMM_PP::istreamLineReader
+BaseReal	params.hpp	/^typedef long double BaseReal;$/;"	t
+BaseRealMat	params.hpp	/^	typedef NamedMatrix<BaseReal> BaseRealMat;$/;"	t	namespace:HMM_PP
+BaseRealVec	params.hpp	/^	typedef NamedVector<BaseReal> BaseRealVec;$/;"	t	namespace:HMM_PP
+CHECK_COL_INDEX	NamedMatrix.hpp	151;"	d
+CHECK_INDEX	NamedVector.hpp	93;"	d
+CHECK_ROW_INDEX	NamedMatrix.hpp	118;"	d
+CHECK_VECTOR_ON_DISK_INDEX	VectorOnDisk.hpp	109;"	d
+CONST_LENGTH_ROWS	NamedMatrix.hpp	13;"	d
+CRandom	CRandom.hpp	/^class CRandom {$/;"	c
+CUR_TIME	Timer.hpp	9;"	d
+CategoricalData	CategoricalData.hpp	/^		CategoricalData() : Data() {}$/;"	f	class:HMM_PP::CategoricalData
+CategoricalData	CategoricalData.hpp	/^	class CategoricalData : virtual public Data {$/;"	c	namespace:HMM_PP
+CategoricalDataVal	UnivariateCategoricalModelParams.hpp	/^			CategoricalDataVal(uint val) : _val(val) {}$/;"	f	class:HMM_PP::UnivariateCategoricalModelParams::CategoricalDataVal
+CategoricalDataVal	UnivariateCategoricalModelParams.hpp	/^		class CategoricalDataVal : public DataVal {$/;"	c	class:HMM_PP::UnivariateCategoricalModelParams
+Constraint	InferredDataFit.hpp	/^			Constraint() {}$/;"	f	class:HMM_PP::InferredDataFit::Constraint
+Constraint	InferredDataFit.hpp	/^		class Constraint {$/;"	c	class:HMM_PP::InferredDataFit
+D	MatrixDecomp.hpp	/^			DoubleVec* D; \/\/ singularVals$/;"	m	class:HMM_PP::MatrixDecomp::SVDecomp
+Data	Data.hpp	/^	class Data {$/;"	c	namespace:HMM_PP
+DataAndFit	ModelFromStream.hpp	/^		typedef pair<Data*, InferredDataFit*> DataAndFit;$/;"	t	class:HMM_PP::ModelFromStream
+DataLoader	DataLoader.hpp	/^	DataLoader<DataType>::DataLoader(string dataFile, bool readHeaderLine, bool readDataIDs, const set<string>* keepIDs)$/;"	f	class:HMM_PP::DataLoader
+DataLoader	DataLoader.hpp	/^	class DataLoader {$/;"	c	namespace:HMM_PP
+DataOutputter	DataOutputter.hpp	/^		DataOutputter() {}$/;"	f	class:HMM_PP::DataOutputter
+DataOutputter	DataOutputter.hpp	/^	class DataOutputter {$/;"	c	namespace:HMM_PP
+DataType	ModelParamsData.hpp	/^		typedef Type DataType;$/;"	t	class:HMM_PP::ModelParamsData
+DataVal	ModelParams.hpp	/^			DataVal() {}$/;"	f	class:HMM_PP::ModelParams::DataVal
+DataVal	ModelParams.hpp	/^		class DataVal {$/;"	c	class:HMM_PP::ModelParams
+DeclareInputType	DeclareInputType.hpp	/^	class DeclareInputType {$/;"	c	namespace:HMM_PP
+DistributionStatistics	DistributionStatistics.hpp	/^	DistributionStatistics<T>::DistributionStatistics(bool calcStdDev)$/;"	f	class:HMM_PP::DistributionStatistics
+DistributionStatistics	DistributionStatistics.hpp	/^	class DistributionStatistics {$/;"	c	namespace:HMM_PP
+DoubleMat	params.hpp	/^	typedef NamedMatrix<double> DoubleMat;$/;"	t	namespace:HMM_PP
+DoubleVec	params.hpp	/^	typedef NamedVector<double> DoubleVec;$/;"	t	namespace:HMM_PP
+EPS	CRandom.hpp	/^	static const double EPS;$/;"	m	class:CRandom
+EPS	Simplex.hpp	/^		static const double EPS;$/;"	m	class:HMM_PP::Simplex
+EigenDecomp	MatrixDecomp.hpp	/^		class EigenDecomp {$/;"	c	class:HMM_PP::MatrixDecomp
+EigenDecomp	MatrixDecomp.hpp	/^	HMM_PP::MatrixDecomp::EigenDecomp<RealType>::EigenDecomp(DoubleVec* eigenValsReal, DoubleVec* eigenValsImaginary, NamedMatrix<RealType>* eigenVectors)$/;"	f	class:HMM_PP::HMM_PP::MatrixDecomp::EigenDecomp
+Exception	Exception.hpp	/^	Exception(string msg) : _msg(msg) {}$/;"	f	class:Exception
+Exception	Exception.hpp	/^class Exception {$/;"	c
+FileNotFoundException	Exception.hpp	/^	FileNotFoundException(string msg) : Exception(msg) {}$/;"	f	class:FileNotFoundException
+FileNotFoundException	Exception.hpp	/^class FileNotFoundException : public Exception {$/;"	c
+HMM_PP	CategoricalData.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	Data.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	DataLoader.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	DataOutputter.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	DeclareInputType.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	DistributionStatistics.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	HomogeneousModelParams.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	InferredDataFit.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	LAPACKvector.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	MatrixDecomp.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	Model.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	ModelFromStream.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	ModelFromStreamNoStorage.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	ModelParams.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	ModelParamsData.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	ModelWithDB.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	MultivariateCategoricalData.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	MultivariateQuantitativeData.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	NamedMatrix.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	NamedVector.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	PreciseNonNegativeReal.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	Simplex.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	Timer.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	UnivariateCategoricalData.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	UnivariateCategoricalModelParams.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	UnivariateData.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	UnivariateDataNoDB.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	UnivariateQuantitativeData.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	UnivariateQuantitativeModelParams.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	VectorOnDisk.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	params.hpp	/^namespace HMM_PP {$/;"	n
+HMM_PP	utils.hpp	/^namespace HMM_PP {$/;"	n
+HiddenStateParams	ModelParams.hpp	/^			HiddenStateParams() : _statemap(), _statermap(), _initProbs() {}$/;"	f	class:HMM_PP::ModelParams::HiddenStateParams
+HiddenStateParams	ModelParams.hpp	/^		class HiddenStateParams {$/;"	c	class:HMM_PP::ModelParams
+HomogeneousConstraint	InferredDataFit.hpp	/^			HomogeneousConstraint(set<uint>* excludedStates) : _excludedStates(excludedStates) {}$/;"	f	class:HMM_PP::InferredDataFit::HomogeneousConstraint
+HomogeneousConstraint	InferredDataFit.hpp	/^		class HomogeneousConstraint : public Constraint {$/;"	c	class:HMM_PP::InferredDataFit
+HomogeneousModelParams	HomogeneousModelParams.hpp	/^	class HomogeneousModelParams : virtual public ModelParams {$/;"	c	namespace:HMM_PP
+IA	CRandom.hpp	/^	static const int IA;$/;"	m	class:CRandom
+IM	CRandom.hpp	/^	static const int IM;$/;"	m	class:CRandom
+INNER	NamedMatrix.hpp	/^		typedef NamedVector<RealType> INNER;$/;"	t	class:HMM_PP::NamedMatrix
+IQ	CRandom.hpp	/^	static const int IQ;$/;"	m	class:CRandom
+IR	CRandom.hpp	/^	static const int IR;$/;"	m	class:CRandom
+InferredDataFit	InferredDataFit.hpp	/^	class InferredDataFit {$/;"	c	namespace:HMM_PP
+InputType	DeclareInputType.hpp	/^		typedef Type InputType;$/;"	t	class:HMM_PP::DeclareInputType
+LAPACKeigen	MatrixDecomp.hpp	197;"	d
+LAPACKsvd	MatrixDecomp.hpp	96;"	d
+LAPACKvector	LAPACKvector.hpp	/^		LAPACKvector() {}$/;"	f	class:HMM_PP::LAPACKvector
+LAPACKvector	LAPACKvector.hpp	/^	class LAPACKvector {$/;"	c	namespace:HMM_PP
+LAPACKvectorToMatrix	MatrixDecomp.hpp	/^	HMM_PP::NamedMatrix<RealType>* HMM_PP::MatrixDecomp::LAPACKvectorToMatrix(const double* matVec, ullint m, ullint n, bool transposeMatrix) {$/;"	f	class:HMM_PP::HMM_PP::MatrixDecomp
+LINT_INFINITY	params.hpp	16;"	d
+LOG_10_E	ModelParams.hpp	/^		static const BaseReal LOG_10_E;$/;"	m	class:HMM_PP::ModelParams
+MarginalizeFunc	NamedMatrix.hpp	/^		typedef RealType (*MarginalizeFunc) (const RealType& v1, const RealType& v2);$/;"	t	class:HMM_PP::NamedMatrix
+MatrixDecomp	MatrixDecomp.hpp	/^	class MatrixDecomp {$/;"	c	namespace:HMM_PP
+Model	Model.hpp	/^	class Model {$/;"	c	namespace:HMM_PP
+ModelFromStream	ModelFromStream.hpp	/^	class ModelFromStream : public Model {$/;"	c	namespace:HMM_PP
+ModelFromStreamNoStorage	ModelFromStreamNoStorage.hpp	/^	class ModelFromStreamNoStorage : public Model {$/;"	c	namespace:HMM_PP
+ModelParams	ModelParams.hpp	/^	class ModelParams {$/;"	c	namespace:HMM_PP
+ModelParamsData	ModelParamsData.hpp	/^		ModelParamsData(HiddenStateParams* params, DataLoader<Type>* dataLoader) : ModelParams(params), _dataLoader(dataLoader) {}$/;"	f	class:HMM_PP::ModelParamsData
+ModelParamsData	ModelParamsData.hpp	/^	class ModelParamsData : virtual public ModelParams {$/;"	c	namespace:HMM_PP
+ModelWithDB	ModelWithDB.hpp	/^	class ModelWithDB : public Model {$/;"	c	namespace:HMM_PP
+MultivariateCategoricalData	MultivariateCategoricalData.hpp	/^	class MultivariateCategoricalData : public CategoricalData {$/;"	c	namespace:HMM_PP
+MultivariateQuantitativeData	MultivariateQuantitativeData.hpp	/^	class MultivariateQuantitativeData : public Data {$/;"	c	namespace:HMM_PP
+NDIV	CRandom.hpp	/^	static const int NDIV;$/;"	m	class:CRandom
+NTAB	CRandom.hpp	/^	static const int NTAB;$/;"	m	class:CRandom
+NamedMatrix	NamedMatrix.hpp	/^		NamedMatrix(const NamedVector<RealType>& vec)$/;"	f	class:HMM_PP::NamedMatrix
+NamedMatrix	NamedMatrix.hpp	/^		explicit NamedMatrix(const ullint nrow = 0, const ullint ncol = 0, const RealType val = RealType(), string name = "")$/;"	f	class:HMM_PP::NamedMatrix
+NamedMatrix	NamedMatrix.hpp	/^		explicit NamedMatrix(string name)$/;"	f	class:HMM_PP::NamedMatrix
+NamedMatrix	NamedMatrix.hpp	/^	class NamedMatrix {$/;"	c	namespace:HMM_PP
+NamedVector	NamedVector.hpp	/^		NamedVector(const NamedVector& copy, bool constLength = false) : _vec(new PARENT(*(copy._vec))), _constLength(constLength), _names(NULL) {}$/;"	f	class:HMM_PP::NamedVector
+NamedVector	NamedVector.hpp	/^		NamedVector(const PARENT& copy, bool constLength = false) : _vec(new PARENT(copy)), _constLength(constLength), _names(NULL) {}$/;"	f	class:HMM_PP::NamedVector
+NamedVector	NamedVector.hpp	/^		explicit NamedVector() : _vec(new PARENT()), _constLength(false), _names(NULL) {}$/;"	f	class:HMM_PP::NamedVector
+NamedVector	NamedVector.hpp	/^		explicit NamedVector(const ullint s, const RealType val = RealType(), bool constLength = false) : _vec(new PARENT(s, val)), _constLength(constLength), _names(NULL) {}$/;"	f	class:HMM_PP::NamedVector
+NamedVector	NamedVector.hpp	/^	class NamedVector {$/;"	c	namespace:HMM_PP
+PARENT	NamedMatrix.hpp	/^		typedef vector<INNER*> PARENT;$/;"	t	class:HMM_PP::NamedMatrix
+PARENT	NamedVector.hpp	/^		typedef vector<RealType> PARENT;$/;"	t	class:HMM_PP::NamedVector
+PreciseNonNegativeReal	PreciseNonNegativeReal.hpp	/^		PreciseNonNegativeReal(RealType d = REAL_ZERO, bool isLog10 = false) {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+PreciseNonNegativeReal	PreciseNonNegativeReal.hpp	/^		PreciseNonNegativeReal(const PreciseNonNegativeReal& pd) {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+PreciseNonNegativeReal	PreciseNonNegativeReal.hpp	/^	class PreciseNonNegativeReal {$/;"	c	namespace:HMM_PP
+PrecisionThreshold	utils.hpp	/^		PrecisionThreshold(int precision = 0, T thresh = 0) : _precision(precision), _thresh(thresh) {}$/;"	f	class:HMM_PP::PrecisionThreshold
+PrecisionThreshold	utils.hpp	/^	class PrecisionThreshold {$/;"	c	namespace:HMM_PP
+QuantitativeDataVal	UnivariateQuantitativeModelParams.hpp	/^			QuantitativeDataVal(BaseReal val = 0.0) : _val(val) {}$/;"	f	class:HMM_PP::UnivariateQuantitativeModelParams::QuantitativeDataVal
+QuantitativeDataVal	UnivariateQuantitativeModelParams.hpp	/^		class QuantitativeDataVal : public DataVal {$/;"	c	class:HMM_PP::UnivariateQuantitativeModelParams
+REAL_EPSILON	PreciseNonNegativeReal.hpp	/^		static const RealType REAL_EPSILON;$/;"	m	class:HMM_PP::PreciseNonNegativeReal
+REAL_EPSILON	PreciseNonNegativeReal.hpp	/^const RealType HMM_PP::PreciseNonNegativeReal<RealType>::REAL_EPSILON = 1e-6;$/;"	m	class:HMM_PP::PreciseNonNegativeReal
+REAL_INFINITY	PreciseNonNegativeReal.hpp	/^		static const RealType REAL_INFINITY;$/;"	m	class:HMM_PP::PreciseNonNegativeReal
+REAL_INFINITY	PreciseNonNegativeReal.hpp	/^const RealType HMM_PP::PreciseNonNegativeReal<RealType>::REAL_INFINITY = - std::log10(PreciseNonNegativeReal<RealType>::REAL_ZERO);$/;"	m	class:HMM_PP::PreciseNonNegativeReal
+REAL_ONE	PreciseNonNegativeReal.hpp	/^		static const RealType REAL_ONE;$/;"	m	class:HMM_PP::PreciseNonNegativeReal
+REAL_ONE	PreciseNonNegativeReal.hpp	/^const RealType HMM_PP::PreciseNonNegativeReal<RealType>::REAL_ONE = 1.0;$/;"	m	class:HMM_PP::PreciseNonNegativeReal
+REAL_TEN	PreciseNonNegativeReal.hpp	/^		static const RealType REAL_TEN;$/;"	m	class:HMM_PP::PreciseNonNegativeReal
+REAL_TEN	PreciseNonNegativeReal.hpp	/^const RealType HMM_PP::PreciseNonNegativeReal<RealType>::REAL_TEN = 10.0;$/;"	m	class:HMM_PP::PreciseNonNegativeReal
+REAL_ZERO	PreciseNonNegativeReal.hpp	/^		static const RealType REAL_ZERO;$/;"	m	class:HMM_PP::PreciseNonNegativeReal
+REAL_ZERO	PreciseNonNegativeReal.hpp	/^const RealType HMM_PP::PreciseNonNegativeReal<RealType>::REAL_ZERO = 0.0;$/;"	m	class:HMM_PP::PreciseNonNegativeReal
+RNMX	CRandom.hpp	/^	static const double RNMX;$/;"	m	class:CRandom
+RealMat	PreciseNonNegativeReal.hpp	14;"	d
+RealVec	PreciseNonNegativeReal.hpp	13;"	d
+SQL	sqlwrap.hpp	/^	SQL() {$/;"	f	class:SQL
+SQL	sqlwrap.hpp	/^class SQL {$/;"	c
+SQLITE3_TEXT	sqlite3.h	3365;"	d
+SQLITE_ABORT	sqlite3.h	386;"	d
+SQLITE_ACCESS_EXISTS	sqlite3.h	985;"	d
+SQLITE_ACCESS_READ	sqlite3.h	987;"	d
+SQLITE_ACCESS_READWRITE	sqlite3.h	986;"	d
+SQLITE_ALTER_TABLE	sqlite3.h	2284;"	d
+SQLITE_ANALYZE	sqlite3.h	2286;"	d
+SQLITE_ANY	sqlite3.h	3723;"	d
+SQLITE_API	sqlite3.h	53;"	d
+SQLITE_ATTACH	sqlite3.h	2282;"	d
+SQLITE_AUTH	sqlite3.h	405;"	d
+SQLITE_BLOB	sqlite3.h	3358;"	d
+SQLITE_BUSY	sqlite3.h	387;"	d
+SQLITE_BUSY_RECOVERY	sqlite3.h	459;"	d
+SQLITE_CANTOPEN	sqlite3.h	396;"	d
+SQLITE_CANTOPEN_NOTEMPDIR	sqlite3.h	460;"	d
+SQLITE_CHECKPOINT_FULL	sqlite3.h	6572;"	d
+SQLITE_CHECKPOINT_PASSIVE	sqlite3.h	6571;"	d
+SQLITE_CHECKPOINT_RESTART	sqlite3.h	6573;"	d
+SQLITE_CONFIG_GETMALLOC	sqlite3.h	1461;"	d
+SQLITE_CONFIG_GETMUTEX	sqlite3.h	1467;"	d
+SQLITE_CONFIG_GETPCACHE	sqlite3.h	1471;"	d
+SQLITE_CONFIG_HEAP	sqlite3.h	1464;"	d
+SQLITE_CONFIG_LOG	sqlite3.h	1472;"	d
+SQLITE_CONFIG_LOOKASIDE	sqlite3.h	1469;"	d
+SQLITE_CONFIG_MALLOC	sqlite3.h	1460;"	d
+SQLITE_CONFIG_MEMSTATUS	sqlite3.h	1465;"	d
+SQLITE_CONFIG_MULTITHREAD	sqlite3.h	1458;"	d
+SQLITE_CONFIG_MUTEX	sqlite3.h	1466;"	d
+SQLITE_CONFIG_PAGECACHE	sqlite3.h	1463;"	d
+SQLITE_CONFIG_PCACHE	sqlite3.h	1470;"	d
+SQLITE_CONFIG_SCRATCH	sqlite3.h	1462;"	d
+SQLITE_CONFIG_SERIALIZED	sqlite3.h	1459;"	d
+SQLITE_CONFIG_SINGLETHREAD	sqlite3.h	1457;"	d
+SQLITE_CONFIG_URI	sqlite3.h	1473;"	d
+SQLITE_CONSTRAINT	sqlite3.h	401;"	d
+SQLITE_COPY	sqlite3.h	2291;"	d
+SQLITE_CORRUPT	sqlite3.h	393;"	d
+SQLITE_CORRUPT_VTAB	sqlite3.h	461;"	d
+SQLITE_CREATE_INDEX	sqlite3.h	2259;"	d
+SQLITE_CREATE_TABLE	sqlite3.h	2260;"	d
+SQLITE_CREATE_TEMP_INDEX	sqlite3.h	2261;"	d
+SQLITE_CREATE_TEMP_TABLE	sqlite3.h	2262;"	d
+SQLITE_CREATE_TEMP_TRIGGER	sqlite3.h	2263;"	d
+SQLITE_CREATE_TEMP_VIEW	sqlite3.h	2264;"	d
+SQLITE_CREATE_TRIGGER	sqlite3.h	2265;"	d
+SQLITE_CREATE_VIEW	sqlite3.h	2266;"	d
+SQLITE_CREATE_VTABLE	sqlite3.h	2287;"	d
+SQLITE_DBCONFIG_ENABLE_FKEY	sqlite3.h	1534;"	d
+SQLITE_DBCONFIG_ENABLE_TRIGGER	sqlite3.h	1535;"	d
+SQLITE_DBCONFIG_LOOKASIDE	sqlite3.h	1533;"	d
+SQLITE_DBSTATUS_CACHE_USED	sqlite3.h	5795;"	d
+SQLITE_DBSTATUS_LOOKASIDE_HIT	sqlite3.h	5798;"	d
+SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL	sqlite3.h	5800;"	d
+SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE	sqlite3.h	5799;"	d
+SQLITE_DBSTATUS_LOOKASIDE_USED	sqlite3.h	5794;"	d
+SQLITE_DBSTATUS_MAX	sqlite3.h	5801;"	d
+SQLITE_DBSTATUS_SCHEMA_USED	sqlite3.h	5796;"	d
+SQLITE_DBSTATUS_STMT_USED	sqlite3.h	5797;"	d
+SQLITE_DELETE	sqlite3.h	2267;"	d
+SQLITE_DENY	sqlite3.h	2236;"	d
+SQLITE_DEPRECATED	sqlite3.h	70;"	d
+SQLITE_DETACH	sqlite3.h	2283;"	d
+SQLITE_DONE	sqlite3.h	410;"	d
+SQLITE_DROP_INDEX	sqlite3.h	2268;"	d
+SQLITE_DROP_TABLE	sqlite3.h	2269;"	d
+SQLITE_DROP_TEMP_INDEX	sqlite3.h	2270;"	d
+SQLITE_DROP_TEMP_TABLE	sqlite3.h	2271;"	d
+SQLITE_DROP_TEMP_TRIGGER	sqlite3.h	2272;"	d
+SQLITE_DROP_TEMP_VIEW	sqlite3.h	2273;"	d
+SQLITE_DROP_TRIGGER	sqlite3.h	2274;"	d
+SQLITE_DROP_VIEW	sqlite3.h	2275;"	d
+SQLITE_DROP_VTABLE	sqlite3.h	2288;"	d
+SQLITE_EMPTY	sqlite3.h	398;"	d
+SQLITE_ERROR	sqlite3.h	383;"	d
+SQLITE_EXPERIMENTAL	sqlite3.h	71;"	d
+SQLITE_EXTERN	sqlite3.h	49;"	d
+SQLITE_FAIL	sqlite3.h	6657;"	d
+SQLITE_FCNTL_CHUNK_SIZE	sqlite3.h	750;"	d
+SQLITE_FCNTL_FILE_POINTER	sqlite3.h	751;"	d
+SQLITE_FCNTL_LOCKSTATE	sqlite3.h	745;"	d
+SQLITE_FCNTL_SIZE_HINT	sqlite3.h	749;"	d
+SQLITE_FCNTL_SYNC_OMITTED	sqlite3.h	752;"	d
+SQLITE_FLOAT	sqlite3.h	3357;"	d
+SQLITE_FORMAT	sqlite3.h	406;"	d
+SQLITE_FULL	sqlite3.h	395;"	d
+SQLITE_FUNCTION	sqlite3.h	2289;"	d
+SQLITE_GET_LOCKPROXYFILE	sqlite3.h	746;"	d
+SQLITE_IGNORE	sqlite3.h	2237;"	d
+SQLITE_INDEX_CONSTRAINT_EQ	sqlite3.h	4865;"	d
+SQLITE_INDEX_CONSTRAINT_GE	sqlite3.h	4869;"	d
+SQLITE_INDEX_CONSTRAINT_GT	sqlite3.h	4866;"	d
+SQLITE_INDEX_CONSTRAINT_LE	sqlite3.h	4867;"	d
+SQLITE_INDEX_CONSTRAINT_LT	sqlite3.h	4868;"	d
+SQLITE_INDEX_CONSTRAINT_MATCH	sqlite3.h	4870;"	d
+SQLITE_INSERT	sqlite3.h	2276;"	d
+SQLITE_INTEGER	sqlite3.h	3356;"	d
+SQLITE_INTERNAL	sqlite3.h	384;"	d
+SQLITE_INTERRUPT	sqlite3.h	391;"	d
+SQLITE_IOCAP_ATOMIC	sqlite3.h	514;"	d
+SQLITE_IOCAP_ATOMIC16K	sqlite3.h	520;"	d
+SQLITE_IOCAP_ATOMIC1K	sqlite3.h	516;"	d
+SQLITE_IOCAP_ATOMIC2K	sqlite3.h	517;"	d
+SQLITE_IOCAP_ATOMIC32K	sqlite3.h	521;"	d
+SQLITE_IOCAP_ATOMIC4K	sqlite3.h	518;"	d
+SQLITE_IOCAP_ATOMIC512	sqlite3.h	515;"	d
+SQLITE_IOCAP_ATOMIC64K	sqlite3.h	522;"	d
+SQLITE_IOCAP_ATOMIC8K	sqlite3.h	519;"	d
+SQLITE_IOCAP_SAFE_APPEND	sqlite3.h	523;"	d
+SQLITE_IOCAP_SEQUENTIAL	sqlite3.h	524;"	d
+SQLITE_IOCAP_UNDELETABLE_WHEN_OPEN	sqlite3.h	525;"	d
+SQLITE_IOERR	sqlite3.h	392;"	d
+SQLITE_IOERR_ACCESS	sqlite3.h	448;"	d
+SQLITE_IOERR_BLOCKED	sqlite3.h	446;"	d
+SQLITE_IOERR_CHECKRESERVEDLOCK	sqlite3.h	449;"	d
+SQLITE_IOERR_CLOSE	sqlite3.h	451;"	d
+SQLITE_IOERR_DELETE	sqlite3.h	445;"	d
+SQLITE_IOERR_DIR_CLOSE	sqlite3.h	452;"	d
+SQLITE_IOERR_DIR_FSYNC	sqlite3.h	440;"	d
+SQLITE_IOERR_FSTAT	sqlite3.h	442;"	d
+SQLITE_IOERR_FSYNC	sqlite3.h	439;"	d
+SQLITE_IOERR_LOCK	sqlite3.h	450;"	d
+SQLITE_IOERR_NOMEM	sqlite3.h	447;"	d
+SQLITE_IOERR_RDLOCK	sqlite3.h	444;"	d
+SQLITE_IOERR_READ	sqlite3.h	436;"	d
+SQLITE_IOERR_SEEK	sqlite3.h	457;"	d
+SQLITE_IOERR_SHMLOCK	sqlite3.h	455;"	d
+SQLITE_IOERR_SHMMAP	sqlite3.h	456;"	d
+SQLITE_IOERR_SHMOPEN	sqlite3.h	453;"	d
+SQLITE_IOERR_SHMSIZE	sqlite3.h	454;"	d
+SQLITE_IOERR_SHORT_READ	sqlite3.h	437;"	d
+SQLITE_IOERR_TRUNCATE	sqlite3.h	441;"	d
+SQLITE_IOERR_UNLOCK	sqlite3.h	443;"	d
+SQLITE_IOERR_WRITE	sqlite3.h	438;"	d
+SQLITE_LAST_ERRNO	sqlite3.h	748;"	d
+SQLITE_LIMIT_ATTACHED	sqlite3.h	2747;"	d
+SQLITE_LIMIT_COLUMN	sqlite3.h	2742;"	d
+SQLITE_LIMIT_COMPOUND_SELECT	sqlite3.h	2744;"	d
+SQLITE_LIMIT_EXPR_DEPTH	sqlite3.h	2743;"	d
+SQLITE_LIMIT_FUNCTION_ARG	sqlite3.h	2746;"	d
+SQLITE_LIMIT_LENGTH	sqlite3.h	2740;"	d
+SQLITE_LIMIT_LIKE_PATTERN_LENGTH	sqlite3.h	2748;"	d
+SQLITE_LIMIT_SQL_LENGTH	sqlite3.h	2741;"	d
+SQLITE_LIMIT_TRIGGER_DEPTH	sqlite3.h	2750;"	d
+SQLITE_LIMIT_VARIABLE_NUMBER	sqlite3.h	2749;"	d
+SQLITE_LIMIT_VDBE_OP	sqlite3.h	2745;"	d
+SQLITE_LOCKED	sqlite3.h	388;"	d
+SQLITE_LOCKED_SHAREDCACHE	sqlite3.h	458;"	d
+SQLITE_LOCK_EXCLUSIVE	sqlite3.h	538;"	d
+SQLITE_LOCK_NONE	sqlite3.h	534;"	d
+SQLITE_LOCK_PENDING	sqlite3.h	537;"	d
+SQLITE_LOCK_RESERVED	sqlite3.h	536;"	d
+SQLITE_LOCK_SHARED	sqlite3.h	535;"	d
+SQLITE_MISMATCH	sqlite3.h	402;"	d
+SQLITE_MISUSE	sqlite3.h	403;"	d
+SQLITE_MUTEX_FAST	sqlite3.h	5480;"	d
+SQLITE_MUTEX_RECURSIVE	sqlite3.h	5481;"	d
+SQLITE_MUTEX_STATIC_LRU	sqlite3.h	5487;"	d
+SQLITE_MUTEX_STATIC_LRU2	sqlite3.h	5488;"	d
+SQLITE_MUTEX_STATIC_MASTER	sqlite3.h	5482;"	d
+SQLITE_MUTEX_STATIC_MEM	sqlite3.h	5483;"	d
+SQLITE_MUTEX_STATIC_MEM2	sqlite3.h	5484;"	d
+SQLITE_MUTEX_STATIC_OPEN	sqlite3.h	5485;"	d
+SQLITE_MUTEX_STATIC_PMEM	sqlite3.h	5489;"	d
+SQLITE_MUTEX_STATIC_PRNG	sqlite3.h	5486;"	d
+SQLITE_NOLFS	sqlite3.h	404;"	d
+SQLITE_NOMEM	sqlite3.h	389;"	d
+SQLITE_NOTADB	sqlite3.h	408;"	d
+SQLITE_NOTFOUND	sqlite3.h	394;"	d
+SQLITE_NULL	sqlite3.h	3359;"	d
+SQLITE_OK	sqlite3.h	381;"	d
+SQLITE_OPEN_AUTOPROXY	sqlite3.h	477;"	d
+SQLITE_OPEN_CREATE	sqlite3.h	474;"	d
+SQLITE_OPEN_DELETEONCLOSE	sqlite3.h	475;"	d
+SQLITE_OPEN_EXCLUSIVE	sqlite3.h	476;"	d
+SQLITE_OPEN_FULLMUTEX	sqlite3.h	487;"	d
+SQLITE_OPEN_MAIN_DB	sqlite3.h	479;"	d
+SQLITE_OPEN_MAIN_JOURNAL	sqlite3.h	482;"	d
+SQLITE_OPEN_MASTER_JOURNAL	sqlite3.h	485;"	d
+SQLITE_OPEN_NOMUTEX	sqlite3.h	486;"	d
+SQLITE_OPEN_PRIVATECACHE	sqlite3.h	489;"	d
+SQLITE_OPEN_READONLY	sqlite3.h	472;"	d
+SQLITE_OPEN_READWRITE	sqlite3.h	473;"	d
+SQLITE_OPEN_SHAREDCACHE	sqlite3.h	488;"	d
+SQLITE_OPEN_SUBJOURNAL	sqlite3.h	484;"	d
+SQLITE_OPEN_TEMP_DB	sqlite3.h	480;"	d
+SQLITE_OPEN_TEMP_JOURNAL	sqlite3.h	483;"	d
+SQLITE_OPEN_TRANSIENT_DB	sqlite3.h	481;"	d
+SQLITE_OPEN_URI	sqlite3.h	478;"	d
+SQLITE_OPEN_WAL	sqlite3.h	490;"	d
+SQLITE_PERM	sqlite3.h	385;"	d
+SQLITE_PRAGMA	sqlite3.h	2277;"	d
+SQLITE_PROTOCOL	sqlite3.h	397;"	d
+SQLITE_RANGE	sqlite3.h	407;"	d
+SQLITE_READ	sqlite3.h	2278;"	d
+SQLITE_READONLY	sqlite3.h	390;"	d
+SQLITE_READONLY_CANTLOCK	sqlite3.h	463;"	d
+SQLITE_READONLY_RECOVERY	sqlite3.h	462;"	d
+SQLITE_REINDEX	sqlite3.h	2285;"	d
+SQLITE_REPLACE	sqlite3.h	6659;"	d
+SQLITE_ROLLBACK	sqlite3.h	6655;"	d
+SQLITE_ROW	sqlite3.h	409;"	d
+SQLITE_SAVEPOINT	sqlite3.h	2290;"	d
+SQLITE_SCHEMA	sqlite3.h	399;"	d
+SQLITE_SELECT	sqlite3.h	2279;"	d
+SQLITE_SET_LOCKPROXYFILE	sqlite3.h	747;"	d
+SQLITE_SHM_EXCLUSIVE	sqlite3.h	1014;"	d
+SQLITE_SHM_LOCK	sqlite3.h	1012;"	d
+SQLITE_SHM_NLOCK	sqlite3.h	1024;"	d
+SQLITE_SHM_SHARED	sqlite3.h	1013;"	d
+SQLITE_SHM_UNLOCK	sqlite3.h	1011;"	d
+SQLITE_SOURCE_ID	sqlite3.h	112;"	d
+SQLITE_STATIC	sqlite3.h	3930;"	d
+SQLITE_STATUS_MALLOC_COUNT	sqlite3.h	5707;"	d
+SQLITE_STATUS_MALLOC_SIZE	sqlite3.h	5703;"	d
+SQLITE_STATUS_MEMORY_USED	sqlite3.h	5698;"	d
+SQLITE_STATUS_PAGECACHE_OVERFLOW	sqlite3.h	5700;"	d
+SQLITE_STATUS_PAGECACHE_SIZE	sqlite3.h	5705;"	d
+SQLITE_STATUS_PAGECACHE_USED	sqlite3.h	5699;"	d
+SQLITE_STATUS_PARSER_STACK	sqlite3.h	5704;"	d
+SQLITE_STATUS_SCRATCH_OVERFLOW	sqlite3.h	5702;"	d
+SQLITE_STATUS_SCRATCH_SIZE	sqlite3.h	5706;"	d
+SQLITE_STATUS_SCRATCH_USED	sqlite3.h	5701;"	d
+SQLITE_STMTSTATUS_AUTOINDEX	sqlite3.h	5860;"	d
+SQLITE_STMTSTATUS_FULLSCAN_STEP	sqlite3.h	5858;"	d
+SQLITE_STMTSTATUS_SORT	sqlite3.h	5859;"	d
+SQLITE_SYNC_DATAONLY	sqlite3.h	568;"	d
+SQLITE_SYNC_FULL	sqlite3.h	567;"	d
+SQLITE_SYNC_NORMAL	sqlite3.h	566;"	d
+SQLITE_TESTCTRL_ALWAYS	sqlite3.h	5575;"	d
+SQLITE_TESTCTRL_ASSERT	sqlite3.h	5574;"	d
+SQLITE_TESTCTRL_BENIGN_MALLOC_HOOKS	sqlite3.h	5572;"	d
+SQLITE_TESTCTRL_BITVEC_TEST	sqlite3.h	5570;"	d
+SQLITE_TESTCTRL_FAULT_INSTALL	sqlite3.h	5571;"	d
+SQLITE_TESTCTRL_FIRST	sqlite3.h	5566;"	d
+SQLITE_TESTCTRL_ISKEYWORD	sqlite3.h	5578;"	d
+SQLITE_TESTCTRL_LAST	sqlite3.h	5582;"	d
+SQLITE_TESTCTRL_LOCALTIME_FAULT	sqlite3.h	5581;"	d
+SQLITE_TESTCTRL_OPTIMIZATIONS	sqlite3.h	5577;"	d
+SQLITE_TESTCTRL_PENDING_BYTE	sqlite3.h	5573;"	d
+SQLITE_TESTCTRL_PGHDRSZ	sqlite3.h	5579;"	d
+SQLITE_TESTCTRL_PRNG_RESET	sqlite3.h	5569;"	d
+SQLITE_TESTCTRL_PRNG_RESTORE	sqlite3.h	5568;"	d
+SQLITE_TESTCTRL_PRNG_SAVE	sqlite3.h	5567;"	d
+SQLITE_TESTCTRL_RESERVE	sqlite3.h	5576;"	d
+SQLITE_TESTCTRL_SCRATCHMALLOC	sqlite3.h	5580;"	d
+SQLITE_TEXT	sqlite3.h	3361;"	d
+SQLITE_TEXT	sqlite3.h	3363;"	d
+SQLITE_TOOBIG	sqlite3.h	400;"	d
+SQLITE_TRANSACTION	sqlite3.h	2280;"	d
+SQLITE_TRANSIENT	sqlite3.h	3931;"	d
+SQLITE_UPDATE	sqlite3.h	2281;"	d
+SQLITE_UTF16	sqlite3.h	3722;"	d
+SQLITE_UTF16BE	sqlite3.h	3721;"	d
+SQLITE_UTF16LE	sqlite3.h	3720;"	d
+SQLITE_UTF16_ALIGNED	sqlite3.h	3724;"	d
+SQLITE_UTF8	sqlite3.h	3719;"	d
+SQLITE_VERSION	sqlite3.h	110;"	d
+SQLITE_VERSION	sqlite3.h	77;"	d
+SQLITE_VERSION_NUMBER	sqlite3.h	111;"	d
+SQLITE_VERSION_NUMBER	sqlite3.h	80;"	d
+SQLITE_VTAB_CONSTRAINT_SUPPORT	sqlite3.h	6630;"	d
+STD_STREAM	utils.hpp	/^		static const string STD_STREAM;$/;"	m	class:HMM_PP::utils
+SVDecomp	MatrixDecomp.hpp	/^		class SVDecomp {$/;"	c	class:HMM_PP::MatrixDecomp
+SVDecomp	MatrixDecomp.hpp	/^	HMM_PP::MatrixDecomp::SVDecomp<RealType>::SVDecomp(DoubleVec* singularVals, NamedMatrix<RealType>* leftSingVectors, NamedMatrix<RealType>* rightSingVectors)$/;"	f	class:HMM_PP::HMM_PP::MatrixDecomp::SVDecomp
+Simplex	Simplex.hpp	/^	class Simplex {$/;"	c	namespace:HMM_PP
+StandardVector	LAPACKvector.hpp	/^		StandardVector(ullint size) : _vec(new dataType[size]) {}$/;"	f	class:HMM_PP::StandardVector
+StandardVector	LAPACKvector.hpp	/^	class StandardVector : public LAPACKvector<dataType> {$/;"	c	namespace:HMM_PP
+TRANSPOSE_SUFFIX	NamedMatrix.hpp	/^		static const string TRANSPOSE_SUFFIX;$/;"	m	class:HMM_PP::NamedMatrix
+TRANSPOSE_SUFFIX	NamedMatrix.hpp	/^	const string NamedMatrix<RealType>::TRANSPOSE_SUFFIX = "_T";$/;"	m	class:HMM_PP::NamedMatrix
+TimeDependentConstraint	InferredDataFit.hpp	/^			TimeDependentConstraint() : _timeToConstraints(new map<uint, HomogeneousConstraint*>()) {}$/;"	f	class:HMM_PP::InferredDataFit::TimeDependentConstraint
+TimeDependentConstraint	InferredDataFit.hpp	/^		class TimeDependentConstraint : public Constraint {$/;"	c	class:HMM_PP::InferredDataFit
+TimedEvent	InferredDataFit.hpp	/^		typedef pair<string, uint> TimedEvent;$/;"	t	class:HMM_PP::InferredDataFit
+Timer	Timer.hpp	/^		Timer() : _startTime(CUR_TIME) {}$/;"	f	class:HMM_PP::Timer
+Timer	Timer.hpp	/^	class Timer {$/;"	c	namespace:HMM_PP
+U	MatrixDecomp.hpp	/^			NamedMatrix<RealType>* U; \/\/ leftSingVectors$/;"	m	class:HMM_PP::MatrixDecomp::SVDecomp
+UINT_INFINITY	params.hpp	10;"	d
+ULLINT_INFINITY	params.hpp	13;"	d
+UnivariateCategoricalData	UnivariateCategoricalData.hpp	/^	class UnivariateCategoricalData : public UnivariateData<uint>, public CategoricalData, public DeclareInputType<string> {$/;"	c	namespace:HMM_PP
+UnivariateCategoricalModelParams	UnivariateCategoricalModelParams.hpp	/^	class UnivariateCategoricalModelParams : public HomogeneousModelParams, public ModelParamsData<UnivariateCategoricalData> {$/;"	c	namespace:HMM_PP
+UnivariateData	UnivariateData.hpp	/^	UnivariateData<BaseType>::UnivariateData()$/;"	f	class:HMM_PP::UnivariateData
+UnivariateData	UnivariateData.hpp	/^	class UnivariateData : virtual public Data {$/;"	c	namespace:HMM_PP
+UnivariateDataNoDB	UnivariateDataNoDB.hpp	/^		UnivariateDataNoDB() : Data(), UnivariateData<BaseType>(), DeclareInputType<BaseType>() {}$/;"	f	class:HMM_PP::UnivariateDataNoDB
+UnivariateDataNoDB	UnivariateDataNoDB.hpp	/^	class UnivariateDataNoDB : public UnivariateData<BaseType>, public DeclareInputType<BaseType> {$/;"	c	namespace:HMM_PP
+UnivariateQuantitativeData	UnivariateQuantitativeData.hpp	/^		UnivariateQuantitativeData() : Data(), UnivariateDataNoDB<double>() {}$/;"	f	class:HMM_PP::UnivariateQuantitativeData
+UnivariateQuantitativeData	UnivariateQuantitativeData.hpp	/^	class UnivariateQuantitativeData : public UnivariateDataNoDB<double> {$/;"	c	namespace:HMM_PP
+UnivariateQuantitativeModelParams	UnivariateQuantitativeModelParams.hpp	/^		UnivariateQuantitativeModelParams(HiddenStateParams* params, HMM_PP::DataLoader<UnivariateQuantitativeData>* dataLoader = NULL)$/;"	f	class:HMM_PP::UnivariateQuantitativeModelParams
+UnivariateQuantitativeModelParams	UnivariateQuantitativeModelParams.hpp	/^	class UnivariateQuantitativeModelParams : public HomogeneousModelParams, public ModelParamsData<UnivariateQuantitativeData> {$/;"	c	namespace:HMM_PP
+V	MatrixDecomp.hpp	/^			NamedMatrix<RealType>* V; \/\/ rightSingVectors$/;"	m	class:HMM_PP::MatrixDecomp::SVDecomp
+VectorOnDisk	VectorOnDisk.hpp	/^		VectorOnDisk(const ullint size, const string& dir) {$/;"	f	class:HMM_PP::VectorOnDisk
+VectorOnDisk	VectorOnDisk.hpp	/^	class VectorOnDisk : public LAPACKvector<dataType> {$/;"	c	namespace:HMM_PP
+_NMAX	Simplex.hpp	/^		uint _NMAX;$/;"	m	class:HMM_PP::Simplex
+_SQLITE3RTREE_H_	sqlite3.h	6690;"	d
+_SQLITE3_H_	sqlite3.h	34;"	d
+__CATEGORICAL_DATA_H__	CategoricalData.hpp	2;"	d
+__CRANDOM_H__	CRandom.hpp	2;"	d
+__DATA_H__	Data.hpp	2;"	d
+__DATA_LOADER_H__	DataLoader.hpp	2;"	d
+__DATA_OUPUTTER_H__	DataOutputter.hpp	2;"	d
+__DECLARE_INPUT_TYPE_H__	DeclareInputType.hpp	2;"	d
+__DISTRIBUTION_STATISTICS_H__	DistributionStatistics.hpp	2;"	d
+__EXCEPTION_H__	Exception.hpp	2;"	d
+__HOMOGENEOUS_MODEL_PARAMS_H__	HomogeneousModelParams.hpp	2;"	d
+__INFERRED_DATA_FIT_H__	InferredDataFit.hpp	2;"	d
+__LAPACK_VECTOR_H__	LAPACKvector.hpp	2;"	d
+__MATRIX_DECOMP_H__	MatrixDecomp.hpp	2;"	d
+__MODEL_FROM_STREAM_H__	ModelFromStream.hpp	2;"	d
+__MODEL_FROM_STREAM_NO_STORAGE_H__	ModelFromStreamNoStorage.hpp	2;"	d
+__MODEL_H__	Model.hpp	2;"	d
+__MODEL_PARAMS_DATA_H__	ModelParamsData.hpp	2;"	d
+__MODEL_PARAMS_H__	ModelParams.hpp	2;"	d
+__MODEL_WITH_DB_H__	ModelWithDB.hpp	2;"	d
+__MULTIVARIATE_CATEGORICAL_DATA_H__	MultivariateCategoricalData.hpp	2;"	d
+__MULTIVARIATE_QUANTITATIVE_DATA_H__	MultivariateQuantitativeData.hpp	2;"	d
+__NAMED_MATRIX_H__	NamedMatrix.hpp	2;"	d
+__NAMED_VECTOR_H__	NamedVector.hpp	2;"	d
+__PARAMS_H__	params.hpp	2;"	d
+__PRECISE_NON_NEGATIVE_REAL_H__	PreciseNonNegativeReal.hpp	2;"	d
+__SIMPLEX_H__	Simplex.hpp	2;"	d
+__SQLWRAP_H__	sqlwrap.hpp	2;"	d
+__TIMER_H__	Timer.hpp	2;"	d
+__UNIVARIATE_CATEGORICAL_DATA_H__	UnivariateCategoricalData.hpp	2;"	d
+__UNIVARIATE_CATEGORICAL_MODEL_PARAMS_H__	UnivariateCategoricalModelParams.hpp	2;"	d
+__UNIVARIATE_DATA_H__	UnivariateData.hpp	2;"	d
+__UNIVARIATE_DATA_NO_DB_H__	UnivariateDataNoDB.hpp	2;"	d
+__UNIVARIATE_QUANTITATIVE_DATA_H__	UnivariateQuantitativeData.hpp	2;"	d
+__UNIVARIATE_QUANTITATIVE_MODEL_PARAMS_H__	UnivariateQuantitativeModelParams.hpp	2;"	d
+__UTILS_H__	utils.hpp	2;"	d
+__VECTOR_ON_DISK_H__	VectorOnDisk.hpp	2;"	d
+_alpha	InferredDataFit.hpp	/^		NamedMatrix<real>* _alpha;$/;"	m	class:HMM_PP::InferredDataFit
+_beta	InferredDataFit.hpp	/^		NamedMatrix<real>* _beta;$/;"	m	class:HMM_PP::InferredDataFit
+_calcStdDev	DistributionStatistics.hpp	/^		bool _calcStdDev;$/;"	m	class:HMM_PP::DistributionStatistics
+_catmap	CategoricalData.hpp	/^		static map<string, uint> _catmap;$/;"	m	class:HMM_PP::CategoricalData
+_catrmap	CategoricalData.hpp	/^		static map<uint, string> _catrmap;$/;"	m	class:HMM_PP::CategoricalData
+_colNames	NamedMatrix.hpp	/^		vector<string>* _colNames;$/;"	m	class:HMM_PP::NamedMatrix
+_constLength	NamedVector.hpp	/^		bool _constLength;$/;"	m	class:HMM_PP::NamedVector
+_count	DistributionStatistics.hpp	/^		uint _count;$/;"	m	class:HMM_PP::DistributionStatistics
+_data	InferredDataFit.hpp	/^		const Data* _data;$/;"	m	class:HMM_PP::InferredDataFit
+_data	Simplex.hpp	/^		data_t* _data;$/;"	m	class:HMM_PP::Simplex
+_data	UnivariateData.hpp	/^		NamedVector<BaseType>* _data;$/;"	m	class:HMM_PP::UnivariateData
+_dataLoader	ModelParamsData.hpp	/^		DataLoader<Type>* _dataLoader;$/;"	m	class:HMM_PP::ModelParamsData
+_dataOuputter	ModelFromStreamNoStorage.hpp	/^		DataOutputter<InferredDataFit>* _dataOuputter;$/;"	m	class:HMM_PP::ModelFromStreamNoStorage
+_datadb	ModelWithDB.hpp	/^		SQL _datadb;$/;"	m	class:HMM_PP::ModelWithDB
+_db	sqlwrap.hpp	/^	sqlite3* _db;$/;"	m	class:SQL
+_dbFile	ModelWithDB.hpp	/^		string _dbFile;$/;"	m	class:HMM_PP::ModelWithDB
+_db_err	sqlwrap.hpp	/^	char* _db_err;$/;"	m	class:SQL
+_defaultValue	NamedMatrix.hpp	/^		RealType _defaultValue;$/;"	m	class:HMM_PP::NamedMatrix
+_deleteInner	utils.hpp	/^		bool _deleteInner;$/;"	m	class:HMM_PP::istreamLineReader
+_deleteInner	utils.hpp	/^		bool _deleteInner;$/;"	m	class:HMM_PP::ostreamWriter
+_digamma	InferredDataFit.hpp	/^		digamma_t* _digamma;$/;"	m	class:HMM_PP::InferredDataFit
+_emissionMat	UnivariateCategoricalModelParams.hpp	/^		RealMat _emissionMat;$/;"	m	class:HMM_PP::UnivariateCategoricalModelParams
+_excludedStates	InferredDataFit.hpp	/^			set<uint>* _excludedStates;$/;"	m	class:HMM_PP::InferredDataFit::HomogeneousConstraint
+_fd	VectorOnDisk.hpp	/^		int _fd;$/;"	m	class:HMM_PP::VectorOnDisk
+_file	VectorOnDisk.hpp	/^		string _file;$/;"	m	class:HMM_PP::VectorOnDisk
+_fileSize	VectorOnDisk.hpp	/^		ullint _fileSize;$/;"	m	class:HMM_PP::VectorOnDisk
+_ftol	Simplex.hpp	/^		double _ftol;$/;"	m	class:HMM_PP::Simplex
+_func	Simplex.hpp	/^		func_t _func;$/;"	m	class:HMM_PP::Simplex
+_gamma	InferredDataFit.hpp	/^		NamedMatrix<real>* _gamma;$/;"	m	class:HMM_PP::InferredDataFit
+_header	DataLoader.hpp	/^		string* _header;$/;"	m	class:HMM_PP::DataLoader
+_id	Data.hpp	/^		string _id;$/;"	m	class:HMM_PP::Data
+_idCount	DataLoader.hpp	/^		uint _idCount;$/;"	m	class:HMM_PP::DataLoader
+_initProbs	ModelParams.hpp	/^			BaseRealVec _initProbs;$/;"	m	class:HMM_PP::ModelParams::HiddenStateParams
+_innerStream	utils.hpp	/^		istream& _innerStream;$/;"	m	class:HMM_PP::istreamLineReader
+_iter	Simplex.hpp	/^		uint _iter;$/;"	m	class:HMM_PP::Simplex
+_keepIDs	DataLoader.hpp	/^		const set<string>* _keepIDs;$/;"	m	class:HMM_PP::DataLoader
+_l	sqlwrap.hpp	/^	int _l;$/;"	m	class:blob
+_mappedMem	MatrixDecomp.hpp	/^		static set<LAPACKvector<double>*> _mappedMem;$/;"	m	class:HMM_PP::MatrixDecomp
+_mat	NamedMatrix.hpp	/^		mutable PARENT* _mat; \/\/ _mat is mutable to permit lazy initialization of row vectors$/;"	m	class:HMM_PP::NamedMatrix
+_mdata_int	MultivariateCategoricalData.hpp	/^		vector<vector<uint> > _mdata_int;$/;"	m	class:HMM_PP::MultivariateCategoricalData
+_mdata_qt	MultivariateQuantitativeData.hpp	/^		vector<vector<double> > _mdata_qt;$/;"	m	class:HMM_PP::MultivariateQuantitativeData
+_mean	UnivariateQuantitativeModelParams.hpp	/^		BaseRealVec _mean;$/;"	m	class:HMM_PP::UnivariateQuantitativeModelParams
+_model	InferredDataFit.hpp	/^		Model* _model;$/;"	m	class:HMM_PP::InferredDataFit
+_modelParams	Model.hpp	/^		ModelParams* _modelParams;$/;"	m	class:HMM_PP::Model
+_msg	Exception.hpp	/^	string _msg;$/;"	m	class:Exception
+_n	Data.hpp	/^		uint _n;$/;"	m	class:HMM_PP::Data
+_name	NamedMatrix.hpp	/^		string _name;$/;"	m	class:HMM_PP::NamedMatrix
+_name	sqlwrap.hpp	/^	string _name;$/;"	m	class:SQL
+_names	NamedVector.hpp	/^		vector<string>* _names;$/;"	m	class:HMM_PP::NamedVector
+_ncol	NamedMatrix.hpp	/^		ullint _ncol;$/;"	m	class:HMM_PP::NamedMatrix
+_ndim	Simplex.hpp	/^		uint _ndim;$/;"	m	class:HMM_PP::Simplex
+_nextToExtract	utils.hpp	/^		string _nextToExtract;$/;"	m	class:HMM_PP::istreamLineReader
+_nextToRead	DataLoader.hpp	/^		DataType* _nextToRead;$/;"	m	class:HMM_PP::DataLoader
+_numObservedStates	UnivariateCategoricalModelParams.hpp	/^		uint _numObservedStates;$/;"	m	class:HMM_PP::UnivariateCategoricalModelParams
+_numRead	DataLoader.hpp	/^		uint _numRead;$/;"	m	class:HMM_PP::DataLoader
+_p	Simplex.hpp	/^		BaseRealMat _p;$/;"	m	class:HMM_PP::Simplex
+_p	sqlwrap.hpp	/^	const char* _p;$/;"	m	class:blob
+_params	ModelParams.hpp	/^		HiddenStateParams* _params;$/;"	m	class:HMM_PP::ModelParams
+_precision	utils.hpp	/^		int _precision;$/;"	m	class:HMM_PP::PrecisionThreshold
+_psum	Simplex.hpp	/^		BaseRealVec _psum;$/;"	m	class:HMM_PP::Simplex
+_ptry	Simplex.hpp	/^		BaseRealVec _ptry;$/;"	m	class:HMM_PP::Simplex
+_qmap	sqlwrap.hpp	/^	map<string,sqlite3_stmt*> _qmap;$/;"	m	class:SQL
+_qset	sqlwrap.hpp	/^	set<sqlite3_stmt*> _qset;$/;"	m	class:SQL
+_rc	sqlwrap.hpp	/^	int _rc;$/;"	m	class:SQL
+_readDataIDs	DataLoader.hpp	/^		bool _readDataIDs;$/;"	m	class:HMM_PP::DataLoader
+_rowNames	NamedMatrix.hpp	/^		vector<string>* _rowNames;$/;"	m	class:HMM_PP::NamedMatrix
+_runTimes	InferredDataFit.hpp	/^		mutable list<TimedEvent>* _runTimes;$/;"	m	class:HMM_PP::InferredDataFit
+_s	sqlwrap.hpp	/^	string _s;$/;"	m	class:blob
+_sequences	ModelFromStream.hpp	/^		vector<DataAndFit> _sequences;$/;"	m	class:HMM_PP::ModelFromStream
+_size	VectorOnDisk.hpp	/^		ullint _size;$/;"	m	class:HMM_PP::VectorOnDisk
+_startTime	Timer.hpp	/^		time_t _startTime;$/;"	m	class:HMM_PP::Timer
+_statemap	ModelParams.hpp	/^			vector<string> _statemap;$/;"	m	class:HMM_PP::ModelParams::HiddenStateParams
+_statermap	ModelParams.hpp	/^			map<string, int> _statermap;$/;"	m	class:HMM_PP::ModelParams::HiddenStateParams
+_stmt_clear_alpha	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_clear_alpha;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_clear_beta	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_clear_beta;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_clear_digamma	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_clear_digamma;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_clear_gamma	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_clear_gamma;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_clear_viterbi	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_clear_viterbi;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_fetch	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_fetch;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_fetch_alpha	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_fetch_alpha;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_fetch_beta	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_fetch_beta;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_fetch_digamma	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_fetch_digamma;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_fetch_gamma	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_fetch_gamma;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_fetch_indiv	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_fetch_indiv;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_fetch_viterbi	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_fetch_viterbi;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_get_indiv_n	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_get_indiv_n;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_get_obs_n	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_get_obs_n;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_insert	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_insert;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_insert_alpha	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_insert_alpha;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_insert_beta	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_insert_beta;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_insert_digamma	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_insert_digamma;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_insert_gamma	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_insert_gamma;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_insert_indiv	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_insert_indiv;$/;"	m	class:HMM_PP::ModelWithDB
+_stmt_insert_viterbi	ModelWithDB.hpp	/^		sqlite3_stmt* _stmt_insert_viterbi;$/;"	m	class:HMM_PP::ModelWithDB
+_stream	DataLoader.hpp	/^		istreamLineReader* _stream;$/;"	m	class:HMM_PP::DataLoader
+_stream	utils.hpp	/^		ostream& _stream;$/;"	m	class:HMM_PP::ostreamWriter
+_sumOfSquareVals	DistributionStatistics.hpp	/^		T _sumOfSquareVals;$/;"	m	class:HMM_PP::DistributionStatistics
+_sumVals	DistributionStatistics.hpp	/^		T _sumVals;$/;"	m	class:HMM_PP::DistributionStatistics
+_thresh	utils.hpp	/^		T _thresh;$/;"	m	class:HMM_PP::PrecisionThreshold
+_timeToConstraints	InferredDataFit.hpp	/^			map<uint, HomogeneousConstraint*>* _timeToConstraints;$/;"	m	class:HMM_PP::InferredDataFit::TimeDependentConstraint
+_transitionMat	HomogeneousModelParams.hpp	/^		BaseRealMat _transitionMat;$/;"	m	class:HMM_PP::HomogeneousModelParams
+_val	UnivariateCategoricalModelParams.hpp	/^			uint _val;$/;"	m	class:HMM_PP::UnivariateCategoricalModelParams::CategoricalDataVal
+_val	UnivariateQuantitativeModelParams.hpp	/^			BaseReal _val;$/;"	m	class:HMM_PP::UnivariateQuantitativeModelParams::QuantitativeDataVal
+_var	UnivariateQuantitativeModelParams.hpp	/^		BaseRealVec _var;$/;"	m	class:HMM_PP::UnivariateQuantitativeModelParams
+_vec	LAPACKvector.hpp	/^		dataType* _vec;$/;"	m	class:HMM_PP::StandardVector
+_vec	NamedVector.hpp	/^		PARENT* _vec;$/;"	m	class:HMM_PP::NamedVector
+_vec	VectorOnDisk.hpp	/^		dataType* _vec;$/;"	m	class:HMM_PP::VectorOnDisk
+_verbose	Simplex.hpp	/^		bool _verbose;$/;"	m	class:HMM_PP::Simplex
+_vpath	InferredDataFit.hpp	/^		vector<uint>* _vpath;$/;"	m	class:HMM_PP::InferredDataFit
+_x	Simplex.hpp	/^		BaseRealVec _x;$/;"	m	class:HMM_PP::Simplex
+_y	Simplex.hpp	/^		BaseRealVec _y;$/;"	m	class:HMM_PP::Simplex
+aConstraint	sqlite3.h	/^  }*aConstraint;            \/* Table of WHERE clause constraints*\/$/;"	m	struct:sqlite3_index_info	typeref:struct:sqlite3_index_info::sqlite3_index_constraint
+aConstraintUsage	sqlite3.h	/^  }*aConstraintUsage;$/;"	m	struct:sqlite3_index_info	typeref:struct:sqlite3_index_info::sqlite3_index_constraint_usage
+aOrderBy	sqlite3.h	/^  }*aOrderBy;               \/* The ORDER BY clause*\/$/;"	m	struct:sqlite3_index_info	typeref:struct:sqlite3_index_info::sqlite3_index_orderby
+aParam	sqlite3.h	/^  double*aParam;                 \/* Parameters passed to SQL geom function*\/$/;"	m	struct:sqlite3_rtree_geometry
+absSubLog	PreciseNonNegativeReal.hpp	/^		static RealType absSubLog(RealType x, RealType y) {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+addConstraintsAtTime	InferredDataFit.hpp	/^			void addConstraintsAtTime(const uint t, HomogeneousConstraint* tConstraints) {$/;"	f	class:HMM_PP::InferredDataFit::TimeDependentConstraint
+addData	ModelFromStreamNoStorage.hpp	/^		virtual uint addData(Data* d) { return 0; }$/;"	f	class:HMM_PP::ModelFromStreamNoStorage
+addDatapoint	UnivariateData.hpp	/^	void UnivariateData<BaseType>::addDatapoint(const BaseType& t) {$/;"	f	class:HMM_PP::UnivariateData
+addDatapointFromDB	UnivariateDataNoDB.hpp	/^		virtual void addDatapointFromDB(SQL& db, sqlite3_stmt* stmt, const uint queryPos) { throw new Exception("DB functions not implemented"); }$/;"	f	class:HMM_PP::UnivariateDataNoDB
+addElement	NamedVector.hpp	/^		void addElement(const RealType& v) {$/;"	f	class:HMM_PP::NamedVector
+addInLogSpace	PreciseNonNegativeReal.hpp	/^		static RealType addInLogSpace(RealType x, RealType y) {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+addRow	NamedMatrix.hpp	/^		void addRow(NamedVector<RealType>* row) {$/;"	f	class:HMM_PP::NamedMatrix
+advanceToNext	DataLoader.hpp	/^	void DataLoader<DataType>::advanceToNext() {$/;"	f	class:HMM_PP::DataLoader
+argvIndex	sqlite3.h	/^    int argvIndex;           \/* if >0, constraint is part of argv to xFilter*\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint_usage
+asMatrix	NamedMatrix.hpp	/^	NamedMatrix<RealType>* NamedVector<RealType>::asMatrix(bool createColumnVector) const {$/;"	f	class:HMM_PP::NamedVector
+attached	sqlwrap.hpp	/^	bool attached() const { return _db; }$/;"	f	class:SQL
+bindDatapointToDB	UnivariateDataNoDB.hpp	/^		virtual void bindDatapointToDB(SQL& db, sqlite3_stmt* stmt, const string& data, const uint t) { throw new Exception("DB functions not implemented"); }$/;"	f	class:HMM_PP::UnivariateDataNoDB
+blob	sqlwrap.hpp	/^	blob() {}$/;"	f	class:blob
+blob	sqlwrap.hpp	/^	blob(const string& t)  {$/;"	f	class:blob
+blob	sqlwrap.hpp	/^class blob {$/;"	c
+calcDefaultFixedWidth	NamedMatrix.hpp	/^		void calcDefaultFixedWidth(ullint& fixedWidth, bool showLabels, ullint precision) const{$/;"	f	class:HMM_PP::NamedMatrix
+calcMaxArgmax	NamedVector.hpp	/^		pair<RealType, ullint> calcMaxArgmax() const {$/;"	f	class:HMM_PP::NamedVector
+calcMinArgmin	NamedVector.hpp	/^		pair<RealType, ullint> calcMinArgmin() const {$/;"	f	class:HMM_PP::NamedVector
+calcRepresentativeDataVal	Model.hpp	/^		inline ModelParams::DataVal* calcRepresentativeDataVal(const HMM_PP::Data* d, const uint t1, const uint t2) const { return _modelParams->calcRepresentativeDataVal(d, t1, t2); }$/;"	f	class:HMM_PP::Model
+calcSegments	InferredDataFit.hpp	/^		static vector<HMM_PP::ullintPair> calcSegments(const vector<DataType>& dataVec, const set<DataType>* excludeSegmentTypes = NULL, const set<uint>* forceSegmentBreakInds = NULL) {$/;"	f	class:HMM_PP::InferredDataFit
+capAbsoluteValue	utils.hpp	/^	inline T& capAbsoluteValue(T& t, const T& capVal) {$/;"	f	namespace:HMM_PP
+castData	ModelParamsData.hpp	/^		static Type* castData(Data* d) {$/;"	f	class:HMM_PP::ModelParamsData
+castData	ModelParamsData.hpp	/^		static const Type* castData(const Data* d) {$/;"	f	class:HMM_PP::ModelParamsData
+centerByMean	NamedVector.hpp	/^		inline NamedVector& centerByMean(bool scaleByStdDev = false) {$/;"	f	class:HMM_PP::NamedVector
+centerColumnsByMean	NamedMatrix.hpp	/^		inline NamedMatrix& centerColumnsByMean(bool scaleByStdDev = false) {$/;"	f	class:HMM_PP::NamedMatrix
+centerRowsByMean	NamedMatrix.hpp	/^		inline NamedMatrix& centerRowsByMean(bool scaleByStdDev = false) {$/;"	f	class:HMM_PP::NamedMatrix
+clear	NamedMatrix.hpp	/^		void clear() {$/;"	f	class:HMM_PP::NamedMatrix
+clear	NamedVector.hpp	/^		void clear() {$/;"	f	class:HMM_PP::NamedVector
+clearData	NamedMatrix.hpp	/^		void clearData() {$/;"	f	class:HMM_PP::NamedMatrix
+clearObservations	UnivariateData.hpp	/^	void UnivariateData<BaseType>::clearObservations() {$/;"	f	class:HMM_PP::UnivariateData
+closeFile	VectorOnDisk.hpp	/^		void closeFile() {$/;"	f	class:HMM_PP::VectorOnDisk
+colName	NamedMatrix.hpp	/^		string colName(const ullint j) const {$/;"	f	class:HMM_PP::NamedMatrix
+columnSum	NamedMatrix.hpp	/^		RealType columnSum(const ullint col) {$/;"	f	class:HMM_PP::NamedMatrix
+compareReal	PreciseNonNegativeReal.hpp	/^		static int compareReal(const RealType& r1, const RealType& r2) {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+compareTo	PreciseNonNegativeReal.hpp	/^		int compareTo(const PreciseNonNegativeReal& other) const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+data_t	Simplex.hpp	/^		typedef void data_t;$/;"	t	class:HMM_PP::Simplex
+deleteData	MatrixDecomp.hpp	/^	void HMM_PP::MatrixDecomp::EigenDecomp<RealType>::deleteData() {$/;"	f	class:HMM_PP::HMM_PP::MatrixDecomp::EigenDecomp
+deleteData	MatrixDecomp.hpp	/^	void HMM_PP::MatrixDecomp::SVDecomp<RealType>::deleteData() {$/;"	f	class:HMM_PP::HMM_PP::MatrixDecomp::SVDecomp
+deleteRowsAndColumns	NamedMatrix.hpp	/^		NamedMatrix* deleteRowsAndColumns(const set<ullint>* deleteRows, const set<ullint>* deleteColumns) const {$/;"	f	class:HMM_PP::NamedMatrix
+desc	sqlite3.h	/^     unsigned char desc;       \/* True for DESC.  False for ASC.*\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_orderby
+diag	NamedMatrix.hpp	/^	NamedMatrix<RealType>* NamedVector<RealType>::diag() const {$/;"	f	class:HMM_PP::NamedVector
+digamma_t	InferredDataFit.hpp	/^		typedef vector<NamedMatrix<real> > digamma_t;$/;"	t	class:HMM_PP::InferredDataFit
+double	sqlite3.h	263;"	d
+double	sqlite3.h	6668;"	d
+dropLastRow	NamedMatrix.hpp	/^		void dropLastRow() {$/;"	f	class:HMM_PP::NamedMatrix
+eigenValsImaginary	MatrixDecomp.hpp	/^			DoubleVec* eigenValsImaginary;$/;"	m	class:HMM_PP::MatrixDecomp::EigenDecomp
+eigenValsReal	MatrixDecomp.hpp	/^			DoubleVec* eigenValsReal;$/;"	m	class:HMM_PP::MatrixDecomp::EigenDecomp
+eigenVectors	MatrixDecomp.hpp	/^			NamedMatrix<RealType>* eigenVectors;$/;"	m	class:HMM_PP::MatrixDecomp::EigenDecomp
+empty	NamedMatrix.hpp	/^		bool empty() const {$/;"	f	class:HMM_PP::NamedMatrix
+empty	NamedVector.hpp	/^		inline bool empty() const { return _vec->empty(); }$/;"	f	class:HMM_PP::NamedVector
+empty	VectorOnDisk.hpp	/^		inline bool empty() const { return size() == 0; }$/;"	f	class:HMM_PP::VectorOnDisk
+ensureRow	NamedMatrix.hpp	/^		void ensureRow(const ullint i) const {$/;"	f	class:HMM_PP::NamedMatrix
+equalsReal	PreciseNonNegativeReal.hpp	/^		static bool equalsReal(const RealType& r1, const RealType& r2) {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+estimatedCost	sqlite3.h	/^  double estimatedCost;      \/* Estimated cost of using this index*\/$/;"	m	struct:sqlite3_index_info
+failScore	utils.hpp	/^		bool failScore(T eval) const {$/;"	f	class:HMM_PP::PrecisionThreshold
+finishData	Model.hpp	/^		virtual void finishData(Data* d) const {}$/;"	f	class:HMM_PP::Model
+finishDataAndFit	Model.hpp	/^		virtual void finishDataAndFit(InferredDataFit* idf) const {}$/;"	f	class:HMM_PP::Model
+func_t	Simplex.hpp	/^		typedef BaseReal (*func_t)(BaseRealVec&, data_t*);$/;"	t	class:HMM_PP::Simplex
+getData	InferredDataFit.hpp	/^		inline const Data* getData() const { return _data; }$/;"	f	class:HMM_PP::InferredDataFit
+getData	ModelFromStreamNoStorage.hpp	/^		virtual const Data* getData(const uint i) { return NULL; }$/;"	f	class:HMM_PP::ModelFromStreamNoStorage
+getDataFitResult	ModelFromStreamNoStorage.hpp	/^		virtual InferredDataFit* getDataFitResult(const uint i) { return NULL; }$/;"	f	class:HMM_PP::ModelFromStreamNoStorage
+getDims	NamedMatrix.hpp	/^		ullintPair getDims() const {$/;"	f	class:HMM_PP::NamedMatrix
+getDuration	Timer.hpp	/^		uint getDuration() const {$/;"	f	class:HMM_PP::Timer
+getHeader	DataLoader.hpp	/^		const string* getHeader() const { return _header; }$/;"	f	class:HMM_PP::DataLoader
+getId	Data.hpp	/^		const string& getId() const { return _id; }$/;"	f	class:HMM_PP::Data
+getInitProbs	ModelParams.hpp	/^		const BaseRealVec& getInitProbs() const { return _params->_initProbs; }$/;"	f	class:HMM_PP::ModelParams
+getLog10Value	PreciseNonNegativeReal.hpp	/^		inline RealType getLog10Value() const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+getMatrixName	NamedMatrix.hpp	/^		string getMatrixName() const { if (_name == "") return "Matrix"; return _name; }$/;"	f	class:HMM_PP::NamedMatrix
+getMean	DistributionStatistics.hpp	/^	T DistributionStatistics<T>::getMean() const {$/;"	f	class:HMM_PP::DistributionStatistics
+getMessage	Exception.hpp	/^	const string& getMessage() const { return _msg;}$/;"	f	class:Exception
+getModel	InferredDataFit.hpp	/^		inline const Model* getModel() const { return _model; }$/;"	f	class:HMM_PP::InferredDataFit
+getModelParams	Model.hpp	/^		inline ModelParams* getModelParams() { return _modelParams; }$/;"	f	class:HMM_PP::Model
+getModelParams	Model.hpp	/^		inline const ModelParams* getModelParams() const { return _modelParams; }$/;"	f	class:HMM_PP::Model
+getNewData	Model.hpp	/^		inline Data* getNewData() { return _modelParams->getNewData(); }$/;"	f	class:HMM_PP::Model
+getNewData	ModelParamsData.hpp	/^		virtual Type* getNewData() const {$/;"	f	class:HMM_PP::ModelParamsData
+getNonConstValues	UnivariateData.hpp	/^		NamedVector<BaseType>& getNonConstValues() { return *_data; }$/;"	f	class:HMM_PP::UnivariateData
+getNumCategories	CategoricalData.hpp	/^		static uint getNumCategories() { return _catmap.size(); }$/;"	f	class:HMM_PP::CategoricalData
+getNumHiddenStates	Model.hpp	/^		inline uint getNumHiddenStates() const { return _modelParams->getNumHiddenStates(); }$/;"	f	class:HMM_PP::Model
+getNumHiddenStates	ModelParams.hpp	/^			inline uint getNumHiddenStates() const { return _statemap.size(); }$/;"	f	class:HMM_PP::ModelParams::HiddenStateParams
+getNumHiddenStates	ModelParams.hpp	/^		inline uint getNumHiddenStates() const { return _params->getNumHiddenStates(); }$/;"	f	class:HMM_PP::ModelParams
+getNumIndividuals	ModelFromStream.hpp	/^		virtual uint getNumIndividuals() { return _sequences.size(); }$/;"	f	class:HMM_PP::ModelFromStream
+getNumIndividuals	ModelFromStreamNoStorage.hpp	/^		virtual uint getNumIndividuals() { return 0; }$/;"	f	class:HMM_PP::ModelFromStreamNoStorage
+getNumIndividuals	ModelWithDB.hpp	/^		virtual uint getNumIndividuals() { return fetch_n(); }$/;"	f	class:HMM_PP::ModelWithDB
+getNumObservations	Data.hpp	/^		virtual inline uint getNumObservations() const { return _n; }$/;"	f	class:HMM_PP::Data
+getRow	NamedMatrix.hpp	/^		NamedVector<RealType>& getRow(const ullint i) const { ensureRow(i); return (*(*_mat)[i]); }$/;"	f	class:HMM_PP::NamedMatrix
+getStdDev	DistributionStatistics.hpp	/^	T DistributionStatistics<T>::getStdDev(bool unbiased) const {$/;"	f	class:HMM_PP::DistributionStatistics
+getSum	DistributionStatistics.hpp	/^		T getSum() const { return _sumVals; }$/;"	f	class:HMM_PP::DistributionStatistics
+getThreshold	utils.hpp	/^		const T& getThreshold() const { return _thresh; }$/;"	f	class:HMM_PP::PrecisionThreshold
+getValue	PreciseNonNegativeReal.hpp	/^		inline RealType getValue() const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+getValues	UnivariateData.hpp	/^		const NamedVector<BaseType>& getValues() const { return *_data; }$/;"	f	class:HMM_PP::UnivariateData
+getValuesTransferOwner	UnivariateData.hpp	/^		NamedVector<BaseType>* getValuesTransferOwner() { NamedVector<BaseType>* tmp = _data; _data = NULL; return tmp; }$/;"	f	class:HMM_PP::UnivariateData
+get_string	sqlwrap.hpp	/^	string get_string() {$/;"	f	class:blob
+giveStateNames	ModelParams.hpp	/^	void HMM_PP::ModelParams::giveStateNames(NamedMatrix<RealType>& mat) const {$/;"	f	class:HMM_PP::HMM_PP::ModelParams
+giveStateNames	ModelParams.hpp	/^	void HMM_PP::ModelParams::giveStateNames(NamedVector<RealType>& vec) const {$/;"	f	class:HMM_PP::HMM_PP::ModelParams
+halt	sqlwrap.hpp	/^	void halt(const string& msg)  {$/;"	f	class:SQL
+hasMoreStreaming	DataLoader.hpp	/^	bool DataLoader<DataType>::hasMoreStreaming() {$/;"	f	class:HMM_PP::DataLoader
+hasNext	DataLoader.hpp	/^	bool DataLoader<DataType>::hasNext() {$/;"	f	class:HMM_PP::DataLoader
+hasNextLoadData	ModelParamsData.hpp	/^		virtual bool hasNextLoadData() const {$/;"	f	class:HMM_PP::ModelParamsData
+header_version	sqlwrap.hpp	/^	static string header_version() {$/;"	f	class:SQL
+iColumn	sqlite3.h	/^     int iColumn;              \/* Column number*\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_orderby
+iColumn	sqlite3.h	/^     int iColumn;              \/* Column on left-hand side of constraint*\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint
+iTermOffset	sqlite3.h	/^     int iTermOffset;          \/* Used internally - xBestIndex should ignore*\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint
+iVersion	sqlite3.h	/^  int iVersion;            \/* Structure version number (currently 3)*\/$/;"	m	struct:sqlite3_vfs
+iVersion	sqlite3.h	/^  int iVersion;$/;"	m	struct:sqlite3_io_methods
+iVersion	sqlite3.h	/^  int iVersion;$/;"	m	struct:sqlite3_module
+idum	CRandom.hpp	/^	static int idum;$/;"	m	class:CRandom
+idxNum	sqlite3.h	/^  int idxNum;                \/* Number used to identify the index*\/$/;"	m	struct:sqlite3_index_info
+idxStr	sqlite3.h	/^  char*idxStr;              \/* String, possibly obtained from sqlite3_malloc*\/$/;"	m	struct:sqlite3_index_info
+isCalcTimes	InferredDataFit.hpp	/^		bool isCalcTimes() const { return _runTimes != NULL; }$/;"	f	class:HMM_PP::InferredDataFit
+is_open	sqlwrap.hpp	/^	bool is_open() const { return _db; }$/;"	f	class:SQL
+istreamLineReader	utils.hpp	/^	class istreamLineReader {$/;"	c	namespace:HMM_PP
+iv	CRandom.hpp	/^	static vector<int> iv;$/;"	m	class:CRandom
+iy	CRandom.hpp	/^	static int iy;$/;"	m	class:CRandom
+last	CRandom.hpp	/^	static double last;$/;"	m	class:CRandom
+last_insert_rowid	sqlwrap.hpp	/^	sqlite_int64 last_insert_rowid() { return sqlite3_last_insert_rowid(_db); }$/;"	f	class:SQL
+library_version	sqlwrap.hpp	/^	static string library_version() {$/;"	f	class:SQL
+likelihood	Simplex.hpp	/^		real likelihood() { return _y[0]; }$/;"	f	class:HMM_PP::Simplex
+lint	params.hpp	/^typedef long int lint;$/;"	t
+loadAllData	ModelFromStreamNoStorage.hpp	/^		virtual void loadAllData() {}$/;"	f	class:HMM_PP::ModelFromStreamNoStorage
+loadNextData	ModelParamsData.hpp	/^		virtual Type* loadNextData() const {$/;"	f	class:HMM_PP::ModelParamsData
+log10	NamedMatrix.hpp	/^		inline NamedMatrix& log10(const RealType& pseudoCountValForLog10Input) {$/;"	f	class:HMM_PP::NamedMatrix
+log10	NamedVector.hpp	/^		NamedVector& log10(const RealType& pseudoCountValForLog10Input) {$/;"	f	class:HMM_PP::NamedVector
+log10Value	PreciseNonNegativeReal.hpp	/^		RealType log10Value;$/;"	m	class:HMM_PP::PreciseNonNegativeReal
+matrixToLAPACKvector	MatrixDecomp.hpp	/^	HMM_PP::LAPACKvector<double>* HMM_PP::MatrixDecomp::matrixToLAPACKvector(NamedMatrix<RealType>* mat, bool deleteMat, const string& workDir, bool transpose) {$/;"	f	class:HMM_PP::HMM_PP::MatrixDecomp
+max	NamedMatrix.hpp	/^		RealType max() const {$/;"	f	class:HMM_PP::NamedMatrix
+max	NamedMatrix.hpp	/^		static RealType max(const RealType& v1, const RealType& v2) {$/;"	f	class:HMM_PP::NamedMatrix
+max	NamedVector.hpp	/^		RealType max() const {$/;"	f	class:HMM_PP::NamedVector
+min	NamedMatrix.hpp	/^		RealType min() const {$/;"	f	class:HMM_PP::NamedMatrix
+min	NamedVector.hpp	/^		RealType min() const {$/;"	f	class:HMM_PP::NamedVector
+multiplyMarginalizeMatrices	NamedMatrix.hpp	/^		static NamedMatrix<RealType>* multiplyMarginalizeMatrices(const NamedMatrix<RealType>& mat1, const NamedMatrix<RealType>& mat2, MarginalizeFunc margFunc = sum) {$/;"	f	class:HMM_PP::NamedMatrix
+mxPathname	sqlite3.h	/^  int mxPathname;          \/* Maximum file pathname length*\/$/;"	m	struct:sqlite3_vfs
+nConstraint	sqlite3.h	/^  int nConstraint;           \/* Number of entries in aConstraint*\/$/;"	m	struct:sqlite3_index_info
+nOrderBy	sqlite3.h	/^  int nOrderBy;              \/* Number of terms in the ORDER BY clause*\/$/;"	m	struct:sqlite3_index_info
+nParam	sqlite3.h	/^  int nParam;                     \/* Size of array aParam[]*\/$/;"	m	struct:sqlite3_rtree_geometry
+nRef	sqlite3.h	/^  int nRef;                       \/* NO LONGER USED*\/$/;"	m	struct:sqlite3_vtab
+n_iter	Simplex.hpp	/^		uint n_iter() const { return _iter; }$/;"	f	class:HMM_PP::Simplex
+n_param	Simplex.hpp	/^		uint n_param() const { return _ndim; }$/;"	f	class:HMM_PP::Simplex
+name	NamedVector.hpp	/^		string name(const ullint i) const {$/;"	f	class:HMM_PP::NamedVector
+namesAreOn	NamedMatrix.hpp	/^		bool namesAreOn() const {$/;"	f	class:HMM_PP::NamedMatrix
+namesAreOn	NamedVector.hpp	/^		bool namesAreOn() const {$/;"	f	class:HMM_PP::NamedVector
+ncol	NamedMatrix.hpp	/^		ullint ncol() const {$/;"	f	class:HMM_PP::NamedMatrix
+needToFreeIdxStr	sqlite3.h	/^  int needToFreeIdxStr;      \/* Free idxStr using sqlite3_free() if true*\/$/;"	m	struct:sqlite3_index_info
+next	DataLoader.hpp	/^	DataType* DataLoader<DataType>::next() {$/;"	f	class:HMM_PP::DataLoader
+normalize	NamedMatrix.hpp	/^		NamedMatrix& normalize(bool normalizeMax = false) {$/;"	f	class:HMM_PP::NamedMatrix
+normalize	NamedVector.hpp	/^		NamedVector& normalize(bool normalizeMax = false) {$/;"	f	class:HMM_PP::NamedVector
+nrow	NamedMatrix.hpp	/^		ullint nrow() const {$/;"	f	class:HMM_PP::NamedMatrix
+observeVal	DistributionStatistics.hpp	/^	void DistributionStatistics<T>::observeVal(const T& val) {$/;"	f	class:HMM_PP::DistributionStatistics
+omit	sqlite3.h	/^    unsigned char omit;      \/* Do not code a test for this constraint*\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint_usage
+op	sqlite3.h	/^     unsigned char op;         \/* Constraint operator*\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint
+operator ()	NamedMatrix.hpp	/^		RealType& operator()(const ullint i, const ullint j) { return (*this)[i][j]; }$/;"	f	class:HMM_PP::NamedMatrix
+operator ()	NamedMatrix.hpp	/^		const RealType& operator()(const ullint i, const ullint j) const { return (*this)[i][j]; }$/;"	f	class:HMM_PP::NamedMatrix
+operator ()	utils.hpp	/^		inline ostream& operator()() { return _stream; }$/;"	f	class:HMM_PP::ostreamWriter
+operator *	NamedMatrix.hpp	/^		NamedMatrix<RealType>* operator*(const NamedMatrix<RealType>& mat) const {$/;"	f	class:HMM_PP::NamedMatrix
+operator *	PreciseNonNegativeReal.hpp	/^		PreciseNonNegativeReal operator*(const PreciseNonNegativeReal& other) const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator *=	NamedMatrix.hpp	/^		inline NamedMatrix& operator*=(const RealType& multiply) {$/;"	f	class:HMM_PP::NamedMatrix
+operator *=	NamedVector.hpp	/^		NamedVector& operator*=(const NamedVector& v) {$/;"	f	class:HMM_PP::NamedVector
+operator *=	NamedVector.hpp	/^		NamedVector& operator*=(const PARENT& multiply) {$/;"	f	class:HMM_PP::NamedVector
+operator *=	NamedVector.hpp	/^		inline NamedVector& operator*=(const RealType& multiply) {$/;"	f	class:HMM_PP::NamedVector
+operator *=	PreciseNonNegativeReal.hpp	/^		inline PreciseNonNegativeReal& operator*=(const PreciseNonNegativeReal& other) {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator +	NamedMatrix.hpp	/^		NamedMatrix<RealType>* operator+(const NamedMatrix<RealType>& mat) const {$/;"	f	class:HMM_PP::NamedMatrix
+operator +	PreciseNonNegativeReal.hpp	/^		PreciseNonNegativeReal operator+(const PreciseNonNegativeReal& other) const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator +=	InferredDataFit.hpp	/^			void operator+=(const HomogeneousConstraint& add) { _excludedStates->insert(add._excludedStates->begin(), add._excludedStates->end()); }$/;"	f	class:HMM_PP::InferredDataFit::HomogeneousConstraint
+operator +=	NamedMatrix.hpp	/^		inline NamedMatrix& operator+=(const RealType& add) {$/;"	f	class:HMM_PP::NamedMatrix
+operator +=	NamedVector.hpp	/^		NamedVector& operator+=(const NamedVector& v) {$/;"	f	class:HMM_PP::NamedVector
+operator +=	NamedVector.hpp	/^		NamedVector& operator+=(const PARENT& add) {$/;"	f	class:HMM_PP::NamedVector
+operator +=	NamedVector.hpp	/^		inline NamedVector& operator+=(const RealType& add) {$/;"	f	class:HMM_PP::NamedVector
+operator +=	PreciseNonNegativeReal.hpp	/^		inline PreciseNonNegativeReal& operator+=(const PreciseNonNegativeReal& other) {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator -	NamedMatrix.hpp	/^		NamedMatrix<RealType>* operator-(const NamedMatrix<RealType>& mat) const {$/;"	f	class:HMM_PP::NamedMatrix
+operator -	PreciseNonNegativeReal.hpp	/^		PreciseNonNegativeReal operator-(const PreciseNonNegativeReal& other) const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator -=	NamedMatrix.hpp	/^		inline NamedMatrix& operator-=(const RealType& subtract) {$/;"	f	class:HMM_PP::NamedMatrix
+operator -=	NamedVector.hpp	/^		NamedVector& operator-=(const NamedVector& v) {$/;"	f	class:HMM_PP::NamedVector
+operator -=	NamedVector.hpp	/^		NamedVector& operator-=(const PARENT& subtract) {$/;"	f	class:HMM_PP::NamedVector
+operator -=	NamedVector.hpp	/^		inline NamedVector& operator-=(const RealType& subtract) {$/;"	f	class:HMM_PP::NamedVector
+operator -=	PreciseNonNegativeReal.hpp	/^		inline PreciseNonNegativeReal& operator-=(const PreciseNonNegativeReal& other) {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator /	PreciseNonNegativeReal.hpp	/^		PreciseNonNegativeReal operator\/(const PreciseNonNegativeReal& other) const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator /=	NamedMatrix.hpp	/^		inline NamedMatrix& operator\/=(const RealType& divide) {$/;"	f	class:HMM_PP::NamedMatrix
+operator /=	NamedVector.hpp	/^		NamedVector& operator\/=(const NamedVector& v) {$/;"	f	class:HMM_PP::NamedVector
+operator /=	NamedVector.hpp	/^		NamedVector& operator\/=(const PARENT& divide) {$/;"	f	class:HMM_PP::NamedVector
+operator /=	NamedVector.hpp	/^		inline NamedVector& operator\/=(const RealType& divide) {$/;"	f	class:HMM_PP::NamedVector
+operator /=	PreciseNonNegativeReal.hpp	/^		inline PreciseNonNegativeReal& operator\/=(const PreciseNonNegativeReal& other) {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator <	PreciseNonNegativeReal.hpp	/^		inline bool operator<(const PreciseNonNegativeReal& other) const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator <<	Model.hpp	/^		inline friend ostream& operator<<(ostream& stream, Model const& m) {$/;"	f	class:HMM_PP::Model
+operator <<	ModelParams.hpp	/^			inline friend ostream& operator<<(ostream& stream, DataVal const& dv) {$/;"	f	class:HMM_PP::ModelParams::DataVal
+operator <<	ModelParams.hpp	/^		inline friend ostream& operator<<(ostream& stream, ModelParams const& mp) {$/;"	f	class:HMM_PP::ModelParams
+operator <<	NamedMatrix.hpp	/^		inline friend ostream& operator<<(ostream& stream, const NamedMatrix& nm) {$/;"	f	class:HMM_PP::NamedMatrix
+operator <<	NamedVector.hpp	/^		inline friend ostream& operator<<(ostream& stream, const NamedVector& nv) {$/;"	f	class:HMM_PP::NamedVector
+operator <<	PreciseNonNegativeReal.hpp	/^	ostream& operator<<(ostream& stream, const PreciseNonNegativeReal<RealType>& pnnr) {$/;"	f	namespace:HMM_PP
+operator <<	VectorOnDisk.hpp	/^		inline friend ostream& operator<<(ostream& stream, const VectorOnDisk& vod) {$/;"	f	class:HMM_PP::VectorOnDisk
+operator <<	utils.hpp	/^		friend ostream& operator<<(ostream& stream, const PrecisionThreshold& t) {$/;"	f	class:HMM_PP::PrecisionThreshold
+operator <=	PreciseNonNegativeReal.hpp	/^		inline bool operator<=(const PreciseNonNegativeReal& other) const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator =	NamedMatrix.hpp	/^		inline NamedMatrix& operator=(const RealType& val) {$/;"	f	class:HMM_PP::NamedMatrix
+operator =	NamedVector.hpp	/^		NamedVector& operator=(const NamedVector& v) {$/;"	f	class:HMM_PP::NamedVector
+operator =	NamedVector.hpp	/^		NamedVector& operator=(const PARENT& v) {$/;"	f	class:HMM_PP::NamedVector
+operator =	NamedVector.hpp	/^		inline NamedVector& operator=(const RealType& val) {$/;"	f	class:HMM_PP::NamedVector
+operator =	PreciseNonNegativeReal.hpp	/^		PreciseNonNegativeReal& operator=(const PreciseNonNegativeReal& other) {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator ==	PreciseNonNegativeReal.hpp	/^		inline bool operator==(const PreciseNonNegativeReal& other) const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator >	PreciseNonNegativeReal.hpp	/^		inline bool operator>(const PreciseNonNegativeReal& other) const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator >=	PreciseNonNegativeReal.hpp	/^		inline bool operator>=(const PreciseNonNegativeReal& other) const {$/;"	f	class:HMM_PP::PreciseNonNegativeReal
+operator []	LAPACKvector.hpp	/^		virtual const dataType& operator[](const ullint i) const { return _vec[i]; }$/;"	f	class:HMM_PP::StandardVector
+operator []	LAPACKvector.hpp	/^		virtual dataType& operator[](const ullint i) { return _vec[i]; }$/;"	f	class:HMM_PP::StandardVector
+operator []	NamedMatrix.hpp	/^		NamedVector<RealType>& operator[](const ullint i) { return getRow(i); }$/;"	f	class:HMM_PP::NamedMatrix
+operator []	NamedMatrix.hpp	/^		const NamedVector<RealType>& operator[](const ullint i) const { return getRow(i); }$/;"	f	class:HMM_PP::NamedMatrix
+operator []	NamedVector.hpp	/^		RealType& operator[](const ullint i) { return (*_vec)[i]; }$/;"	f	class:HMM_PP::NamedVector
+operator []	NamedVector.hpp	/^		const RealType& operator[](const ullint i) const { return (*_vec)[i]; }$/;"	f	class:HMM_PP::NamedVector
+operator []	VectorOnDisk.hpp	/^		virtual const dataType& operator[](const ullint i) const { CHECK_VECTOR_ON_DISK_INDEX  return _vec[i]; }$/;"	f	class:HMM_PP::VectorOnDisk
+operator []	VectorOnDisk.hpp	/^		virtual dataType& operator[](const ullint i) { CHECK_VECTOR_ON_DISK_INDEX  return _vec[i]; }$/;"	f	class:HMM_PP::VectorOnDisk
+orderByConsumed	sqlite3.h	/^  int orderByConsumed;       \/* True if output is already ordered*\/$/;"	m	struct:sqlite3_index_info
+ostreamWriter	utils.hpp	/^	class ostreamWriter {$/;"	c	namespace:HMM_PP
+pAppData	sqlite3.h	/^  void*pAppData;                \/* Argument to xInit() and xShutdown()*\/$/;"	m	struct:sqlite3_mem_methods
+pAppData	sqlite3.h	/^  void*pAppData;          \/* Pointer to application-specific data*\/$/;"	m	struct:sqlite3_vfs
+pArg	sqlite3.h	/^  void*pArg;$/;"	m	struct:sqlite3_pcache_methods
+pContext	sqlite3.h	/^  void*pContext;                 \/* Copy of pContext passed to s_r_g_c()*\/$/;"	m	struct:sqlite3_rtree_geometry
+pMethods	sqlite3.h	/^  const struct sqlite3_io_methods*pMethods;  \/* Methods for an open file*\/$/;"	m	struct:sqlite3_file	typeref:struct:sqlite3_file::sqlite3_io_methods
+pModule	sqlite3.h	/^  const sqlite3_module*pModule;  \/* The module for this virtual table*\/$/;"	m	struct:sqlite3_vtab
+pNext	sqlite3.h	/^  sqlite3_vfs*pNext;      \/* Next registered VFS*\/$/;"	m	struct:sqlite3_vfs
+pUser	sqlite3.h	/^  void*pUser;                    \/* Callback implementation user data*\/$/;"	m	struct:sqlite3_rtree_geometry
+pVtab	sqlite3.h	/^  sqlite3_vtab*pVtab;      \/* Virtual table of this cursor*\/$/;"	m	struct:sqlite3_vtab_cursor
+passScore	utils.hpp	/^		bool passScore(T eval) const {$/;"	f	class:HMM_PP::PrecisionThreshold
+pointer	sqlwrap.hpp	/^	sqlite3* pointer() { return _db; }$/;"	f	class:SQL
+print	UnivariateCategoricalModelParams.hpp	/^			virtual ostream& print(ostream& stream) const {$/;"	f	class:HMM_PP::UnivariateCategoricalModelParams::CategoricalDataVal
+print	UnivariateQuantitativeModelParams.hpp	/^			virtual ostream& print(ostream& stream) const {$/;"	f	class:HMM_PP::UnivariateQuantitativeModelParams::QuantitativeDataVal
+printDatapoint	UnivariateData.hpp	/^	void UnivariateData<BaseType>::printDatapoint(ostream& stream, const uint t) const {$/;"	f	class:HMM_PP::UnivariateData
+printDelimited	NamedMatrix.hpp	/^		virtual ostream& printDelimited(ostream& stream, bool printRowNames = true, bool printColNames = true, char delim = '\\t') const {$/;"	f	class:HMM_PP::NamedMatrix
+printDelimited	NamedVector.hpp	/^		virtual ostream& printDelimited(ostream& stream, bool printNames = true, char delim = '\\t') const {$/;"	f	class:HMM_PP::NamedVector
+printErrorMessage	Exception.hpp	/^	void printErrorMessage() const { cerr << endl << "ERROR: " << _msg << endl;}$/;"	f	class:Exception
+printFixedWidth	NamedMatrix.hpp	/^		virtual ostream& printFixedWidth(ostream& stream, bool showLabels = true, ullint fixedWidth = 5) const {$/;"	f	class:HMM_PP::NamedMatrix
+printFixedWidth	NamedVector.hpp	/^		virtual ostream& printFixedWidth(ostream& stream, bool showLabels = true, const int fixedWidth = 0) const {$/;"	f	class:HMM_PP::NamedVector
+rawData	LAPACKvector.hpp	/^		virtual const dataType* rawData() const { return _vec; }$/;"	f	class:HMM_PP::StandardVector
+rawData	LAPACKvector.hpp	/^		virtual dataType* rawData() { return _vec; }$/;"	f	class:HMM_PP::StandardVector
+rawData	VectorOnDisk.hpp	/^		virtual const dataType* rawData() const { return _vec; }$/;"	f	class:HMM_PP::VectorOnDisk
+rawData	VectorOnDisk.hpp	/^		virtual dataType* rawData() { return _vec; }$/;"	f	class:HMM_PP::VectorOnDisk
+real	PreciseNonNegativeReal.hpp	11;"	d
+resize	NamedVector.hpp	/^		void resize(const ullint s, const RealType val = RealType()) {$/;"	f	class:HMM_PP::NamedVector
+rightEigen	MatrixDecomp.hpp	/^	HMM_PP::MatrixDecomp::EigenDecomp<RealType> HMM_PP::MatrixDecomp::rightEigen(NamedMatrix<RealType>* X, string workDir, bool deleteX) {$/;"	f	class:HMM_PP::HMM_PP::MatrixDecomp
+rowName	NamedMatrix.hpp	/^		string rowName(const ullint i) const {$/;"	f	class:HMM_PP::NamedMatrix
+scaleByColumnSums	NamedMatrix.hpp	/^		inline NamedMatrix& scaleByColumnSums() {$/;"	f	class:HMM_PP::NamedMatrix
+scaleByRowSums	NamedMatrix.hpp	/^		inline NamedMatrix& scaleByRowSums() {$/;"	f	class:HMM_PP::NamedMatrix
+scaleBySum	NamedVector.hpp	/^		inline NamedVector& scaleBySum() {$/;"	f	class:HMM_PP::NamedVector
+setAlpha	InferredDataFit.hpp	/^		inline void setAlpha(NamedMatrix<real>* alpha) { _alpha = alpha; }$/;"	f	class:HMM_PP::InferredDataFit
+setBeta	InferredDataFit.hpp	/^		inline void setBeta(NamedMatrix<real>* beta) { _beta = beta; }$/;"	f	class:HMM_PP::InferredDataFit
+setColName	NamedMatrix.hpp	/^		void setColName(const ullint j, const string& s) {$/;"	f	class:HMM_PP::NamedMatrix
+setConstantLength	NamedVector.hpp	/^		void setConstantLength() {$/;"	f	class:HMM_PP::NamedVector
+setDataFitResult	ModelFromStreamNoStorage.hpp	/^		virtual void setDataFitResult(InferredDataFit* idf, const uint ind) {}$/;"	f	class:HMM_PP::ModelFromStreamNoStorage
+setDatapoint	UnivariateData.hpp	/^	void UnivariateData<BaseType>::setDatapoint(const uint i, const BaseType& t) {$/;"	f	class:HMM_PP::UnivariateData
+setDigamma	InferredDataFit.hpp	/^		inline void setDigamma(digamma_t* digamma) { _digamma = digamma; }$/;"	f	class:HMM_PP::InferredDataFit
+setDims	NamedMatrix.hpp	/^		void setDims(const ullint nrow, const ullint ncol, RealType value = RealType()) {$/;"	f	class:HMM_PP::NamedMatrix
+setGamma	InferredDataFit.hpp	/^		inline void setGamma(NamedMatrix<real>* gamma) { _gamma = gamma; }$/;"	f	class:HMM_PP::InferredDataFit
+setId	Data.hpp	/^		void setId(const string& i) { _id = i; }$/;"	f	class:HMM_PP::Data
+setMatrixName	NamedMatrix.hpp	/^		void setMatrixName(string name) { _name = name; }$/;"	f	class:HMM_PP::NamedMatrix
+setName	NamedVector.hpp	/^		void setName(const ullint i, const string& s) {$/;"	f	class:HMM_PP::NamedVector
+setNumObservations	Data.hpp	/^		virtual inline void setNumObservations(const uint nobs) { _n = nobs; }$/;"	f	class:HMM_PP::Data
+setNumObservations	UnivariateData.hpp	/^	void UnivariateData<BaseType>::setNumObservations(const uint nobs) {$/;"	f	class:HMM_PP::UnivariateData
+setPrecision	utils.hpp	/^		void setPrecision(T& eval) const {$/;"	f	class:HMM_PP::PrecisionThreshold
+setRowName	NamedMatrix.hpp	/^		void setRowName(const ullint i, const string& s) {$/;"	f	class:HMM_PP::NamedMatrix
+setStartingProbsAndNormalize	ModelParams.hpp	/^		void setStartingProbsAndNormalize(const BaseRealVec& x) { _params->setStartingProbsAndNormalize(x); }$/;"	f	class:HMM_PP::ModelParams
+setValFromStream	DataLoader.hpp	/^	void DataLoader<DataType>::setValFromStream(typename DataType::InputType& f, istream& stream) {$/;"	f	class:HMM_PP::DataLoader
+setViterbiPath	InferredDataFit.hpp	/^		inline void setViterbiPath(vector<uint>* vpath) { _vpath = vpath; }$/;"	f	class:HMM_PP::InferredDataFit
+set_data	Simplex.hpp	/^		void set_data(data_t* d) { _data = d ; }$/;"	f	class:HMM_PP::Simplex
+set_function	Simplex.hpp	/^		void set_function(func_t f) { _func = f; }$/;"	f	class:HMM_PP::Simplex
+set_maxiter	Simplex.hpp	/^		void set_maxiter(const uint n) { _NMAX = n; }$/;"	f	class:HMM_PP::Simplex
+set_string	sqlwrap.hpp	/^	void set_string(const string& tmp) {$/;"	f	class:blob
+set_tolerance	Simplex.hpp	/^		void set_tolerance(const double tol) { _ftol = tol; }$/;"	f	class:HMM_PP::Simplex
+sign	utils.hpp	/^	inline T sign(T t) {$/;"	f	namespace:HMM_PP
+size	NamedVector.hpp	/^		inline ullint size() const { return _vec->size(); }$/;"	f	class:HMM_PP::NamedVector
+size	VectorOnDisk.hpp	/^		inline ullint size() const { return _size; }$/;"	f	class:HMM_PP::VectorOnDisk
+size	utils.hpp	/^	void size(vector<vector<T> >& d, const uint r, const uint c) {$/;"	f	namespace:HMM_PP
+sqlite3	sqlite3.h	/^typedef struct sqlite3 sqlite3;$/;"	t	typeref:struct:sqlite3
+sqlite3_backup	sqlite3.h	/^typedef struct sqlite3_backup sqlite3_backup;$/;"	t	typeref:struct:sqlite3_backup
+sqlite3_blob	sqlite3.h	/^typedef struct sqlite3_blob sqlite3_blob;$/;"	t	typeref:struct:sqlite3_blob
+sqlite3_callback	sqlite3.h	/^typedef int (*sqlite3_callback)(void*,int,char**, char**);$/;"	t
+sqlite3_context	sqlite3.h	/^typedef struct sqlite3_context sqlite3_context;$/;"	t	typeref:struct:sqlite3_context
+sqlite3_destructor_type	sqlite3.h	/^typedef void (*sqlite3_destructor_type)(void*);$/;"	t
+sqlite3_file	sqlite3.h	/^struct sqlite3_file {$/;"	s
+sqlite3_file	sqlite3.h	/^typedef struct sqlite3_file sqlite3_file;$/;"	t	typeref:struct:sqlite3_file
+sqlite3_index_constraint	sqlite3.h	/^  struct sqlite3_index_constraint {$/;"	s	struct:sqlite3_index_info
+sqlite3_index_constraint_usage	sqlite3.h	/^  struct sqlite3_index_constraint_usage {$/;"	s	struct:sqlite3_index_info
+sqlite3_index_info	sqlite3.h	/^struct sqlite3_index_info {$/;"	s
+sqlite3_index_info	sqlite3.h	/^typedef struct sqlite3_index_info sqlite3_index_info;$/;"	t	typeref:struct:sqlite3_index_info
+sqlite3_index_orderby	sqlite3.h	/^  struct sqlite3_index_orderby {$/;"	s	struct:sqlite3_index_info
+sqlite3_int64	sqlite3.h	/^typedef sqlite_int64 sqlite3_int64;$/;"	t
+sqlite3_io_methods	sqlite3.h	/^struct sqlite3_io_methods {$/;"	s
+sqlite3_io_methods	sqlite3.h	/^typedef struct sqlite3_io_methods sqlite3_io_methods;$/;"	t	typeref:struct:sqlite3_io_methods
+sqlite3_mem_methods	sqlite3.h	/^struct sqlite3_mem_methods {$/;"	s
+sqlite3_mem_methods	sqlite3.h	/^typedef struct sqlite3_mem_methods sqlite3_mem_methods;$/;"	t	typeref:struct:sqlite3_mem_methods
+sqlite3_module	sqlite3.h	/^struct sqlite3_module {$/;"	s
+sqlite3_module	sqlite3.h	/^typedef struct sqlite3_module sqlite3_module;$/;"	t	typeref:struct:sqlite3_module
+sqlite3_mutex	sqlite3.h	/^typedef struct sqlite3_mutex sqlite3_mutex;$/;"	t	typeref:struct:sqlite3_mutex
+sqlite3_mutex_methods	sqlite3.h	/^struct sqlite3_mutex_methods {$/;"	s
+sqlite3_mutex_methods	sqlite3.h	/^typedef struct sqlite3_mutex_methods sqlite3_mutex_methods;$/;"	t	typeref:struct:sqlite3_mutex_methods
+sqlite3_pcache	sqlite3.h	/^typedef struct sqlite3_pcache sqlite3_pcache;$/;"	t	typeref:struct:sqlite3_pcache
+sqlite3_pcache_methods	sqlite3.h	/^struct sqlite3_pcache_methods {$/;"	s
+sqlite3_pcache_methods	sqlite3.h	/^typedef struct sqlite3_pcache_methods sqlite3_pcache_methods;$/;"	t	typeref:struct:sqlite3_pcache_methods
+sqlite3_rtree_geometry	sqlite3.h	/^struct sqlite3_rtree_geometry {$/;"	s
+sqlite3_rtree_geometry	sqlite3.h	/^typedef struct sqlite3_rtree_geometry sqlite3_rtree_geometry;$/;"	t	typeref:struct:sqlite3_rtree_geometry
+sqlite3_stmt	sqlite3.h	/^typedef struct sqlite3_stmt sqlite3_stmt;$/;"	t	typeref:struct:sqlite3_stmt
+sqlite3_syscall_ptr	sqlite3.h	/^typedef void (*sqlite3_syscall_ptr)(void);$/;"	t
+sqlite3_temp_directory	sqlite3.h	/^SQLITE_API SQLITE_EXTERN char*sqlite3_temp_directory;$/;"	v
+sqlite3_uint64	sqlite3.h	/^typedef sqlite_uint64 sqlite3_uint64;$/;"	t
+sqlite3_value	sqlite3.h	/^typedef struct Mem sqlite3_value;$/;"	t	typeref:struct:Mem
+sqlite3_version	sqlite3.h	/^SQLITE_API SQLITE_EXTERN const char sqlite3_version[];$/;"	v
+sqlite3_vfs	sqlite3.h	/^struct sqlite3_vfs {$/;"	s
+sqlite3_vfs	sqlite3.h	/^typedef struct sqlite3_vfs sqlite3_vfs;$/;"	t	typeref:struct:sqlite3_vfs
+sqlite3_vtab	sqlite3.h	/^struct sqlite3_vtab {$/;"	s
+sqlite3_vtab	sqlite3.h	/^typedef struct sqlite3_vtab sqlite3_vtab;$/;"	t	typeref:struct:sqlite3_vtab
+sqlite3_vtab_cursor	sqlite3.h	/^struct sqlite3_vtab_cursor {$/;"	s
+sqlite3_vtab_cursor	sqlite3.h	/^typedef struct sqlite3_vtab_cursor sqlite3_vtab_cursor;$/;"	t	typeref:struct:sqlite3_vtab_cursor
+sqlite_int64	sqlite3.h	/^  typedef SQLITE_INT64_TYPE sqlite_int64;$/;"	t
+sqlite_int64	sqlite3.h	/^  typedef __int64 sqlite_int64;$/;"	t
+sqlite_int64	sqlite3.h	/^  typedef long long int sqlite_int64;$/;"	t
+sqlite_uint64	sqlite3.h	/^  typedef unsigned SQLITE_INT64_TYPE sqlite_uint64;$/;"	t
+sqlite_uint64	sqlite3.h	/^  typedef unsigned __int64 sqlite_uint64;$/;"	t
+sqlite_uint64	sqlite3.h	/^  typedef unsigned long long int sqlite_uint64;$/;"	t
+state	ModelParams.hpp	/^			const string& state(const uint i) const { if (i >= _statemap.size()) { stringstream str; str << "Undefined state in model: " << i; throw new Exception(str.str()); } return _statemap[i]; }$/;"	f	class:HMM_PP::ModelParams::HiddenStateParams
+state	ModelParams.hpp	/^			uint state(const string& s) const { if (_statermap.find(s) == _statermap.end()) throw new Exception("Undefined state in model: " + s); return _statermap.find(s)->second; }$/;"	f	class:HMM_PP::ModelParams::HiddenStateParams
+state	ModelParams.hpp	/^		const string& state(const uint i) const { return _params->state(i); }$/;"	f	class:HMM_PP::ModelParams
+state	ModelParams.hpp	/^		uint state(const string& s) const { return _params->state(s); }$/;"	f	class:HMM_PP::ModelParams
+state	ModelParams.hpp	/^		vector<string> state(const vector<uint>& s) const { return _params->state(s); }$/;"	f	class:HMM_PP::ModelParams
+state	ModelParams.hpp	/^		vector<uint> state(const vector<string>& s) const { return _params->state(s); }$/;"	f	class:HMM_PP::ModelParams
+stateIsForbidden	InferredDataFit.hpp	/^			bool stateIsForbidden(const uint state, const uint t) const { return !stateIsPermitted(state, t); }$/;"	f	class:HMM_PP::InferredDataFit::Constraint
+stateIsPermitted	InferredDataFit.hpp	/^			bool stateIsPermitted(const uint state, const uint t) const { return _excludedStates->find(state) == _excludedStates->end(); }$/;"	f	class:HMM_PP::InferredDataFit::HomogeneousConstraint
+stateIsPermitted	InferredDataFit.hpp	/^			bool stateIsPermitted(const uint state, const uint t) const {$/;"	f	class:HMM_PP::InferredDataFit::TimeDependentConstraint
+sum	NamedMatrix.hpp	/^		RealType sum() const {$/;"	f	class:HMM_PP::NamedMatrix
+sum	NamedMatrix.hpp	/^		static RealType sum(const RealType& v1, const RealType& v2) {$/;"	f	class:HMM_PP::NamedMatrix
+sum	NamedVector.hpp	/^		RealType sum() const {$/;"	f	class:HMM_PP::NamedVector
+svd	MatrixDecomp.hpp	/^	HMM_PP::MatrixDecomp::SVDecomp<RealType> HMM_PP::MatrixDecomp::svd(NamedMatrix<RealType>* X, bool returnVtranspose, string workDir, bool deleteX) {$/;"	f	class:HMM_PP::HMM_PP::MatrixDecomp
+szOsFile	sqlite3.h	/^  int szOsFile;            \/* Size of subclassed sqlite3_file*\/$/;"	m	struct:sqlite3_vfs
+transpose	NamedMatrix.hpp	/^		NamedMatrix* transpose() const {$/;"	f	class:HMM_PP::NamedMatrix
+turnOnNames	NamedMatrix.hpp	/^		void turnOnNames() {$/;"	f	class:HMM_PP::NamedMatrix
+turnOnNames	NamedVector.hpp	/^		void turnOnNames() {$/;"	f	class:HMM_PP::NamedVector
+uint	params.hpp	/^typedef unsigned int uint;$/;"	t
+ullint	params.hpp	/^typedef unsigned long long int ullint;$/;"	t
+ullintPair	utils.hpp	/^	typedef pair<ullint, ullint> ullintPair;$/;"	t	namespace:HMM_PP
+usable	sqlite3.h	/^     unsigned char usable;     \/* True if this constraint is usable*\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint
+utils	utils.hpp	/^	class utils {$/;"	c	namespace:HMM_PP
+val	UnivariateData.hpp	/^	BaseType UnivariateData<BaseType>::val(const uint t) const {$/;"	f	class:HMM_PP::UnivariateData
+warn	sqlwrap.hpp	/^	void warn(const string& msg)  {$/;"	f	class:SQL
+xAccess	sqlite3.h	/^  int (*xAccess)(sqlite3_vfs*, const char*zName, int flags, int*pResOut);$/;"	m	struct:sqlite3_vfs
+xBegin	sqlite3.h	/^  int (*xBegin)(sqlite3_vtab*pVTab);$/;"	m	struct:sqlite3_module
+xBestIndex	sqlite3.h	/^  int (*xBestIndex)(sqlite3_vtab*pVTab, sqlite3_index_info*);$/;"	m	struct:sqlite3_module
+xCachesize	sqlite3.h	/^  void (*xCachesize)(sqlite3_pcache*, int nCachesize);$/;"	m	struct:sqlite3_pcache_methods
+xCheckReservedLock	sqlite3.h	/^  int (*xCheckReservedLock)(sqlite3_file*, int*pResOut);$/;"	m	struct:sqlite3_io_methods
+xClose	sqlite3.h	/^  int (*xClose)(sqlite3_file*);$/;"	m	struct:sqlite3_io_methods
+xClose	sqlite3.h	/^  int (*xClose)(sqlite3_vtab_cursor*);$/;"	m	struct:sqlite3_module
+xColumn	sqlite3.h	/^  int (*xColumn)(sqlite3_vtab_cursor*, sqlite3_context*, int);$/;"	m	struct:sqlite3_module
+xCommit	sqlite3.h	/^  int (*xCommit)(sqlite3_vtab*pVTab);$/;"	m	struct:sqlite3_module
+xConnect	sqlite3.h	/^  int (*xConnect)(sqlite3*, void*pAux,$/;"	m	struct:sqlite3_module
+xCreate	sqlite3.h	/^  int (*xCreate)(sqlite3*, void*pAux,$/;"	m	struct:sqlite3_module
+xCreate	sqlite3.h	/^  sqlite3_pcache*(*xCreate)(int szPage, int bPurgeable);$/;"	m	struct:sqlite3_pcache_methods
+xCurrentTime	sqlite3.h	/^  int (*xCurrentTime)(sqlite3_vfs*, double*);$/;"	m	struct:sqlite3_vfs
+xCurrentTimeInt64	sqlite3.h	/^  int (*xCurrentTimeInt64)(sqlite3_vfs*, sqlite3_int64*);$/;"	m	struct:sqlite3_vfs
+xDelUser	sqlite3.h	/^  void (*xDelUser)(void*);       \/* Called by SQLite to clean up pUser*\/$/;"	m	struct:sqlite3_rtree_geometry
+xDelete	sqlite3.h	/^  int (*xDelete)(sqlite3_vfs*, const char*zName, int syncDir);$/;"	m	struct:sqlite3_vfs
+xDestroy	sqlite3.h	/^  int (*xDestroy)(sqlite3_vtab*pVTab);$/;"	m	struct:sqlite3_module
+xDestroy	sqlite3.h	/^  void (*xDestroy)(sqlite3_pcache*);$/;"	m	struct:sqlite3_pcache_methods
+xDeviceCharacteristics	sqlite3.h	/^  int (*xDeviceCharacteristics)(sqlite3_file*);$/;"	m	struct:sqlite3_io_methods
+xDisconnect	sqlite3.h	/^  int (*xDisconnect)(sqlite3_vtab*pVTab);$/;"	m	struct:sqlite3_module
+xDlClose	sqlite3.h	/^  void (*xDlClose)(sqlite3_vfs*, void*);$/;"	m	struct:sqlite3_vfs
+xDlError	sqlite3.h	/^  void (*xDlError)(sqlite3_vfs*, int nByte, char*zErrMsg);$/;"	m	struct:sqlite3_vfs
+xDlOpen	sqlite3.h	/^  void*(*xDlOpen)(sqlite3_vfs*, const char*zFilename);$/;"	m	struct:sqlite3_vfs
+xEof	sqlite3.h	/^  int (*xEof)(sqlite3_vtab_cursor*);$/;"	m	struct:sqlite3_module
+xFetch	sqlite3.h	/^  void*(*xFetch)(sqlite3_pcache*, unsigned key, int createFlag);$/;"	m	struct:sqlite3_pcache_methods
+xFileControl	sqlite3.h	/^  int (*xFileControl)(sqlite3_file*, int op, void*pArg);$/;"	m	struct:sqlite3_io_methods
+xFileSize	sqlite3.h	/^  int (*xFileSize)(sqlite3_file*, sqlite3_int64*pSize);$/;"	m	struct:sqlite3_io_methods
+xFilter	sqlite3.h	/^  int (*xFilter)(sqlite3_vtab_cursor*, int idxNum, const char*idxStr,$/;"	m	struct:sqlite3_module
+xFindFunction	sqlite3.h	/^  int (*xFindFunction)(sqlite3_vtab*pVtab, int nArg, const char*zName,$/;"	m	struct:sqlite3_module
+xFree	sqlite3.h	/^  void (*xFree)(void*);          \/* Free a prior allocation*\/$/;"	m	struct:sqlite3_mem_methods
+xFullPathname	sqlite3.h	/^  int (*xFullPathname)(sqlite3_vfs*, const char*zName, int nOut, char*zOut);$/;"	m	struct:sqlite3_vfs
+xGetLastError	sqlite3.h	/^  int (*xGetLastError)(sqlite3_vfs*, int, char*);$/;"	m	struct:sqlite3_vfs
+xGetSystemCall	sqlite3.h	/^  sqlite3_syscall_ptr (*xGetSystemCall)(sqlite3_vfs*, const char*zName);$/;"	m	struct:sqlite3_vfs
+xInit	sqlite3.h	/^  int (*xInit)(void*);           \/* Initialize the memory allocator*\/$/;"	m	struct:sqlite3_mem_methods
+xInit	sqlite3.h	/^  int (*xInit)(void*);$/;"	m	struct:sqlite3_pcache_methods
+xLock	sqlite3.h	/^  int (*xLock)(sqlite3_file*, int);$/;"	m	struct:sqlite3_io_methods
+xMalloc	sqlite3.h	/^  void*(*xMalloc)(int);         \/* Memory allocation function*\/$/;"	m	struct:sqlite3_mem_methods
+xMutexAlloc	sqlite3.h	/^  sqlite3_mutex*(*xMutexAlloc)(int);$/;"	m	struct:sqlite3_mutex_methods
+xMutexEnd	sqlite3.h	/^  int (*xMutexEnd)(void);$/;"	m	struct:sqlite3_mutex_methods
+xMutexEnter	sqlite3.h	/^  void (*xMutexEnter)(sqlite3_mutex*);$/;"	m	struct:sqlite3_mutex_methods
+xMutexFree	sqlite3.h	/^  void (*xMutexFree)(sqlite3_mutex*);$/;"	m	struct:sqlite3_mutex_methods
+xMutexHeld	sqlite3.h	/^  int (*xMutexHeld)(sqlite3_mutex*);$/;"	m	struct:sqlite3_mutex_methods
+xMutexInit	sqlite3.h	/^  int (*xMutexInit)(void);$/;"	m	struct:sqlite3_mutex_methods
+xMutexLeave	sqlite3.h	/^  void (*xMutexLeave)(sqlite3_mutex*);$/;"	m	struct:sqlite3_mutex_methods
+xMutexNotheld	sqlite3.h	/^  int (*xMutexNotheld)(sqlite3_mutex*);$/;"	m	struct:sqlite3_mutex_methods
+xMutexTry	sqlite3.h	/^  int (*xMutexTry)(sqlite3_mutex*);$/;"	m	struct:sqlite3_mutex_methods
+xNext	sqlite3.h	/^  int (*xNext)(sqlite3_vtab_cursor*);$/;"	m	struct:sqlite3_module
+xNextSystemCall	sqlite3.h	/^  const char*(*xNextSystemCall)(sqlite3_vfs*, const char*zName);$/;"	m	struct:sqlite3_vfs
+xOpen	sqlite3.h	/^  int (*xOpen)(sqlite3_vfs*, const char*zName, sqlite3_file*,$/;"	m	struct:sqlite3_vfs
+xOpen	sqlite3.h	/^  int (*xOpen)(sqlite3_vtab*pVTab, sqlite3_vtab_cursor**ppCursor);$/;"	m	struct:sqlite3_module
+xPagecount	sqlite3.h	/^  int (*xPagecount)(sqlite3_pcache*);$/;"	m	struct:sqlite3_pcache_methods
+xRandomness	sqlite3.h	/^  int (*xRandomness)(sqlite3_vfs*, int nByte, char*zOut);$/;"	m	struct:sqlite3_vfs
+xRead	sqlite3.h	/^  int (*xRead)(sqlite3_file*, void*, int iAmt, sqlite3_int64 iOfst);$/;"	m	struct:sqlite3_io_methods
+xRealloc	sqlite3.h	/^  void*(*xRealloc)(void*,int);  \/* Resize an allocation*\/$/;"	m	struct:sqlite3_mem_methods
+xRekey	sqlite3.h	/^  void (*xRekey)(sqlite3_pcache*, void*, unsigned oldKey, unsigned newKey);$/;"	m	struct:sqlite3_pcache_methods
+xRelease	sqlite3.h	/^  int (*xRelease)(sqlite3_vtab*pVTab, int);$/;"	m	struct:sqlite3_module
+xRename	sqlite3.h	/^  int (*xRename)(sqlite3_vtab*pVtab, const char*zNew);$/;"	m	struct:sqlite3_module
+xRollback	sqlite3.h	/^  int (*xRollback)(sqlite3_vtab*pVTab);$/;"	m	struct:sqlite3_module
+xRollbackTo	sqlite3.h	/^  int (*xRollbackTo)(sqlite3_vtab*pVTab, int);$/;"	m	struct:sqlite3_module
+xRoundup	sqlite3.h	/^  int (*xRoundup)(int);          \/* Round up request size to allocation size*\/$/;"	m	struct:sqlite3_mem_methods
+xRowid	sqlite3.h	/^  int (*xRowid)(sqlite3_vtab_cursor*, sqlite3_int64*pRowid);$/;"	m	struct:sqlite3_module
+xSavepoint	sqlite3.h	/^  int (*xSavepoint)(sqlite3_vtab*pVTab, int);$/;"	m	struct:sqlite3_module
+xSectorSize	sqlite3.h	/^  int (*xSectorSize)(sqlite3_file*);$/;"	m	struct:sqlite3_io_methods
+xSetSystemCall	sqlite3.h	/^  int (*xSetSystemCall)(sqlite3_vfs*, const char*zName, sqlite3_syscall_ptr);$/;"	m	struct:sqlite3_vfs
+xShmBarrier	sqlite3.h	/^  void (*xShmBarrier)(sqlite3_file*);$/;"	m	struct:sqlite3_io_methods
+xShmLock	sqlite3.h	/^  int (*xShmLock)(sqlite3_file*, int offset, int n, int flags);$/;"	m	struct:sqlite3_io_methods
+xShmMap	sqlite3.h	/^  int (*xShmMap)(sqlite3_file*, int iPg, int pgsz, int, void volatile**);$/;"	m	struct:sqlite3_io_methods
+xShmUnmap	sqlite3.h	/^  int (*xShmUnmap)(sqlite3_file*, int deleteFlag);$/;"	m	struct:sqlite3_io_methods
+xShutdown	sqlite3.h	/^  void (*xShutdown)(void*);      \/* Deinitialize the memory allocator*\/$/;"	m	struct:sqlite3_mem_methods
+xShutdown	sqlite3.h	/^  void (*xShutdown)(void*);$/;"	m	struct:sqlite3_pcache_methods
+xSize	sqlite3.h	/^  int (*xSize)(void*);           \/* Return the size of an allocation*\/$/;"	m	struct:sqlite3_mem_methods
+xSleep	sqlite3.h	/^  int (*xSleep)(sqlite3_vfs*, int microseconds);$/;"	m	struct:sqlite3_vfs
+xSync	sqlite3.h	/^  int (*xSync)(sqlite3_file*, int flags);$/;"	m	struct:sqlite3_io_methods
+xSync	sqlite3.h	/^  int (*xSync)(sqlite3_vtab*pVTab);$/;"	m	struct:sqlite3_module
+xTruncate	sqlite3.h	/^  int (*xTruncate)(sqlite3_file*, sqlite3_int64 size);$/;"	m	struct:sqlite3_io_methods
+xTruncate	sqlite3.h	/^  void (*xTruncate)(sqlite3_pcache*, unsigned iLimit);$/;"	m	struct:sqlite3_pcache_methods
+xUnlock	sqlite3.h	/^  int (*xUnlock)(sqlite3_file*, int);$/;"	m	struct:sqlite3_io_methods
+xUnpin	sqlite3.h	/^  void (*xUnpin)(sqlite3_pcache*, void*, int discard);$/;"	m	struct:sqlite3_pcache_methods
+xUpdate	sqlite3.h	/^  int (*xUpdate)(sqlite3_vtab*, int, sqlite3_value**, sqlite3_int64*);$/;"	m	struct:sqlite3_module
+xWrite	sqlite3.h	/^  int (*xWrite)(sqlite3_file*, const void*, int iAmt, sqlite3_int64 iOfst);$/;"	m	struct:sqlite3_io_methods
+zErrMsg	sqlite3.h	/^  char*zErrMsg;                  \/* Error message from sqlite3_mprintf()*\/$/;"	m	struct:sqlite3_vtab
+zName	sqlite3.h	/^  const char*zName;       \/* Name of this virtual file system*\/$/;"	m	struct:sqlite3_vfs
+~CategoricalDataVal	UnivariateCategoricalModelParams.hpp	/^			virtual ~CategoricalDataVal() {}$/;"	f	class:HMM_PP::UnivariateCategoricalModelParams::CategoricalDataVal
+~Constraint	InferredDataFit.hpp	/^			virtual ~Constraint() {}$/;"	f	class:HMM_PP::InferredDataFit::Constraint
+~DataLoader	DataLoader.hpp	/^	DataLoader<DataType>::~DataLoader() {$/;"	f	class:HMM_PP::DataLoader
+~DataOutputter	DataOutputter.hpp	/^		virtual ~DataOutputter() {}$/;"	f	class:HMM_PP::DataOutputter
+~DataVal	ModelParams.hpp	/^			virtual ~DataVal() {}$/;"	f	class:HMM_PP::ModelParams::DataVal
+~DistributionStatistics	DistributionStatistics.hpp	/^		~DistributionStatistics() {}$/;"	f	class:HMM_PP::DistributionStatistics
+~EigenDecomp	MatrixDecomp.hpp	/^	HMM_PP::MatrixDecomp::EigenDecomp<RealType>::~EigenDecomp() {$/;"	f	class:HMM_PP::HMM_PP::MatrixDecomp::EigenDecomp
+~Exception	Exception.hpp	/^	virtual ~Exception() {}$/;"	f	class:Exception
+~FileNotFoundException	Exception.hpp	/^	virtual ~FileNotFoundException() {}$/;"	f	class:FileNotFoundException
+~HiddenStateParams	ModelParams.hpp	/^			~HiddenStateParams() {}$/;"	f	class:HMM_PP::ModelParams::HiddenStateParams
+~HomogeneousConstraint	InferredDataFit.hpp	/^			virtual ~HomogeneousConstraint() { delete _excludedStates; }$/;"	f	class:HMM_PP::InferredDataFit::HomogeneousConstraint
+~LAPACKvector	LAPACKvector.hpp	/^		virtual ~LAPACKvector() {}$/;"	f	class:HMM_PP::LAPACKvector
+~ModelParamsData	ModelParamsData.hpp	/^	ModelParamsData<Type>::~ModelParamsData() {}$/;"	f	class:HMM_PP::ModelParamsData
+~NamedMatrix	NamedMatrix.hpp	/^		virtual ~NamedMatrix() {$/;"	f	class:HMM_PP::NamedMatrix
+~NamedVector	NamedVector.hpp	/^		virtual ~NamedVector() {$/;"	f	class:HMM_PP::NamedVector
+~PrecisionThreshold	utils.hpp	/^		~PrecisionThreshold() {}$/;"	f	class:HMM_PP::PrecisionThreshold
+~QuantitativeDataVal	UnivariateQuantitativeModelParams.hpp	/^			virtual ~QuantitativeDataVal() {}$/;"	f	class:HMM_PP::UnivariateQuantitativeModelParams::QuantitativeDataVal
+~SVDecomp	MatrixDecomp.hpp	/^	HMM_PP::MatrixDecomp::SVDecomp<RealType>::~SVDecomp() {$/;"	f	class:HMM_PP::HMM_PP::MatrixDecomp::SVDecomp
+~StandardVector	LAPACKvector.hpp	/^		virtual ~StandardVector() { delete[] _vec; }$/;"	f	class:HMM_PP::StandardVector
+~TimeDependentConstraint	InferredDataFit.hpp	/^			virtual ~TimeDependentConstraint() {$/;"	f	class:HMM_PP::InferredDataFit::TimeDependentConstraint
+~Timer	Timer.hpp	/^		~Timer() {}$/;"	f	class:HMM_PP::Timer
+~UnivariateCategoricalModelParams	UnivariateCategoricalModelParams.hpp	/^		virtual ~UnivariateCategoricalModelParams() {}$/;"	f	class:HMM_PP::UnivariateCategoricalModelParams
+~UnivariateData	UnivariateData.hpp	/^	UnivariateData<BaseType>::~UnivariateData() {$/;"	f	class:HMM_PP::UnivariateData
+~UnivariateDataNoDB	UnivariateDataNoDB.hpp	/^		virtual ~UnivariateDataNoDB() {}$/;"	f	class:HMM_PP::UnivariateDataNoDB
+~UnivariateQuantitativeData	UnivariateQuantitativeData.hpp	/^		virtual ~UnivariateQuantitativeData() {}$/;"	f	class:HMM_PP::UnivariateQuantitativeData
+~UnivariateQuantitativeModelParams	UnivariateQuantitativeModelParams.hpp	/^		virtual ~UnivariateQuantitativeModelParams() {}$/;"	f	class:HMM_PP::UnivariateQuantitativeModelParams
+~VectorOnDisk	VectorOnDisk.hpp	/^		virtual ~VectorOnDisk() {$/;"	f	class:HMM_PP::VectorOnDisk

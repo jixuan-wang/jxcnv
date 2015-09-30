@@ -1,0 +1,5 @@
+build/lib/MultivariateCategoricalData.o build/lib/MultivariateCategoricalData.dep : \
+ sources/lib/MultivariateCategoricalData.cpp \
+ sources/include/MultivariateCategoricalData.hpp \
+ sources/include/params.hpp sources/include/CategoricalData.hpp \
+ sources/include/Data.hpp

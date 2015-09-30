@@ -1,0 +1,10 @@
+build/lib/ModelFromStream.o build/lib/ModelFromStream.dep : sources/lib/ModelFromStream.cpp \
+ sources/include/ModelFromStream.hpp sources/include/Model.hpp \
+ sources/include/utils.hpp sources/include/params.hpp \
+ sources/include/Exception.hpp sources/include/NamedVector.hpp \
+ sources/include/DistributionStatistics.hpp \
+ sources/include/NamedMatrix.hpp \
+ sources/include/PreciseNonNegativeReal.hpp \
+ sources/include/ModelParams.hpp sources/include/Data.hpp \
+ sources/include/DataLoader.hpp sources/include/Data.hpp \
+ sources/include/Exception.hpp sources/include/InferredDataFit.hpp

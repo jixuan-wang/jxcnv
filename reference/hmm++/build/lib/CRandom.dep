@@ -1,0 +1,1 @@
+build/lib/CRandom.o build/lib/CRandom.dep : sources/lib/CRandom.cpp sources/include/CRandom.hpp

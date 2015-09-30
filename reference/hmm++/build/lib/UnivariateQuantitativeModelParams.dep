@@ -1,0 +1,16 @@
+build/lib/UnivariateQuantitativeModelParams.o build/lib/UnivariateQuantitativeModelParams.dep : \
+ sources/lib/UnivariateQuantitativeModelParams.cpp \
+ sources/include/UnivariateQuantitativeModelParams.hpp \
+ sources/include/utils.hpp sources/include/params.hpp \
+ sources/include/HomogeneousModelParams.hpp \
+ sources/include/ModelParams.hpp sources/include/NamedVector.hpp \
+ sources/include/Exception.hpp sources/include/DistributionStatistics.hpp \
+ sources/include/NamedMatrix.hpp \
+ sources/include/PreciseNonNegativeReal.hpp \
+ sources/include/UnivariateQuantitativeData.hpp \
+ sources/include/UnivariateDataNoDB.hpp \
+ sources/include/UnivariateData.hpp sources/include/Data.hpp \
+ sources/include/DeclareInputType.hpp sources/include/ModelParamsData.hpp \
+ sources/include/DataLoader.hpp sources/include/utils.hpp \
+ sources/include/Model.hpp sources/include/Data.hpp \
+ sources/include/InferredDataFit.hpp

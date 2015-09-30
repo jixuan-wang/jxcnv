@@ -1,0 +1,11 @@
+build/lib/Model.o build/lib/Model.dep : sources/lib/Model.cpp sources/include/Model.hpp \
+ sources/include/utils.hpp sources/include/params.hpp \
+ sources/include/Exception.hpp sources/include/NamedVector.hpp \
+ sources/include/DistributionStatistics.hpp \
+ sources/include/NamedMatrix.hpp \
+ sources/include/PreciseNonNegativeReal.hpp \
+ sources/include/ModelParams.hpp sources/include/Simplex.hpp \
+ sources/include/Data.hpp sources/include/Exception.hpp \
+ sources/include/NamedVector.hpp sources/include/NamedMatrix.hpp \
+ sources/include/ModelParams.hpp sources/include/DataLoader.hpp \
+ sources/include/Data.hpp sources/include/InferredDataFit.hpp

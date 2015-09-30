@@ -1,0 +1,7 @@
+build/lib/ModelParams.o build/lib/ModelParams.dep : sources/lib/ModelParams.cpp \
+ sources/include/ModelParams.hpp sources/include/NamedVector.hpp \
+ sources/include/params.hpp sources/include/Exception.hpp \
+ sources/include/DistributionStatistics.hpp \
+ sources/include/NamedMatrix.hpp sources/include/utils.hpp \
+ sources/include/PreciseNonNegativeReal.hpp sources/include/Model.hpp \
+ sources/include/ModelParams.hpp sources/include/Exception.hpp

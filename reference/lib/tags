@@ -1,0 +1,317 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ADDITIONAL_ERROR	xhmmCmdline.c	3464;"	d	file:
+ALL_CN_TYPES	CNVmodelParams.cpp	/^const vector<uint> XHMM::CNVmodelParams::ALL_CN_TYPES = CNVmodelParams::getAllTypes();$/;"	m	class:XHMM::CNVmodelParams	file:
+ARG_DOUBLE	xhmmCmdline.c	/^  , ARG_DOUBLE$/;"	e	enum:__anon1	file:
+ARG_ENUM	xhmmCmdline.c	/^  , ARG_ENUM$/;"	e	enum:__anon1	file:
+ARG_FLAG	xhmmCmdline.c	/^  , ARG_FLAG$/;"	e	enum:__anon1	file:
+ARG_INT	xhmmCmdline.c	/^  , ARG_INT$/;"	e	enum:__anon1	file:
+ARG_NO	xhmmCmdline.c	/^typedef enum {ARG_NO$/;"	e	enum:__anon1	file:
+ARG_STRING	xhmmCmdline.c	/^  , ARG_STRING$/;"	e	enum:__anon1	file:
+AlleleQuals	AlleleQuals.cpp	/^XHMM::AlleleQuals::AlleleQuals(const SampleGenotypeQualsCalculator* genotypeCalc, const uint t1, const uint t2, const uint type)$/;"	f	class:XHMM::AlleleQuals
+AlleleStats	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::VCFwriter::AlleleStats::AlleleStats(const string& ac, const string& an)$/;"	f	class:XHMM::MergeVCFoutputManager::VCFwriter::AlleleStats
+AuxiliaryCNVoutputManager	AuxiliaryCNVoutputManager.cpp	/^XHMM::AuxiliaryCNVoutputManager::AuxiliaryCNVoutputManager$/;"	f	class:XHMM::AuxiliaryCNVoutputManager
+CNV	DiscoverOutputManager.cpp	/^const string XHMM::DiscoverOutputManager::CNV = "CNV";$/;"	m	class:XHMM::DiscoverOutputManager	file:
+CNVmodelParams	CNVmodelParams.cpp	/^XHMM::CNVmodelParams::CNVmodelParams(istream& stream, ReadDepthMatrixLoader* dataLoader)$/;"	f	class:XHMM::CNVmodelParams
+CNVmodelParams	CNVmodelParams.cpp	/^XHMM::CNVmodelParams::CNVmodelParams(istream& stream, vector<uint>* interTargetDistances)$/;"	f	class:XHMM::CNVmodelParams
+CNVoutputManager	CNVoutputManager.cpp	/^XHMM::CNVoutputManager::CNVoutputManager(ReadDepthMatrixLoader* origDataLoader)$/;"	f	class:XHMM::CNVoutputManager
+CNVtableToIntervals	DiscoverOutputManager.cpp	/^XHMM::DiscoverOutputManager::IntervalToThreshMap* XHMM::DiscoverOutputManager::CNVtableToIntervals(xhmmInputManager::Table* cnvTable) {$/;"	f	class:XHMM::DiscoverOutputManager
+CONFIG_FILE_LINE_BUFFER_SIZE	xhmmCmdline.c	3466;"	d	file:
+CONFIG_FILE_LINE_SIZE	xhmmCmdline.c	3462;"	d	file:
+CopyNumberVariant	CopyNumberVariant.cpp	/^XHMM::CopyNumberVariant::CopyNumberVariant(const vector<uint>& nonRefTypes, const HMM_PP::ullintPair* t1_t2, const ReadDepthMatrixLoader* dataLoader, Genotype::RealThresh genotypingThreshold, bool storeGenotypes, set<string>* discoveredSamples)$/;"	f	class:XHMM::CopyNumberVariant
+DB_INDEX_SUFFIX	GenotypeOutputManager.cpp	24;"	d	file:
+DB_INDEX_SUFFIX	OnDiskMatrixTransposer.cpp	15;"	d	file:
+DB_SUFFIX	GenotypeOutputManager.cpp	23;"	d	file:
+DB_SUFFIX	OnDiskMatrixTransposer.cpp	14;"	d	file:
+D_INF	xhmmDriver.cpp	/^static const double D_INF = HMM_PP::PreciseNonNegativeReal<double>::REAL_INFINITY;$/;"	v	file:
+DiscoverOutputManager	DiscoverOutputManager.cpp	/^XHMM::DiscoverOutputManager::DiscoverOutputManager$/;"	f	class:XHMM::DiscoverOutputManager
+EXACT_QUAL	DiscoverOutputManager.cpp	/^const string XHMM::DiscoverOutputManager::EXACT_QUAL = "Q_EXACT";$/;"	m	class:XHMM::DiscoverOutputManager	file:
+FASTA_INDEX_SUFFIX	xhmmInputManager.cpp	/^const string XHMM::xhmmInputManager::FASTA_INDEX_SUFFIX = ".fai";$/;"	m	class:XHMM::xhmmInputManager	file:
+FASTA_SUFFIX	xhmmInputManager.cpp	/^const string XHMM::xhmmInputManager::FASTA_SUFFIX = ".fasta";$/;"	m	class:XHMM::xhmmInputManager	file:
+FIX_UNUSED	xhmmCmdline.c	21;"	d	file:
+GATKdepthMergerOutputManager	GATKdepthMergerOutputManager.cpp	/^XHMM::GATKdepthMergerOutputManager::GATKdepthMergerOutputManager(list<string>* GATKdepthFiles, list<string>* GATKdepthListFiles, xhmmInputManager::OneToOneStrMap* mapSamples, string columnSuffix)$/;"	f	class:XHMM::GATKdepthMergerOutputManager
+GATKdepthReader	GATKdepthMergerOutputManager.cpp	/^XHMM::GATKdepthMergerOutputManager::GATKdepthReader::GATKdepthReader(string GATKdepthFile, string columnSuffix, bool verbose)$/;"	f	class:XHMM::GATKdepthMergerOutputManager::GATKdepthReader
+Genotype	Genotype.cpp	/^XHMM::Genotype::Genotype(const SampleGenotypeQualsCalculator* genotypeCalc, const TargetRange* range, const uint refType, const uint nonRefType, const HMM_PP::ModelParams::DataVal* meanOrigRD, const RealThresh* callQualThresh)$/;"	f	class:XHMM::Genotype
+Genotype	Genotype.cpp	/^XHMM::Genotype::Genotype(const SampleGenotypeQualsCalculator* genotypeCalc, const TargetRange* range, const uint refType, const vector<uint>& nonRefTypes, const HMM_PP::ModelParams::DataVal* meanOrigRD, const RealThresh* callQualThresh)$/;"	f	class:XHMM::Genotype
+GenotypeOutputManager	GenotypeOutputManager.cpp	/^XHMM::GenotypeOutputManager::GenotypeOutputManager(string outFile, const DiscoverOutputManager::IntervalToThreshMap* intervals, AuxiliaryCNVoutputManager* auxOutput, const BaseReal genotypeQualThresholdWhenNoExact, const bool genotypeSubsegments, const uint maxTargetsInSubsegment, ReadDepthMatrixLoader* origDataLoader, BaseReal maxScoreVal, int scoreDecimalPrecision)$/;"	f	class:XHMM::GenotypeOutputManager
+HEADER_ROW_PREFIX	GenotypeOutputManager.cpp	/^const string XHMM::GenotypeOutputManager::HEADER_ROW_PREFIX = "##";$/;"	m	class:XHMM::GenotypeOutputManager	file:
+HEADER_SEPARATOR	CNVmodelParams.cpp	19;"	d	file:
+INIT	Genotype.cpp	13;"	d	file:
+INTERVAL	DiscoverOutputManager.cpp	/^const string XHMM::DiscoverOutputManager::INTERVAL = "INTERVAL";$/;"	m	class:XHMM::DiscoverOutputManager	file:
+INTERVALS_EXCLUDE_LINE_CHARS	xhmmInputManager.cpp	/^set<char> XHMM::xhmmInputManager::INTERVALS_EXCLUDE_LINE_CHARS = createIntervalsExcludeCharSet();$/;"	m	class:XHMM::xhmmInputManager	file:
+Interval	Interval.cpp	/^XHMM::Interval::Interval(const Interval& i)$/;"	f	class:XHMM::Interval
+Interval	Interval.cpp	/^XHMM::Interval::Interval(const string& chrBp1Bp2) {$/;"	f	class:XHMM::Interval
+Interval	Interval.cpp	/^XHMM::Interval::Interval(string chr, const uint bp1, const uint bp2)$/;"	f	class:XHMM::Interval
+Interval	Interval.cpp	/^XHMM::Interval::Interval(stringstream& lineStream) {$/;"	f	class:XHMM::Interval
+KB	Interval.cpp	/^const double XHMM::Interval::KB = 1000.0;$/;"	m	class:XHMM::Interval	file:
+LESS_CHR_NUMBER_STRING	Interval.cpp	/^bool XHMM::Interval::LESS_CHR_NUMBER_STRING(const string& chr1, const string& chr2) {$/;"	f	class:XHMM::Interval
+LESS_CHR_STRING	Interval.cpp	/^bool XHMM::Interval::LESS_CHR_STRING(const string& chr1, const string& chr2) {$/;"	f	class:XHMM::Interval
+MAX_PL	Genotype.cpp	/^const BaseReal XHMM::Genotype::MAX_PL = 255;$/;"	m	class:XHMM::Genotype	file:
+MISSING_VAL	GenotypeOutputManager.cpp	/^const string XHMM::GenotypeOutputManager::MISSING_VAL = ".";$/;"	m	class:XHMM::GenotypeOutputManager	file:
+MergeVCFoutputManager	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::MergeVCFoutputManager(list<string>* VCFfiles, list<string>* VCFlistFiles)$/;"	f	class:XHMM::MergeVCFoutputManager
+NON_DIPLOID_TYPES	CNVmodelParams.cpp	/^const vector<uint> XHMM::CNVmodelParams::NON_DIPLOID_TYPES = CNVmodelParams::getNonDiploidTypes();$/;"	m	class:XHMM::CNVmodelParams	file:
+OnDiskMatrixTransposer	OnDiskMatrixTransposer.cpp	/^XHMM::OnDiskMatrixTransposer::OnDiskMatrixTransposer(string outFile, const uint numCols)$/;"	f	class:XHMM::OnDiskMatrixTransposer
+PCA	PCA_NormalizeOutputManager.cpp	/^void XHMM::PCA_NormalizeOutputManager::PCA(string rdFile) const {$/;"	f	class:XHMM::PCA_NormalizeOutputManager
+PCA	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::PCA() {$/;"	f	class:XHMM::xhmmDriver
+PCA_NormalizeOutputManager	PCA_NormalizeOutputManager.cpp	/^XHMM::PCA_NormalizeOutputManager::PCA_NormalizeOutputManager(string PCAfile, string saveMemoryDir, int precision)$/;"	f	class:XHMM::PCA_NormalizeOutputManager
+PC_SAMPLE_LOADINGS_SUFFIX	PCA_NormalizeOutputManager.cpp	/^const string XHMM::PCA_NormalizeOutputManager::PC_SAMPLE_LOADINGS_SUFFIX = ".PC_LOADINGS.txt";$/;"	m	class:XHMM::PCA_NormalizeOutputManager	file:
+PC_SD_SUFFIX	PCA_NormalizeOutputManager.cpp	/^const string XHMM::PCA_NormalizeOutputManager::PC_SD_SUFFIX = ".PC_SD.txt";$/;"	m	class:XHMM::PCA_NormalizeOutputManager	file:
+PHRED_SCALE_FACTOR	SampleGenotypeQualsCalculator.cpp	/^const BaseReal XHMM::SampleGenotypeQualsCalculator::PHRED_SCALE_FACTOR = 10.0;$/;"	m	class:XHMM::SampleGenotypeQualsCalculator	file:
+POST_FILE_SUFFIX_1	PosteriorOutputManager.cpp	9;"	d	file:
+POST_FILE_SUFFIX_2	PosteriorOutputManager.cpp	10;"	d	file:
+PRINC_COMP_SUFFIX	PCA_NormalizeOutputManager.cpp	/^const string XHMM::PCA_NormalizeOutputManager::PRINC_COMP_SUFFIX = ".PC.txt";$/;"	m	class:XHMM::PCA_NormalizeOutputManager	file:
+PosteriorOutputManager	PosteriorOutputManager.cpp	/^XHMM::PosteriorOutputManager::PosteriorOutputManager(string posteriorFile, const vector<uint>& types, const HMM_PP::Model* model, const ReadDepthMatrixLoader* readDepthLoader)$/;"	f	class:XHMM::PosteriorOutputManager
+PrepareTargetsManager	PrepareTargetsManager.cpp	/^XHMM::PrepareTargetsManager::PrepareTargetsManager() {$/;"	f	class:XHMM::PrepareTargetsManager
+ProcessMatrixOutputManager	ProcessMatrixOutputManager.cpp	/^XHMM::ProcessMatrixOutputManager::ProcessMatrixOutputManager() {$/;"	f	class:XHMM::ProcessMatrixOutputManager
+ReadDepthMatrixLoader	ReadDepthMatrixLoader.cpp	/^XHMM::ReadDepthMatrixLoader::ReadDepthMatrixLoader(string dataFile, const set<string>* keepIDs, double maxQuantitativeDataVal)$/;"	f	class:XHMM::ReadDepthMatrixLoader
+ReadDepthMatrixOutputter	ReadDepthMatrixOutputter.cpp	/^XHMM::ReadDepthMatrixOutputter::ReadDepthMatrixOutputter(string outFile, const ReadDepthMatrixLoader* readDepthLoader, int precision)$/;"	f	class:XHMM::ReadDepthMatrixOutputter
+SAMPLE	DiscoverOutputManager.cpp	/^const string XHMM::DiscoverOutputManager::SAMPLE = "SAMPLE";$/;"	m	class:XHMM::DiscoverOutputManager	file:
+SPAN_DELIMS	Interval.cpp	/^set<string> XHMM::Interval::SPAN_DELIMS = createSpanDelimsSet();$/;"	m	class:XHMM::Interval	file:
+Table	xhmmInputManager.cpp	/^XHMM::xhmmInputManager::Table::Table()$/;"	f	class:XHMM::xhmmInputManager::Table
+Table	xhmmInputManager.cpp	/^XHMM::xhmmInputManager::Table::Table(Row* colNames)$/;"	f	class:XHMM::xhmmInputManager::Table
+USE_DB_NO_STDIN	GATKdepthMergerOutputManager.cpp	16;"	d	file:
+USE_DB_NO_STDIN	GenotypeOutputManager.cpp	22;"	d	file:
+VCF_COLUMNS	GenotypeOutputManager.cpp	/^list<string> XHMM::GenotypeOutputManager::VCF_COLUMNS = HMM_PP::arrayToList(XHMM::GenotypeOutputManager::VCF_COLUMNS_ARRAY);$/;"	m	class:XHMM::GenotypeOutputManager	file:
+VCF_COLUMNS_ARRAY	GenotypeOutputManager.cpp	/^const string XHMM::GenotypeOutputManager::VCF_COLUMNS_ARRAY[] = {$/;"	m	class:XHMM::GenotypeOutputManager	file:
+VCFreader	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::VCFreader::VCFreader(string VCFfile)$/;"	f	class:XHMM::MergeVCFoutputManager::VCFreader
+VCFwriter	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::VCFwriter::VCFwriter(HMM_PP::ostreamWriter* out, const VCFheader* header, vector<string>* samples)$/;"	f	class:XHMM::MergeVCFoutputManager::VCFwriter
+Variant	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::Variant::Variant(const string& variantRow, const vector<string>* samples)$/;"	f	class:XHMM::MergeVCFoutputManager::Variant
+_cmdline_parser_configfile	xhmmCmdline.c	/^_cmdline_parser_configfile (const char *filename, int *my_argc)$/;"	f	file:
+addGenotype	CopyNumberVariant.cpp	/^void XHMM::CopyNumberVariant::addGenotype(string sample, Genotype* gt) {$/;"	f	class:XHMM::CopyNumberVariant
+addRow	xhmmInputManager.cpp	/^void XHMM::xhmmInputManager::Table::addRow(Row* row) {$/;"	f	class:XHMM::xhmmInputManager::Table
+add_node	xhmmCmdline.c	/^static void add_node(struct generic_list **list) {$/;"	f	file:
+arg	xhmmCmdline.c	/^  union generic_value arg;$/;"	m	struct:generic_list	typeref:union:generic_list::generic_value	file:
+cacheNextRowToDBandDelete	OnDiskMatrixTransposer.cpp	/^void XHMM::OnDiskMatrixTransposer::cacheNextRowToDBandDelete(const list<string>* rowData) {$/;"	f	class:XHMM::OnDiskMatrixTransposer
+calcCNVedgePosteriorComplements	SampleGenotypeQualsCalculator.cpp	/^pair<real, real> XHMM::SampleGenotypeQualsCalculator::calcCNVedgePosteriorComplements(const uint t1, const uint t2, const uint type) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcCNVedgePosteriors	SampleGenotypeQualsCalculator.cpp	/^pair<real, real> XHMM::SampleGenotypeQualsCalculator::calcCNVedgePosteriors(const uint t1, const uint t2, const uint type) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcDiploidScore	SampleGenotypeQualsCalculator.cpp	/^BaseReal XHMM::SampleGenotypeQualsCalculator::calcDiploidScore(const uint t1, const uint t2) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcDontHaveAnyEventScore	SampleGenotypeQualsCalculator.cpp	/^BaseReal XHMM::SampleGenotypeQualsCalculator::calcDontHaveAnyEventScore(const uint t1, const uint t2, const uint type) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcHaveExactEventScore	SampleGenotypeQualsCalculator.cpp	/^BaseReal XHMM::SampleGenotypeQualsCalculator::calcHaveExactEventScore(const uint t1, const uint t2, const uint type) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcHaveSomeEventScore	SampleGenotypeQualsCalculator.cpp	/^BaseReal XHMM::SampleGenotypeQualsCalculator::calcHaveSomeEventScore(const uint t1, const uint t2, const uint type) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcInterTargetDistances	CNVmodelParams.cpp	/^vector<uint>* XHMM::CNVmodelParams::calcInterTargetDistances(const ReadDepthMatrixLoader* dataLoader) {$/;"	f	class:XHMM::CNVmodelParams
+calcLikelihoodGivenExactEvent	SampleGenotypeQualsCalculator.cpp	/^real XHMM::SampleGenotypeQualsCalculator::calcLikelihoodGivenExactEvent(const uint t1, const uint t2, const uint state) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcMeanRD	SampleGenotypeQualsCalculator.cpp	/^HMM_PP::ModelParams::DataVal* XHMM::SampleGenotypeQualsCalculator::calcMeanRD(const uint t1, const uint t2) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcNonDiploidScore	SampleGenotypeQualsCalculator.cpp	/^BaseReal XHMM::SampleGenotypeQualsCalculator::calcNonDiploidScore(const uint t1, const uint t2) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcPosteriorCalledTypeNoOppositeType	SampleGenotypeQualsCalculator.cpp	/^real XHMM::SampleGenotypeQualsCalculator::calcPosteriorCalledTypeNoOppositeType(const uint t1, const uint t2, const uint type) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcPosteriorComplementCalledTypeNoOppositeType	SampleGenotypeQualsCalculator.cpp	/^real XHMM::SampleGenotypeQualsCalculator::calcPosteriorComplementCalledTypeNoOppositeType(const uint t1, const uint t2, const uint type) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcPosteriorNumeratorCalledTypeNoOppositeType	SampleGenotypeQualsCalculator.cpp	/^real XHMM::SampleGenotypeQualsCalculator::calcPosteriorNumeratorCalledTypeNoOppositeType(const uint t1, const uint t2, const uint type) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcPosteriorRatioToDiploid	SampleGenotypeQualsCalculator.cpp	/^real XHMM::SampleGenotypeQualsCalculator::calcPosteriorRatioToDiploid(const uint t1, const uint t2, const uint type) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcRatioScore	SampleGenotypeQualsCalculator.cpp	/^BaseReal XHMM::SampleGenotypeQualsCalculator::calcRatioScore(const uint t1, const uint t2, const uint type) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcScoreFromErrorProb	SampleGenotypeQualsCalculator.cpp	/^BaseReal XHMM::SampleGenotypeQualsCalculator::calcScoreFromErrorProb(const real& errorProb) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+calcStartStopScores	SampleGenotypeQualsCalculator.cpp	/^pair<BaseReal, BaseReal> XHMM::SampleGenotypeQualsCalculator::calcStartStopScores(const uint t1, const uint t2, const uint type) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+callGenotype	Genotype.cpp	/^XHMM::Genotype::callType XHMM::Genotype::callGenotype(const RealThresh* callQualThresh) {$/;"	f	class:XHMM::Genotype
+checkSpan	Interval.cpp	/^void XHMM::Interval::checkSpan() {$/;"	f	class:XHMM::Interval
+check_modes	xhmmCmdline.c	/^static int check_modes($/;"	f	file:
+check_multiple_option_occurrences	xhmmCmdline.c	/^check_multiple_option_occurrences(const char *prog_name, unsigned int option_given, unsigned int min, unsigned int max, const char *option_desc)$/;"	f
+check_possible_values	xhmmCmdline.c	/^check_possible_values(const char *val, const char *values[])$/;"	f	file:
+clear_args	xhmmCmdline.c	/^void clear_args (struct gengetopt_args_info *args_info)$/;"	f	file:
+clear_given	xhmmCmdline.c	/^void clear_given (struct gengetopt_args_info *args_info)$/;"	f	file:
+closeDBfileReaders	OnDiskMatrixTransposer.cpp	/^void XHMM::OnDiskMatrixTransposer::closeDBfileReaders() {$/;"	f	class:XHMM::OnDiskMatrixTransposer
+closeDBfileWriters	OnDiskMatrixTransposer.cpp	/^void XHMM::OnDiskMatrixTransposer::closeDBfileWriters() {$/;"	f	class:XHMM::OnDiskMatrixTransposer
+cmd_line_list	xhmmCmdline.c	/^static struct line_list *cmd_line_list = 0;$/;"	v	typeref:struct:line_list	file:
+cmd_line_list_tmp	xhmmCmdline.c	/^static struct line_list *cmd_line_list_tmp = 0;$/;"	v	typeref:struct:line_list	file:
+cmdline_parser	xhmmCmdline.c	/^cmdline_parser (int argc, char **argv, struct gengetopt_args_info *args_info)$/;"	f
+cmdline_parser2	xhmmCmdline.c	/^cmdline_parser2 (int argc, char **argv, struct gengetopt_args_info *args_info, int override, int initialize, int check_required)$/;"	f
+cmdline_parser_PCnormalizeMethod_values	xhmmCmdline.c	/^const char *cmdline_parser_PCnormalizeMethod_values[] = {"numPCtoRemove", "PVE_mean", "PVE_contrib", 0}; \/*< Possible values for PCnormalizeMethod. *\/$/;"	v
+cmdline_parser_arg_type	xhmmCmdline.c	/^} cmdline_parser_arg_type;$/;"	t	typeref:enum:__anon1	file:
+cmdline_parser_centerType_values	xhmmCmdline.c	/^const char *cmdline_parser_centerType_values[] = {"target", "sample", 0}; \/*< Possible values for centerType. *\/$/;"	v
+cmdline_parser_config_file	xhmmCmdline.c	/^cmdline_parser_config_file (const char *filename,$/;"	f
+cmdline_parser_configfile	xhmmCmdline.c	/^cmdline_parser_configfile ($/;"	f
+cmdline_parser_dump	xhmmCmdline.c	/^cmdline_parser_dump(FILE *outfile, struct gengetopt_args_info *args_info)$/;"	f
+cmdline_parser_ext	xhmmCmdline.c	/^cmdline_parser_ext (int argc, char **argv, struct gengetopt_args_info *args_info,$/;"	f
+cmdline_parser_file_save	xhmmCmdline.c	/^cmdline_parser_file_save(const char *filename, struct gengetopt_args_info *args_info)$/;"	f
+cmdline_parser_free	xhmmCmdline.c	/^cmdline_parser_free (struct gengetopt_args_info *args_info)$/;"	f
+cmdline_parser_init	xhmmCmdline.c	/^cmdline_parser_init (struct gengetopt_args_info *args_info)$/;"	f
+cmdline_parser_internal	xhmmCmdline.c	/^cmdline_parser_internal ($/;"	f
+cmdline_parser_params_create	xhmmCmdline.c	/^cmdline_parser_params_create(void)$/;"	f
+cmdline_parser_params_init	xhmmCmdline.c	/^cmdline_parser_params_init(struct cmdline_parser_params *params)$/;"	f
+cmdline_parser_print_detailed_help	xhmmCmdline.c	/^cmdline_parser_print_detailed_help (void)$/;"	f
+cmdline_parser_print_full_help	xhmmCmdline.c	/^cmdline_parser_print_full_help (void)$/;"	f
+cmdline_parser_print_help	xhmmCmdline.c	/^cmdline_parser_print_help (void)$/;"	f
+cmdline_parser_print_version	xhmmCmdline.c	/^cmdline_parser_print_version (void)$/;"	f
+cmdline_parser_release	xhmmCmdline.c	/^cmdline_parser_release (struct gengetopt_args_info *args_info)$/;"	f	file:
+cmdline_parser_required	xhmmCmdline.c	/^cmdline_parser_required (struct gengetopt_args_info *args_info, const char *prog_name)$/;"	f
+cmdline_parser_required2	xhmmCmdline.c	/^cmdline_parser_required2 (struct gengetopt_args_info *args_info, const char *prog_name, const char *additional_error)$/;"	f
+cmdline_parser_scaleDataBySumType_values	xhmmCmdline.c	/^const char *cmdline_parser_scaleDataBySumType_values[] = {"target", "sample", 0}; \/*< Possible values for scaleDataBySumType. *\/$/;"	v
+constructFixedParams	CNVmodelParams.cpp	/^void XHMM::CNVmodelParams::constructFixedParams() {$/;"	f	class:XHMM::CNVmodelParams
+constructVariableParamsFromStream	CNVmodelParams.cpp	/^void XHMM::CNVmodelParams::constructVariableParamsFromStream(istream& stream) {$/;"	f	class:XHMM::CNVmodelParams
+createDB	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::createDB() {$/;"	f	class:XHMM::xhmmDriver
+createIntervalsExcludeCharSet	xhmmInputManager.cpp	/^set<char> XHMM::xhmmInputManager::createIntervalsExcludeCharSet() {$/;"	f	class:XHMM::xhmmInputManager
+createModelAndLoader	xhmmDriver.cpp	/^void XHMM::xhmmDriver::createModelAndLoader(HMM_PP::DataOutputter<HMM_PP::InferredDataFit>* dataOuputter) {$/;"	f	class:XHMM::xhmmDriver
+createNonRefAllelesAndCallGenotype	Genotype.cpp	/^void XHMM::Genotype::createNonRefAllelesAndCallGenotype(const SampleGenotypeQualsCalculator* genotyper, const TargetRange* range, const uint refType, const vector<uint>& nonRefTypes, const RealThresh* callQualThresh) {$/;"	f	class:XHMM::Genotype
+createOrigDataLoaderAndAuxOutput	xhmmDriver.cpp	/^void XHMM::xhmmDriver::createOrigDataLoaderAndAuxOutput() {$/;"	f	class:XHMM::xhmmDriver
+createSpanDelimsSet	Interval.cpp	/^set<string> XHMM::Interval::createSpanDelimsSet() {$/;"	f	class:XHMM::Interval
+default_string_arg	xhmmCmdline.c	/^    const char *default_string_arg;$/;"	m	union:generic_value	file:
+deleteDBfiles	OnDiskMatrixTransposer.cpp	/^void XHMM::OnDiskMatrixTransposer::deleteDBfiles() {$/;"	f	class:XHMM::OnDiskMatrixTransposer
+discover	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::discover() {$/;"	f	class:XHMM::xhmmDriver
+distance	Interval.cpp	/^uint XHMM::Interval::distance(const Interval& other, bool abutIsZero) const {$/;"	f	class:XHMM::Interval
+double_arg	xhmmCmdline.c	/^    double double_arg;$/;"	m	union:generic_value	file:
+filterSampleProperties	ProcessMatrixOutputManager.cpp	/^XHMM::ProcessMatrixOutputManager::filterSampleProperties(HMM_PP::DoubleMat* rdMat,$/;"	f	class:XHMM::ProcessMatrixOutputManager
+filterTargetProperties	ProcessMatrixOutputManager.cpp	/^XHMM::ProcessMatrixOutputManager::filterTargetProperties(HMM_PP::DoubleMat* rdMat,$/;"	f	class:XHMM::ProcessMatrixOutputManager
+free_cmd_list	xhmmCmdline.c	/^free_cmd_list(void)$/;"	f	file:
+free_list	xhmmCmdline.c	/^void free_list(struct generic_list *list, short string_arg)$/;"	f	file:
+free_multiple_string_field	xhmmCmdline.c	/^free_multiple_string_field(unsigned int len, char ***arg, char ***orig)$/;"	f	file:
+free_string_field	xhmmCmdline.c	/^free_string_field (char **s)$/;"	f	file:
+generateGenotypeString	GenotypeOutputManager.cpp	/^string XHMM::GenotypeOutputManager::generateGenotypeString(const Genotype* gt, const CopyNumberVariant* cnv) const {$/;"	f	class:XHMM::GenotypeOutputManager
+generic_list	xhmmCmdline.c	/^struct generic_list$/;"	s	file:
+generic_value	xhmmCmdline.c	/^union generic_value {$/;"	u	file:
+gengetopt_args_info_description	xhmmCmdline.c	/^const char *gengetopt_args_info_description = "Developed by Menachem Fromer and Shaun Purcell";$/;"	v
+gengetopt_args_info_detailed_help	xhmmCmdline.c	/^const char *gengetopt_args_info_detailed_help[] = {$/;"	v
+gengetopt_args_info_full_help	xhmmCmdline.c	/^const char *gengetopt_args_info_full_help[100];$/;"	v
+gengetopt_args_info_help	xhmmCmdline.c	/^const char *gengetopt_args_info_help[97];$/;"	v
+gengetopt_args_info_purpose	xhmmCmdline.c	/^const char *gengetopt_args_info_purpose = "Uses principal component analysis (PCA) normalization and a hidden Markov model \\n(HMM) to detect and genotype copy number variation (CNV) from normalized \\nread-depth data from targeted sequencing experiments.";$/;"	v
+gengetopt_args_info_usage	xhmmCmdline.c	/^const char *gengetopt_args_info_usage = "Usage: xhmm [OPTIONS]...";$/;"	v
+gengetopt_strdup	xhmmCmdline.c	/^gengetopt_strdup (const char *s)$/;"	f
+genotype	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::genotype() {$/;"	f	class:XHMM::xhmmDriver
+getAllTypes	CNVmodelParams.cpp	/^vector<uint> XHMM::CNVmodelParams::getAllTypes() {$/;"	f	class:XHMM::CNVmodelParams
+getChrStartTargetIndex	ReadDepthMatrixLoader.cpp	/^uint XHMM::ReadDepthMatrixLoader::getChrStartTargetIndex(string chr) const {$/;"	f	class:XHMM::ReadDepthMatrixLoader
+getChrStopTargetIndex	ReadDepthMatrixLoader.cpp	/^uint XHMM::ReadDepthMatrixLoader::getChrStopTargetIndex(string chr) const {$/;"	f	class:XHMM::ReadDepthMatrixLoader
+getDBfile	xhmmDriver.cpp	/^string* XHMM::xhmmDriver::getDBfile() {$/;"	f	class:XHMM::xhmmDriver
+getEntry	xhmmInputManager.cpp	/^const string& XHMM::xhmmInputManager::Table::getEntry(ullint row, const string& column) const {$/;"	f	class:XHMM::xhmmInputManager::Table
+getEntry	xhmmInputManager.cpp	/^const string& XHMM::xhmmInputManager::Table::getEntry(ullint row, ullint column) const {$/;"	f	class:XHMM::xhmmInputManager::Table
+getGenotype	CopyNumberVariant.cpp	/^const XHMM::Genotype* XHMM::CopyNumberVariant::getGenotype(string sample) const {$/;"	f	class:XHMM::CopyNumberVariant
+getGenotypes	MergeVCFoutputManager.cpp	/^const XHMM::MergeVCFoutputManager::Genotypes* XHMM::MergeVCFoutputManager::Variant::getGenotypes() {$/;"	f	class:XHMM::MergeVCFoutputManager::Variant
+getInfo	MergeVCFoutputManager.cpp	/^const XHMM::MergeVCFoutputManager::Info* XHMM::MergeVCFoutputManager::Variant::getInfo() {$/;"	f	class:XHMM::MergeVCFoutputManager::Variant
+getListFromArray	xhmmInputManager.cpp	/^list<string>* XHMM::xhmmInputManager::getListFromArray(char** vals, const ullint length) {$/;"	f	class:XHMM::xhmmInputManager
+getMergedInterval	SampleGenotypeQualsCalculator.cpp	/^XHMM::Interval XHMM::SampleGenotypeQualsCalculator::getMergedInterval(const uint t1, const uint t2) const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+getNonDiploidTypes	CNVmodelParams.cpp	/^vector<uint> XHMM::CNVmodelParams::getNonDiploidTypes() {$/;"	f	class:XHMM::CNVmodelParams
+getNonRefTypeCount	CopyNumberVariant.cpp	/^uint XHMM::CopyNumberVariant::getNonRefTypeCount(const uint type) const {$/;"	f	class:XHMM::CopyNumberVariant
+getNonRefTypeIndex	CopyNumberVariant.cpp	/^uint XHMM::CopyNumberVariant::getNonRefTypeIndex(const uint type) const {$/;"	f	class:XHMM::CopyNumberVariant
+getOppositeStates	SampleGenotypeQualsCalculator.cpp	/^set<uint>* XHMM::SampleGenotypeQualsCalculator::getOppositeStates(const uint type) {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+getOrigDataForNextDataFitOutput	CNVoutputManager.cpp	/^HMM_PP::Data* XHMM::CNVoutputManager::getOrigDataForNextDataFitOutput(const HMM_PP::InferredDataFit* idf) {$/;"	f	class:XHMM::CNVoutputManager
+getPL	Genotype.cpp	/^const BaseReal* XHMM::Genotype::getPL(const uint type) const {$/;"	f	class:XHMM::Genotype
+getPos	MergeVCFoutputManager.cpp	/^int XHMM::MergeVCFoutputManager::Variant::getPos() {$/;"	f	class:XHMM::MergeVCFoutputManager::Variant
+getRemainingTargets	GATKdepthMergerOutputManager.cpp	/^list<XHMM::Interval>* XHMM::GATKdepthMergerOutputManager::GATKdepthReader::getRemainingTargets() {$/;"	f	class:XHMM::GATKdepthMergerOutputManager::GATKdepthReader
+getSample	SampleGenotypeQualsCalculator.cpp	/^string XHMM::SampleGenotypeQualsCalculator::getSample() const {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+getStartBreakpointTransitionPath	SampleGenotypeQualsCalculator.cpp	/^vector<uint> XHMM::SampleGenotypeQualsCalculator::getStartBreakpointTransitionPath(const uint type) {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+getStopBreakpointTransitionPath	SampleGenotypeQualsCalculator.cpp	/^vector<uint> XHMM::SampleGenotypeQualsCalculator::getStopBreakpointTransitionPath(const uint type) {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+getVariableParams	CNVmodelParams.cpp	/^HMM_PP::BaseRealVec XHMM::CNVmodelParams::getVariableParams() const {$/;"	f	class:XHMM::CNVmodelParams
+get_multiple_arg_token	xhmmCmdline.c	/^get_multiple_arg_token(const char *arg)$/;"	f	file:
+get_multiple_arg_token_next	xhmmCmdline.c	/^get_multiple_arg_token_next(const char *arg)$/;"	f	file:
+hasNextTarget	GATKdepthMergerOutputManager.cpp	/^bool XHMM::GATKdepthMergerOutputManager::GATKdepthReader::hasNextTarget() {$/;"	f	class:XHMM::GATKdepthMergerOutputManager::GATKdepthReader
+hasTargetsForChr	ReadDepthMatrixLoader.cpp	/^bool XHMM::ReadDepthMatrixLoader::hasTargetsForChr(string chr) const {$/;"	f	class:XHMM::ReadDepthMatrixLoader
+init	CNVmodelParams.cpp	/^void XHMM::CNVmodelParams::init(istream& stream) {$/;"	f	class:XHMM::CNVmodelParams
+init	Interval.cpp	/^void XHMM::Interval::init(const string& chrBp1Bp2) {$/;"	f	class:XHMM::Interval
+initOstream	GenotypeOutputManager.cpp	/^void XHMM::GenotypeOutputManager::initOstream(ostream& stream) {$/;"	f	class:XHMM::GenotypeOutputManager
+init_args_info	xhmmCmdline.c	/^void init_args_info(struct gengetopt_args_info *args_info)$/;"	f	file:
+init_full_help_array	xhmmCmdline.c	/^init_full_help_array(void)$/;"	f	file:
+init_help_array	xhmmCmdline.c	/^init_help_array(void)$/;"	f	file:
+int_arg	xhmmCmdline.c	/^    int int_arg;$/;"	m	union:generic_value	file:
+intervalString	Interval.cpp	/^string XHMM::Interval::intervalString() const {$/;"	f	class:XHMM::Interval
+line_list	xhmmCmdline.c	/^struct line_list$/;"	s	file:
+loadReadDepthsFromFile	xhmmInputManager.cpp	/^XHMM::xhmmInputManager::loadReadDepthsFromFile(string readDepthFile, IntervalSet* excludeTargets, StringSet* excludeTargetChromosomes, StringSet* excludeSamples,$/;"	f	class:XHMM::xhmmInputManager
+mergeGATKdepths	GATKdepthMergerOutputManager.cpp	/^void XHMM::GATKdepthMergerOutputManager::mergeGATKdepths(string outRdFile, bool outputSamplesByTargets, int rdPrecision, bool transposeInMemory) {$/;"	f	class:XHMM::GATKdepthMergerOutputManager
+mergeGATKdepths	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::mergeGATKdepths() {$/;"	f	class:XHMM::xhmmDriver
+mergeVCFs	MergeVCFoutputManager.cpp	/^void XHMM::MergeVCFoutputManager::mergeVCFs(string outFile) {$/;"	f	class:XHMM::MergeVCFoutputManager
+mergeVCFs	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::mergeVCFs() {$/;"	f	class:XHMM::xhmmDriver
+midpoint	Interval.cpp	/^uint XHMM::Interval::midpoint() const {$/;"	f	class:XHMM::Interval
+next	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::Variant* XHMM::MergeVCFoutputManager::VCFreader::next() {$/;"	f	class:XHMM::MergeVCFoutputManager::VCFreader
+next	ReadDepthMatrixLoader.cpp	/^HMM_PP::UnivariateQuantitativeData* XHMM::ReadDepthMatrixLoader::next() {$/;"	f	class:XHMM::ReadDepthMatrixLoader
+next	xhmmCmdline.c	/^  struct generic_list *next;$/;"	m	struct:generic_list	typeref:struct:generic_list::generic_list	file:
+next	xhmmCmdline.c	/^  struct line_list * next;$/;"	m	struct:line_list	typeref:struct:line_list::line_list	file:
+nextTargetValues	GATKdepthMergerOutputManager.cpp	/^XHMM::GATKdepthMergerOutputManager::GATKdepthReader::TargetSampleValues XHMM::GATKdepthMergerOutputManager::GATKdepthReader::nextTargetValues(bool extractValues) {$/;"	f	class:XHMM::GATKdepthMergerOutputManager::GATKdepthReader
+nextTransposedRowFromDB	OnDiskMatrixTransposer.cpp	/^void XHMM::OnDiskMatrixTransposer::nextTransposedRowFromDB(PullOutputData* pullData) {$/;"	f	class:XHMM::OnDiskMatrixTransposer
+normalize	PCA_NormalizeOutputManager.cpp	/^void XHMM::PCA_NormalizeOutputManager::normalize(string rdFile, string outFile, const enum_PCnormalizeMethod& normMethod, const uint numPCtoRemove, const double PVE_mean_factor, const double PVE_contrib) const {$/;"	f	class:XHMM::PCA_NormalizeOutputManager
+normalize	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::normalize() {$/;"	f	class:XHMM::xhmmDriver
+openDBfileReaders	OnDiskMatrixTransposer.cpp	/^void XHMM::OnDiskMatrixTransposer::openDBfileReaders() {$/;"	f	class:XHMM::OnDiskMatrixTransposer
+openDBfileWriters	OnDiskMatrixTransposer.cpp	/^void XHMM::OnDiskMatrixTransposer::openDBfileWriters() {$/;"	f	class:XHMM::OnDiskMatrixTransposer
+openParamFile	xhmmDriver.cpp	/^istream* XHMM::xhmmDriver::openParamFile() {$/;"	f	class:XHMM::xhmmDriver
+operator !=	Interval.cpp	/^bool XHMM::Interval::operator!=(const Interval& i) const {$/;"	f	class:XHMM::Interval
+operator +	Interval.cpp	/^XHMM::Interval XHMM::Interval::operator+(const Interval& other) const {$/;"	f	class:XHMM::Interval
+operator +=	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::VCFwriter::AlleleStats& XHMM::MergeVCFoutputManager::VCFwriter::AlleleStats::operator+=(const AlleleStats& add) {$/;"	f	class:XHMM::MergeVCFoutputManager::VCFwriter::AlleleStats
+operator <	Interval.cpp	/^bool XHMM::Interval::operator<(const Interval& i) const {$/;"	f	class:XHMM::Interval
+operator <<	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::VCFwriter& XHMM::MergeVCFoutputManager::VCFwriter::operator<<(Variant& v) {$/;"	f	class:XHMM::MergeVCFoutputManager::VCFwriter
+operator =	Interval.cpp	/^XHMM::Interval& XHMM::Interval::operator=(const Interval& i) {$/;"	f	class:XHMM::Interval
+operator ==	Interval.cpp	/^bool XHMM::Interval::operator==(const Interval& i) const {$/;"	f	class:XHMM::Interval
+orig	xhmmCmdline.c	/^  char *orig;$/;"	m	struct:generic_list	file:
+package_name	xhmmCmdline.c	/^static char *package_name = 0;$/;"	v	file:
+prepareTargets	PrepareTargetsManager.cpp	/^void XHMM::PrepareTargetsManager::prepareTargets(list<string>* targetsFiles, string mergedTargetsOutput) {$/;"	f	class:XHMM::PrepareTargetsManager
+prepareTargets	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::prepareTargets() {$/;"	f	class:XHMM::xhmmDriver
+print	CNVmodelParams.cpp	/^ostream& XHMM::CNVmodelParams::print(ostream& stream) const {$/;"	f	class:XHMM::CNVmodelParams
+printAllCNVs	DiscoverOutputManager.cpp	/^void XHMM::DiscoverOutputManager::printAllCNVs(HMM_PP::Model* model) {$/;"	f	class:XHMM::DiscoverOutputManager
+printCNV	DiscoverOutputManager.cpp	/^void XHMM::DiscoverOutputManager::printCNV(SampleGenotypeQualsCalculator* genotyper, const uint t1, const uint t2, const uint type, HMM_PP::Data* origData) {$/;"	f	class:XHMM::DiscoverOutputManager
+printCNVheader	DiscoverOutputManager.cpp	/^void XHMM::DiscoverOutputManager::printCNVheader() {$/;"	f	class:XHMM::DiscoverOutputManager
+printCNVtargets	AuxiliaryCNVoutputManager.cpp	/^void XHMM::AuxiliaryCNVoutputManager::printCNVtargets(SampleGenotypeQualsCalculator* genotyper, const uint t1, const uint t2, const uint type, HMM_PP::Data* origData) {$/;"	f	class:XHMM::AuxiliaryCNVoutputManager
+printCNVtargets	AuxiliaryCNVoutputManager.cpp	/^void XHMM::AuxiliaryCNVoutputManager::printCNVtargets(SampleGenotypeQualsCalculator* genotyper, const uint t1, const uint t2, const vector<uint>& types, HMM_PP::Data* origData) {$/;"	f	class:XHMM::AuxiliaryCNVoutputManager
+printDataType	DiscoverOutputManager.cpp	/^void XHMM::DiscoverOutputManager::printDataType(const HMM_PP::InferredDataFit* idf) {$/;"	f	class:XHMM::DiscoverOutputManager
+printDataType	GenotypeOutputManager.cpp	/^void XHMM::GenotypeOutputManager::printDataType(const HMM_PP::InferredDataFit* idf) {$/;"	f	class:XHMM::GenotypeOutputManager
+printDataType	ReadDepthMatrixOutputter.cpp	/^void XHMM::ReadDepthMatrixOutputter::printDataType(const HMM_PP::Data* d) {$/;"	f	class:XHMM::ReadDepthMatrixOutputter
+printHMM	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::printHMM() {$/;"	f	class:XHMM::xhmmDriver
+printInitProbs	xhmmOutputManager.cpp	/^void XHMM::xhmmOutputManager::printInitProbs(const CNVmodelParams* cnvParams, ostream& out, int precision) {$/;"	f	class:XHMM::xhmmOutputManager
+printSampleHeaderLine	GenotypeOutputManager.cpp	/^void XHMM::GenotypeOutputManager::printSampleHeaderLine(ostream& outStream, const vector<string>* samples) {$/;"	f	class:XHMM::GenotypeOutputManager
+printSamplePosteriors	PosteriorOutputManager.cpp	/^void XHMM::PosteriorOutputManager::printSamplePosteriors(const HMM_PP::InferredDataFit* idf) {$/;"	f	class:XHMM::PosteriorOutputManager
+printTargetHeader	AuxiliaryCNVoutputManager.cpp	/^void XHMM::AuxiliaryCNVoutputManager::printTargetHeader() {$/;"	f	class:XHMM::AuxiliaryCNVoutputManager
+printTargets	ReadDepthMatrixLoader.cpp	/^void XHMM::ReadDepthMatrixLoader::printTargets(ostream& stream) {$/;"	f	class:XHMM::ReadDepthMatrixLoader
+printTargets	ReadDepthMatrixOutputter.cpp	/^void XHMM::ReadDepthMatrixOutputter::printTargets(ostream& stream, const ReadDepthMatrixLoader* readDepthLoader) {$/;"	f	class:XHMM::ReadDepthMatrixOutputter
+printTransitionMatricesForDistancesFile	xhmmOutputManager.cpp	/^void XHMM::xhmmOutputManager::printTransitionMatricesForDistancesFile(const CNVmodelParams* cnvParams, string distFile, ostream& out, int precision) {$/;"	f	class:XHMM::xhmmOutputManager
+printVCFgenotypesAllIntervals	GenotypeOutputManager.cpp	/^void XHMM::GenotypeOutputManager::printVCFgenotypesAllIntervals() {$/;"	f	class:XHMM::GenotypeOutputManager
+printVCFheader	GenotypeOutputManager.cpp	/^void XHMM::GenotypeOutputManager::printVCFheader() {$/;"	f	class:XHMM::GenotypeOutputManager
+printWarning	xhmmOutputManager.cpp	/^void XHMM::xhmmOutputManager::printWarning(const string& warn) {$/;"	f	class:XHMM::xhmmOutputManager
+print_help_common	xhmmCmdline.c	/^static void print_help_common(void) {$/;"	f	file:
+probToPhredScale	SampleGenotypeQualsCalculator.cpp	/^BaseReal XHMM::SampleGenotypeQualsCalculator::probToPhredScale(const real& prob, const BaseReal maxPhredScaleVal) {$/;"	f	class:XHMM::SampleGenotypeQualsCalculator
+processMatrix	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::processMatrix() {$/;"	f	class:XHMM::xhmmDriver
+processReadDepthMatrix	ProcessMatrixOutputManager.cpp	/^void XHMM::ProcessMatrixOutputManager::processReadDepthMatrix(string rdFile, string outFile,$/;"	f	class:XHMM::ProcessMatrixOutputManager
+readFastaIndexTable	xhmmInputManager.cpp	/^XHMM::xhmmInputManager::Table* XHMM::xhmmInputManager::readFastaIndexTable(string fastaFile) {$/;"	f	class:XHMM::xhmmInputManager
+readHeaderAndSamples	MergeVCFoutputManager.cpp	/^void XHMM::MergeVCFoutputManager::VCFreader::readHeaderAndSamples() {$/;"	f	class:XHMM::MergeVCFoutputManager::VCFreader
+readIntervalsFromFile	xhmmInputManager.cpp	/^XHMM::xhmmInputManager::IntervalSet* XHMM::xhmmInputManager::readIntervalsFromFile(string intervalsFile, const set<char>& excludeLinesStartingWith) {$/;"	f	class:XHMM::xhmmInputManager
+readRowFromStream	xhmmInputManager.cpp	/^XHMM::xhmmInputManager::Table::Row* XHMM::xhmmInputManager::readRowFromStream(HMM_PP::istreamLineReader* tableStream) {$/;"	f	class:XHMM::xhmmInputManager
+readSampleIDsToKeep	xhmmDriver.cpp	/^void XHMM::xhmmDriver::readSampleIDsToKeep() {$/;"	f	class:XHMM::xhmmDriver
+readSamplesFromHeader	GATKdepthMergerOutputManager.cpp	/^void XHMM::GATKdepthMergerOutputManager::GATKdepthReader::readSamplesFromHeader() {$/;"	f	class:XHMM::GATKdepthMergerOutputManager::GATKdepthReader
+readStringsFromFile	xhmmInputManager.cpp	/^list<string>* XHMM::xhmmInputManager::readStringsFromFile(string stringsFile, char excludeLinesStartingWith) {$/;"	f	class:XHMM::xhmmInputManager
+readTable	xhmmInputManager.cpp	/^XHMM::xhmmInputManager::Table* XHMM::xhmmInputManager::readTable(string tableFile, bool header) {$/;"	f	class:XHMM::xhmmInputManager
+readTargets	ReadDepthMatrixLoader.cpp	/^void XHMM::ReadDepthMatrixLoader::readTargets() {$/;"	f	class:XHMM::ReadDepthMatrixLoader
+run	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::run() {$/;"	f	class:XHMM::xhmmDriver
+runCommonInits	xhmmDriver.cpp	/^void XHMM::xhmmDriver::runCommonInits() {$/;"	f	class:XHMM::xhmmDriver
+setChrOrderFromReference	xhmmDriver.cpp	/^void XHMM::xhmmDriver::setChrOrderFromReference() {$/;"	f	class:XHMM::xhmmDriver
+setModelAndReadDepthLoader	AuxiliaryCNVoutputManager.cpp	/^void XHMM::AuxiliaryCNVoutputManager::setModelAndReadDepthLoader(HMM_PP::Model* model, const ReadDepthMatrixLoader* dataLoader) {$/;"	f	class:XHMM::AuxiliaryCNVoutputManager
+setModelAndReadDepthLoader	CNVoutputManager.cpp	/^void XHMM::CNVoutputManager::setModelAndReadDepthLoader(HMM_PP::Model* model, const ReadDepthMatrixLoader* dataLoader) {$/;"	f	class:XHMM::CNVoutputManager
+setModelAndReadDepthLoader	DiscoverOutputManager.cpp	/^void XHMM::DiscoverOutputManager::setModelAndReadDepthLoader(HMM_PP::Model* model, const ReadDepthMatrixLoader* dataLoader) {$/;"	f	class:XHMM::DiscoverOutputManager
+setModelAndReadDepthLoader	GenotypeOutputManager.cpp	/^void XHMM::GenotypeOutputManager::setModelAndReadDepthLoader(HMM_PP::Model* model, const ReadDepthMatrixLoader* dataLoader) {$/;"	f	class:XHMM::GenotypeOutputManager
+setValFromStream	ReadDepthMatrixLoader.cpp	/^void XHMM::ReadDepthMatrixLoader::setValFromStream(HMM_PP::UnivariateQuantitativeData::InputType& f, istream& stream) {$/;"	f	class:XHMM::ReadDepthMatrixLoader
+setVariableParams	CNVmodelParams.cpp	/^void XHMM::CNVmodelParams::setVariableParams(const HMM_PP::BaseRealVec& v) {$/;"	f	class:XHMM::CNVmodelParams
+span	Interval.cpp	/^uint XHMM::Interval::span() const {$/;"	f	class:XHMM::Interval
+spanKB	Interval.cpp	/^BaseReal XHMM::Interval::spanKB() const {$/;"	f	class:XHMM::Interval
+splitInfoOnAlleleInfo	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::VCFwriter::AlleleAndNonAlleleInfo* XHMM::MergeVCFoutputManager::VCFwriter::splitInfoOnAlleleInfo(const InfoMap& info) {$/;"	f	class:XHMM::MergeVCFoutputManager::VCFwriter
+string_arg	xhmmCmdline.c	/^    char *string_arg;$/;"	m	union:generic_value	file:
+string_arg	xhmmCmdline.c	/^  char * string_arg;$/;"	m	struct:line_list	file:
+tableColumnToSet	xhmmInputManager.cpp	/^set<string>* XHMM::xhmmInputManager::tableColumnToSet(Table* table, ullint column) {$/;"	f	class:XHMM::xhmmInputManager
+tableToMap	xhmmInputManager.cpp	/^XHMM::xhmmInputManager::OneToOneStrMap* XHMM::xhmmInputManager::tableToMap(Table* table, ullint fromColumn, ullint toColumn) {$/;"	f	class:XHMM::xhmmInputManager
+transition	xhmmDriver.cpp	/^bool XHMM::xhmmDriver::transition() {$/;"	f	class:XHMM::xhmmDriver
+transitionFunc	CNVmodelParams.cpp	/^BaseReal XHMM::CNVmodelParams::transitionFunc(const uint i, const uint j, const uint t1, const uint t2) const {$/;"	f	class:XHMM::CNVmodelParams
+transitionMatrix	CNVmodelParams.cpp	/^HMM_PP::NamedMatrix<real>* XHMM::CNVmodelParams::transitionMatrix(const uint distInBases, bool assignNames) const {$/;"	f	class:XHMM::CNVmodelParams
+transitionProb	CNVmodelParams.cpp	/^BaseReal XHMM::CNVmodelParams::transitionProb(const uint i, const uint j, const uint distInBases) const {$/;"	f	class:XHMM::CNVmodelParams
+update_arg	xhmmCmdline.c	/^int update_arg(void *field, char **orig_field,$/;"	f	file:
+update_multiple_arg	xhmmCmdline.c	/^void update_multiple_arg(void *field, char ***orig_field,$/;"	f	file:
+update_multiple_arg_temp	xhmmCmdline.c	/^int update_multiple_arg_temp(struct generic_list **list,$/;"	f	file:
+write_into_file	xhmmCmdline.c	/^write_into_file(FILE *outfile, const char *opt, const char *arg, const char *values[])$/;"	f	file:
+write_multiple_into_file	xhmmCmdline.c	/^write_multiple_into_file(FILE *outfile, int len, const char *opt, char **arg, const char *values[])$/;"	f	file:
+xhmmDriver	xhmmDriver.cpp	/^XHMM::xhmmDriver::xhmmDriver(const gengetopt_args_info& args_info)$/;"	f	class:XHMM::xhmmDriver
+~AlleleQuals	AlleleQuals.cpp	/^XHMM::AlleleQuals::~AlleleQuals() {$/;"	f	class:XHMM::AlleleQuals
+~AlleleStats	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::VCFwriter::AlleleStats::~AlleleStats() {$/;"	f	class:XHMM::MergeVCFoutputManager::VCFwriter::AlleleStats
+~AuxiliaryCNVoutputManager	AuxiliaryCNVoutputManager.cpp	/^XHMM::AuxiliaryCNVoutputManager::~AuxiliaryCNVoutputManager() {$/;"	f	class:XHMM::AuxiliaryCNVoutputManager
+~CNVmodelParams	CNVmodelParams.cpp	/^XHMM::CNVmodelParams::~CNVmodelParams() {$/;"	f	class:XHMM::CNVmodelParams
+~CNVoutputManager	CNVoutputManager.cpp	/^XHMM::CNVoutputManager::~CNVoutputManager() {$/;"	f	class:XHMM::CNVoutputManager
+~CopyNumberVariant	CopyNumberVariant.cpp	/^XHMM::CopyNumberVariant::~CopyNumberVariant() {$/;"	f	class:XHMM::CopyNumberVariant
+~DiscoverOutputManager	DiscoverOutputManager.cpp	/^XHMM::DiscoverOutputManager::~DiscoverOutputManager() {$/;"	f	class:XHMM::DiscoverOutputManager
+~GATKdepthMergerOutputManager	GATKdepthMergerOutputManager.cpp	/^XHMM::GATKdepthMergerOutputManager::~GATKdepthMergerOutputManager() {$/;"	f	class:XHMM::GATKdepthMergerOutputManager
+~GATKdepthReader	GATKdepthMergerOutputManager.cpp	/^XHMM::GATKdepthMergerOutputManager::GATKdepthReader::~GATKdepthReader() {$/;"	f	class:XHMM::GATKdepthMergerOutputManager::GATKdepthReader
+~Genotype	Genotype.cpp	/^XHMM::Genotype::~Genotype() {$/;"	f	class:XHMM::Genotype
+~GenotypeOutputManager	GenotypeOutputManager.cpp	/^XHMM::GenotypeOutputManager::~GenotypeOutputManager() {$/;"	f	class:XHMM::GenotypeOutputManager
+~Interval	Interval.cpp	/^XHMM::Interval::~Interval() {$/;"	f	class:XHMM::Interval
+~MergeVCFoutputManager	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::~MergeVCFoutputManager() {$/;"	f	class:XHMM::MergeVCFoutputManager
+~OnDiskMatrixTransposer	OnDiskMatrixTransposer.cpp	/^XHMM::OnDiskMatrixTransposer::~OnDiskMatrixTransposer() {$/;"	f	class:XHMM::OnDiskMatrixTransposer
+~PCA_NormalizeOutputManager	PCA_NormalizeOutputManager.cpp	/^XHMM::PCA_NormalizeOutputManager::~PCA_NormalizeOutputManager() {$/;"	f	class:XHMM::PCA_NormalizeOutputManager
+~PosteriorOutputManager	PosteriorOutputManager.cpp	/^XHMM::PosteriorOutputManager::~PosteriorOutputManager() {$/;"	f	class:XHMM::PosteriorOutputManager
+~PrepareTargetsManager	PrepareTargetsManager.cpp	/^XHMM::PrepareTargetsManager::~PrepareTargetsManager() {$/;"	f	class:XHMM::PrepareTargetsManager
+~ProcessMatrixOutputManager	ProcessMatrixOutputManager.cpp	/^XHMM::ProcessMatrixOutputManager::~ProcessMatrixOutputManager() {$/;"	f	class:XHMM::ProcessMatrixOutputManager
+~ReadDepthMatrixLoader	ReadDepthMatrixLoader.cpp	/^XHMM::ReadDepthMatrixLoader::~ReadDepthMatrixLoader() {$/;"	f	class:XHMM::ReadDepthMatrixLoader
+~ReadDepthMatrixOutputter	ReadDepthMatrixOutputter.cpp	/^XHMM::ReadDepthMatrixOutputter::~ReadDepthMatrixOutputter() {$/;"	f	class:XHMM::ReadDepthMatrixOutputter
+~Table	xhmmInputManager.cpp	/^XHMM::xhmmInputManager::Table::~Table() {$/;"	f	class:XHMM::xhmmInputManager::Table
+~VCFreader	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::VCFreader::~VCFreader() {$/;"	f	class:XHMM::MergeVCFoutputManager::VCFreader
+~VCFwriter	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::VCFwriter::~VCFwriter() {$/;"	f	class:XHMM::MergeVCFoutputManager::VCFwriter
+~Variant	MergeVCFoutputManager.cpp	/^XHMM::MergeVCFoutputManager::Variant::~Variant() {$/;"	f	class:XHMM::MergeVCFoutputManager::Variant
+~xhmmDriver	xhmmDriver.cpp	/^XHMM::xhmmDriver::~xhmmDriver() {$/;"	f	class:XHMM::xhmmDriver

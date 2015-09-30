@@ -1,0 +1,2 @@
+build/lib/sqlwrap.o build/lib/sqlwrap.dep : sources/lib/sqlwrap.cpp sources/include/sqlwrap.hpp \
+ sources/include/sqlite3.h

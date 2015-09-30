@@ -1,0 +1,7 @@
+build/lib/Simplex.o build/lib/Simplex.dep : sources/lib/Simplex.cpp sources/include/utils.hpp \
+ sources/include/params.hpp sources/include/Simplex.hpp \
+ sources/include/NamedVector.hpp sources/include/Exception.hpp \
+ sources/include/DistributionStatistics.hpp \
+ sources/include/NamedMatrix.hpp sources/include/utils.hpp \
+ sources/include/PreciseNonNegativeReal.hpp sources/include/CRandom.hpp \
+ sources/include/Exception.hpp sources/include/params.hpp

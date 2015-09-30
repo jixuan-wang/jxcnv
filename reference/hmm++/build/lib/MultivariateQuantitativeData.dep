@@ -1,0 +1,4 @@
+build/lib/MultivariateQuantitativeData.o build/lib/MultivariateQuantitativeData.dep : \
+ sources/lib/MultivariateQuantitativeData.cpp \
+ sources/include/MultivariateQuantitativeData.hpp \
+ sources/include/params.hpp sources/include/Data.hpp

@@ -1,0 +1,2 @@
+build/lib/Data.o build/lib/Data.dep : sources/lib/Data.cpp sources/include/Data.hpp \
+ sources/include/params.hpp sources/include/Exception.hpp

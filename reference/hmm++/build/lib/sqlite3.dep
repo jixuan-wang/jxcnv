@@ -1,0 +1,1 @@
+build/lib/sqlite3.o build/lib/sqlite3.dep : sources/lib/sqlite3.c

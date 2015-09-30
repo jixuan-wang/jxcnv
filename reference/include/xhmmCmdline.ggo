@@ -1,0 +1,164 @@
+package "xhmm"
+version "1.0"
+
+purpose "Uses principal component analysis (PCA) normalization and a hidden Markov model (HMM) to detect and genotype copy number variation (CNV) from normalized read-depth data from targeted sequencing experiments."
+
+description "Developed by Menachem Fromer and Shaun Purcell"
+
+section "*******************************************************************\nOptions for modes: 'prepareTargets', 'genotype'"
+option	"referenceFASTA"	F	"Reference FASTA file (MUST have .fai index file)"	string	optional
+
+
+section "*******************************************************************\nOptions for modes: 'matrix', 'PCA', 'normalize', 'discover', 'genotype'"  #  , 'createDB',
+option	"readDepths"	r	"Matrix of *input* read-depths, where rows (samples) and columns (targets) are labeled"	string	default="-"	optional	details=""
+
+
+text "*******************************************************************"
+defmode	"prepareTargets"	modedesc="Sort all target intervals, merge overlapping ones, and print the resulting interval list"
+modeoption	"prepareTargets"	S	""	mode="prepareTargets"	required
+modeoption	"targets"	-	"Input targets lists"	string	required	mode="prepareTargets"	multiple
+modeoption	"mergedTargets"	-	"Output targets list"	string	default="-"	optional	mode="prepareTargets"
+
+
+defmode	"mergeGATKdepths"	modedesc="Merge the output from GATK into a single read depth matrix of samples (rows) by targets (columns)"
+modeoption	"mergeGATKdepths"	A	""	mode="mergeGATKdepths"	required
+modeoption	"GATKdepths"	-	"GATK sample_interval_summary output file(s) to be merged [must have *IDENTICAL* target lists]"	string	optional	mode="mergeGATKdepths"	multiple
+modeoption	"GATKdepthsList"	-	"A file containing a list of GATK sample_interval_summary output files to be merged [must have *IDENTICAL* target lists]"	string	optional	mode="mergeGATKdepths"	multiple
+
+modeoption	"sampleIDmap"	-	"File containing mappings of sample names to new sample names (in columns designated by fromID, toID)"	string	optional	mode="mergeGATKdepths"
+modeoption	"fromID"	-	"Column number of OLD sample IDs to map"	int	default="1"	optional	mode="mergeGATKdepths"
+modeoption	"toID"	-	"Column number of NEW sample IDs to map"	int	default="2"	optional	mode="mergeGATKdepths"
+
+modeoption	"columnSuffix"	-	"Suffix of columns to be used for merging [where columns are in the form: SAMPLE + columnSuffix]"	string	default="_mean_cvg"	optional	mode="mergeGATKdepths"
+modeoption	"rdPrecision"	-	"Decimal precision of read depths output"	int	default="2"	optional	mode="mergeGATKdepths"
+modeoption	"outputTargetsBySamples"	-	"Output targets x samples (instead of samples x targets)"	flag	off	mode="mergeGATKdepths"
+
+defmode	"matrix"	modedesc="Process (filter, center, etc.) a read depth matrix and output the resulting matrix.  Note that first all excluded samples and targets are removed.  And, sample statistics used for filtering are calculated only *after* filtering out relevant targets."
+modeoption	"matrix"	M	""	mode="matrix"	required
+
+modeoption	"excludeTargets"	-	"File(s) of targets to exclude"	string	optional	mode="matrix"	multiple
+modeoption	"excludeChromosomeTargets"	-	"Target chromosome(s) to exclude"	string	optional	mode="matrix"	multiple
+
+modeoption	"excludeSamples"	-	"File(s) of samples to exclude"	string	optional	mode="matrix"	multiple
+
+modeoption	"minTargetSize"	-	"Minimum size of target (in bp) to process"	int	default="0"	optional	mode="matrix"
+modeoption	"maxTargetSize"	-	"Maximum size of target (in bp) to process"	int	optional	mode="matrix"
+
+modeoption	"minMeanTargetRD"	-	"Minimum per-target mean RD to require for target to be processed"	double	optional	mode="matrix"
+modeoption	"maxMeanTargetRD"	-	"Maximum per-target mean RD to require for target to be processed"	double	optional	mode="matrix"
+
+modeoption	"minSdTargetRD"	-	"Minimum per-target standard deviation of RD to require for target to be processed"	double	default="0"	optional	mode="matrix"
+modeoption	"maxSdTargetRD"	-	"Maximum per-target standard deviation of RD to require for target to be processed"	double	optional	mode="matrix"
+
+modeoption	"minMeanSampleRD"	-	"Minimum per-sample mean RD to require for sample to be processed"	double	optional	mode="matrix"
+modeoption	"maxMeanSampleRD"	-	"Maximum per-sample mean RD to require for sample to be processed"	double	optional	mode="matrix"
+
+modeoption	"minSdSampleRD"	-	"Minimum per-sample standard deviation of RD to require for sample to be processed"	double	default="0"	optional	mode="matrix"
+modeoption	"maxSdSampleRD"	-	"Maximum per-sample standard deviation of RD to require for sample to be processed"	double	optional	mode="matrix"
+
+modeoption	"scaleDataBySum"	-	"After any filtering, scale read-depth matrix values by sample- or target- sums (as per --scaleDataBySumType) [i.e., divide by row or column sums], but multiply by factor specificied by --scaleDataBySumFactor"	flag	off	mode="matrix"	dependon="scaleDataBySumType"
+modeoption	"scaleDataBySumType"	-	"If --scaleDataBySum given, then scale the data within this dimension"	values="target","sample"	enum	optional	mode="matrix"
+modeoption	"scaleDataBySumFactor"	-	"If --scaleDataBySum given, then divide by appropriate sum (but multiply by this factor)"	double	default="1e6"	optional	mode="matrix"	dependon="scaleDataBySumType"
+
+modeoption	"log10"	-	"After any filtering and optional scaling steps (but before any optional centering steps), convert the matrix to log10 values. To deal with non-positive and small positive values, a truncation and then pseudocount approach is taken. Specifically, denote the original matrix value as x and this parameter's pseudocount value as v (say, 0.5). The matrix value used is then log10(max(x, 0) + v)"	double	optional	mode="matrix"
+
+modeoption	"centerData"	-	"Output sample- or target- centered read-depth matrix (as per --centerType)"	flag	off	mode="matrix"	dependon="centerType"
+modeoption	"centerType"	-	"If --centerData given, then center the data around this dimension"	values="target","sample"	enum	optional	mode="matrix"
+modeoption	"zScoreData"	-	"If --centerData given, then additionally normalize by standard deviation (outputting z-scores)"	flag	off	mode="matrix"	dependon="centerData"
+
+modeoption	"outputExcludedTargets"	-	"File in which to output targets excluded by some criterion"	string	optional	mode="matrix"
+modeoption	"outputExcludedSamples"	-	"File in which to output samples excluded by some criterion"	string	optional	mode="matrix"
+
+
+section "Options for modes: 'mergeGATKdepths', 'matrix'"
+
+option	"outputMatrix"	o	"Read-depth matrix output file"	string	default="-"	optional
+
+
+text "*******************************************************************"
+defmode	"PCA"	modedesc="Run PCA to create normalization factors for read depth matrix"
+modeoption	"PCA"	P	"Matrix is read from --readDepths argument; normalization factors sent to --PCAfiles argument"	mode="PCA"	required	dependon="PCAfiles"
+
+modeoption	"PCA_saveMemory"	-	"Should XHMM save memory by storing some of the intermediate PCA matrices as temporary files on disk?"	string	optional	default=""	argoptional	mode="PCA"	details="Note that, if no argument is given (syntax is '--PCA_saveMemory=TEMP_DIR' instead of just '--PCA_saveMemory'), the temporary files will be generated in the same directory as specified by the --PCAfiles argument"
+
+defmode	"normalize"	modedesc="Apply PCA factors in order to normalize read depth matrix"
+modeoption	"normalize"	N	"Matrix is read from --readDepths argument; normalization factors read from --PCAfiles argument"	mode="normalize"	required	dependon="PCAfiles"
+modeoption	"normalizeOutput"	n	"Normalized read-depth matrix output file"	string	default="-"	mode="normalize"	optional
+
+modeoption	"PCnormalizeMethod"	-	"Method to choose which prinicipal components are removed for data normalization"	values="numPCtoRemove","PVE_mean","PVE_contrib"	default="PVE_mean"	enum	optional	mode="normalize"
+modeoption	"numPCtoRemove"	-	"Number of highest principal components to filter out"	int	default="20"	optional	mode="normalize"
+modeoption	"PVE_mean_factor"	-	"Remove all principal components that individually explain more variance than this factor times the average (in the original PCA-ed data)"	double	default="0.7"	optional	mode="normalize"
+modeoption	"PVE_contrib"	-	"Remove the smallest number of principal components that explain this percent of the variance (in the original PCA-ed data)"	double	default="50"	optional	mode="normalize"
+
+section "Options for modes: 'PCA', 'normalize'"
+option	"PCAfiles"	-	"Base file name for 'PCA' *output*, and 'normalize' *input*"	string	optional	details="This prefix will name 3 files: the principal components (PC), the sample loadings, and the standard deviations in each PC."
+
+
+#text "*******************************************************************"
+#
+#defmode	"createDB"	modedesc="Load normalized read depth matrix into a database file"
+#modeoption	"createDB"	C	""	mode="createDB"	required	dependon="paramFile"
+#
+option	"createDB"	C	""	optional	dependon="paramFile"	hidden
+#
+#
+
+text "*******************************************************************"
+defmode	"discover"	modedesc="Discover CNVs from normalized read depth matrix"
+modeoption	"discover"	D	"Matrix is read from --readDepths argument"	mode="discover"	required	dependon="paramFile"
+modeoption	"xcnv"	c	"CNV output file"	string	default="-"	mode="discover"	optional
+
+modeoption	"optDiscover"	-	"Optimize input HMM parameters before discovering CNVs"	mode="discover"	optional	hidden
+
+modeoption	"discoverSomeQualThresh"	t	"Quality threshold for discovering a CNV in a sample"	double	default="30"	mode="discover"	optional
+
+modeoption	"posteriorFiles"	s	"Base file name for posterior probabilities output files; if not given, and --xcnv is not '-', this will default to --xcnv argument"	string	mode="discover"	optional
+
+
+defmode	"genotype"	modedesc="Genotype list of CNVs from normalized read depth matrix"
+modeoption	"genotype"	G	"Matrix is read from --readDepths argument"	mode="genotype"	required	dependon="paramFile"
+modeoption	"gxcnv"	g	"xhmm CNV input file to genotype in 'readDepths' sample"	string	mode="genotype"	required
+
+modeoption	"subsegments"	-	"In addition to genotyping the intervals specified in gxcnv, genotype all sub-segments of these intervals (with maxTargetsInSubsegment or fewer targets)"	flag	off	mode="genotype"	details="Note that the genotyping threshold is set to max(genotypeQualThresholdWhenNoExact, GQT for original event)"
+modeoption	"maxTargetsInSubsegment"	-	"When genotyping sub-segments of input intervals, only consider sub-segments consisting of this number of targets or fewer"	int	default="30"	optional	mode="genotype"	dependon="subsegments"
+
+modeoption	"genotypeQualThresholdWhenNoExact"	T	"Quality threshold for calling a genotype, used *ONLY* when 'gxcnv' does not contain the 'Q_EXACT' field for the interval being genotyped"	double	default="20"	mode="genotype"	optional	details="When the 'gxcnv' file contains the 'Q_EXACT' field, then the minimal such value for any called CNV is used as the genotyping threshold for that CNV.  Otherwise, the value given here is used."
+
+
+defmode	"mergeVCFs"	modedesc="Merge VCF files output by multiple runs of the 'genotype' command on the same input intervals (.xcnv file), but for different samples"
+modeoption	"mergeVCFs"	-	""	mode="mergeVCFs"	required
+modeoption	"mergeVCF"	-	"VCF file(s) to be merged [must have *IDENTICAL* genotyped intervals]"	string	optional	mode="mergeVCFs"	multiple
+modeoption	"mergeVCFlist"	-	"A file containing a list of VCF files to be merged [must have *IDENTICAL* genotyped intervals]"	string	optional	mode="mergeVCFs"	multiple
+
+
+section "Options for modes: 'discover', 'genotype', 'transition', 'printHMM'"  #  , 'createDB', 
+option	"paramFile"	p	"(Initial) model parameters file"	string	optional	details="File consisting of fields:  1e-8	6	70	-3	1.00	0	1.00	3	1.00"
+
+section "Options for modes: 'discover', 'genotype'"  #  'createDB',
+option	"DB"	d	"Database storage file"	string	optional	details="If given for 'discover', 'genotype', or 'createDB', the 'readDepths' data and 'discover' results will be cached to the DB for long-term storage"	hidden
+option	"maxNormalizedReadDepthVal"	m	"Value at which to cap the absolute value of *normalized* input read depth values ('readDepths')"	double	default="10"	optional
+
+# section "Options for modes: 'discover', 'genotype'"
+option	"maxQualScore"	q	"Value at which to cap the calculated quality scores"	double	default="99"	optional
+option	"scorePrecision"	e	"Decimal precision of quality scores"	int	default="0"	optional
+
+option	"aux_xcnv"	a	"Auxiliary CNV output file (may be VERY LARGE in 'genotype' mode)"	string	optional	details="Each line gives detailed information regarding each target that is part of a CNV in the output file"
+option	"auxUpstreamPrintTargs"	u	"Number of targets to print upstream of CNV in 'auxOutput' file"	int	default="2"	optional	dependon="aux_xcnv"
+option	"auxDownstreamPrintTargs"	w	"Number of targets to print downstream of CNV in 'auxOutput' file"	int	default="2"	optional	dependon="aux_xcnv"
+
+option	"origReadDepths"	R	"Matrix of unnormalized read-depths to use for CNV annotation, where rows (samples) and columns (targets) are labeled"	string	optional	details="These values are used to annotate the CNV output."
+
+option	"keepSampleIDs"	-	"File containing a list of samples to be analyzed"	string	optional	details="If this parameter is given, any sample not listed in this file will be dropped from this run."
+
+section "Options for modes: 'genotype', 'mergeVCFs'"
+option	"vcf"	v	"Genotyped CNV output VCF file"	string	default="-"	optional
+
+
+
+text "*******************************************************************"
+defmode	"printHMM"	modedesc="Print HMM model parameters and exit"
+modeoption	"printHMM"	-	""	mode="printHMM"	required	dependon="paramFile"
+
+
+defmode	"transition"	modedesc="Print HMM transition matrix for user-requested genomic distances"
+modeoption	"transition"	-	""	mode="transition"	required	dependon="paramFile"
