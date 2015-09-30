@@ -25,7 +25,8 @@ class Model (object)
             for i in range(s):
                 forwardMess[i] = _model_params.getInitProbs()[i]
         else:
-            
+            incomingForwardMess = alpha[t-1]
+            transMat =
         
 
 
