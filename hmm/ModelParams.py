@@ -5,7 +5,8 @@ from scipy import stats
 
 class ModelParams(object):
     state = {'DEL':0, 'DIPLOID':1, 'DUP':2}
-    
+    statestr = ['DEL', 'DIPLOID', 'DUP'] 
+
     def __init__(self, params, intervals):
         self._p = float(params[0])
         self._e = int(params[1])
@@ -55,28 +56,35 @@ class ModelParams(object):
         if distInBases < float("inf") :
             f = math.exp(-(distInBases * self._lambda))
 
-        return f * self._transitionMat[i, j] + (1-f) * getDiploidTransProb()[j]
+        return f * self._transitionMat[i, j] + (1-f) * self.getDiploidTransProb()[j]
 
     #return the transition matrix at t1->t1+1
     def transitionMatirx(self, t1) :
-        tm = mat(zeros((getNumHiddenStates(), getNumHiddenStates())))
+        tm = mat(zeros((self.getNumHiddenStates(), self.getNumHiddenStates())))
 
-        for i in range(getNumHiddenStates()) :
-            for j in range(getNumHiddenStates()):
-                tm[i, j] = transitionProb(i, j, t1)
+        for i in range(self.getNumHiddenStates()) :
+            for j in range(self.getNumHiddenStates()):
+                tm[i, j] = self.transitionProb(i, j, t1)
 
         return tm
     
     #value: read depth
-    def getEmissProb(self, value) :
-        emissProbs = [0]*self.getNumHiddenStates()
+    def getEmissProbs(self, value) :
+        if isinstance(value, str):
+            value = float(value)
+        emissProbs = []
         for i in range(self.getNumHiddenStates()) :
-            emissProbs[i] = stats.norm.pdf(value, self._mean[i], self._sd[i])
+            emissProbs.append(stats.norm.pdf(value, self._mean[i], self._sd[i]))
         return emissProbs
         
     
     def getInitProbs(self):
-        return 0
+        v = self._transitionMat[self.state['DIPLOID']]
+        return v
+        norm = linalg.norm(v)
+        if norm==0: 
+            return v
+        return v/norm
 
     def getDiploidTransProb(self):
         return self._transitionMat[self.state['DIPLOID'], :]
