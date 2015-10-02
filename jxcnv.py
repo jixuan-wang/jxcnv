@@ -1,4 +1,7 @@
 import argparse
+from DataLoader import *
+from hmm.Model import *
+from hmm.ModelParams import *
 import numpy as np
 
 def svd(args):
@@ -45,6 +48,24 @@ def svd(args):
 	file_vt.close()
 	file_svd.close()	
 	
+def discover(args) :
+    datafile = args.datafile
+    outputfile = args.output
+    paramsfile = args.params
+    dataloader = DataLoader(datafile)
+    params = dataloader.getParams(paramsfile)
+    dataloader.skipHeadline()
+    sample = dataloader.getNextSample()
+    while sample :
+        targets = dataloader.getTargets()
+        modelParams = ModelParams(params, targets)
+
+        model = Model(modelParams, sample['observations'])
+        pathlist = model.forwardBackward_Viterbi()
+        dataloader.outputCNV(sample['sample_id'], targets, pathlist)
+        sample = dataloader.getNextSample()
+        
+
 
 parser = argparse.ArgumentParser(prog='jxcnv', description='Designed by jx.')
 subparsers = parser.add_subparsers()
@@ -55,6 +76,13 @@ svd_parser.add_argument('--datafile', required=True, help='')
 svd_parser.add_argument('--output', required=True, help='')
 # svd_parser.add_argument('--svd', type=int, required=True, help='Number of components to remove')
 svd_parser.set_defaults(func=svd)
+
+#CNV discover
+cnv_parser = subparsers.add_parser('discover', help="Run HMM to discover CNVs")
+cnv_parser.add_argument('--params', required=True, help='Parameters used by HMM')
+cnv_parser.add_argument('--datafile', required=True, help='Read depth file.')
+cnv_parser.add_argument('--output', required=True, help='Output file.')
+cnv_parser.set_defaults(func=discover)
 
 args = parser.parse_args()
 args.func(args)
