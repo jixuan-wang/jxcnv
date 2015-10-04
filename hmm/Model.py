@@ -1,5 +1,6 @@
 from numpy import *
 from ModelParams import *
+import Util
 
 class Model (object) :
     def __init__(self, _model_params, _observations):
