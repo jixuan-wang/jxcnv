@@ -9,21 +9,36 @@ class DataLoader(object) :
             self._datafile = open(self._filename)
             self._hasSkipHeadline = False
         
-    def getTargets(self) :
+    def getTargetsList(self) :
         if self._filename :
             datafile = open(self._filename)
             headline = datafile.readline().strip('\n')
             targets = []
-            for targetstr in headline.split('\t')[1:] :
-                temp1 = targetstr.split(':')
-                _chr = temp1[0]
-                temp2 = temp1[1].split('-')
-                bp1 = temp2[0]
-                bp2 = temp2[1]
-                interval = Interval(_chr, bp1, bp2)
-                targets.append(interval)
-            return targets
+            #since there could be more than one chrs in a target line
+            #the targets of different chrs should be put in different list
+            targets_list = []
+            headline_temp = headline.split('\t')[1:]
+            pre_str = headline_temp[0]
 
+            for targetstr in headline_temp:
+                if targetstr.split(':')[0] == pre_str.split(':')[0]:
+                    targets.append(self.buildIntervalFromStr(targetstr))
+                else:
+                    targets_list.append(targets)
+                    targets = [self.buildIntervalFromStr(targetstr)]
+                pre_str = targetstr
+            return targets_list
+
+    def buildIntervalFromStr(self, s):
+        temp1 = s.split(':')
+        _chr = temp1[0]
+        temp2 = temp1[1].split('-')
+        bp1 = temp2[0]
+        bp2 = temp2[1]
+        interval = Interval(_chr, bp1, bp2)
+        
+        return interval
+        
     def skipHeadline(self):
         if self._datafile and not self._hasSkipHeadline :
             self._datafile.readline()
