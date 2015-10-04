@@ -2,6 +2,8 @@ from numpy import *
 from Interval import *
 import math
 from scipy import stats
+import Util
+from PreciseNonNegativeReal import *
 
 class ModelParams(object):
     state = {'DEL':0, 'DIPLOID':1, 'DUP':2}
@@ -60,11 +62,11 @@ class ModelParams(object):
 
     #return the transition matrix at t1->t1+1
     def transitionMatirx(self, t1) :
-        tm = mat(zeros((self.getNumHiddenStates(), self.getNumHiddenStates())))
+        tm = Util.getMatrix(self.getNumHiddenStates(), self.getNumHiddenStates())
 
         for i in range(self.getNumHiddenStates()) :
             for j in range(self.getNumHiddenStates()):
-                tm[i, j] = self.transitionProb(i, j, t1)
+                tm[i][j] = PreciseNonNegativeReal(self.transitionProb(i, j, t1))
 
         return tm
     
@@ -74,7 +76,7 @@ class ModelParams(object):
             value = float(value)
         emissProbs = []
         for i in range(self.getNumHiddenStates()) :
-            emissProbs.append(stats.norm.pdf(value, self._mean[i], self._sd[i]))
+            emissProbs.append(PreciseNonNegativeReal(stats.norm.pdf(value, self._mean[i], self._sd[i])))
         return emissProbs
         
     

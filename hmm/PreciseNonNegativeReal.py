@@ -93,7 +93,7 @@ class PreciseNonNegativeReal:
 
     # print
     def __repr__(self):
-        return str(self.log10value)
+        return '10^('+str(self.log10value)+')'
 
     # if x = log(a), y = log(b), return log(a+b)
     def addInLogSpace(self, x, y):
