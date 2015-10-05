@@ -4,7 +4,8 @@ from hmm.ModelParams import *
 import numpy as np
 
 if __name__ == '__main__' :
-    datafile = '8_DATA.PCA_normalized.filtered.sample_zscores.RD.txt'
+    #datafile = '8_DATA.PCA_normalized.filtered.sample_zscores.RD.txt'
+    datafile = 'data'
     outputfile = 'output.txt'
     paramsfile = 'params.txt'
 

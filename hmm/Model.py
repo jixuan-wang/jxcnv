@@ -20,7 +20,7 @@ class Model (object) :
         # compute forward probabilities
         for t in range(o):
              print 'Calculating forward message ' + str(t)
-             #self.calcForwardMessage(t, alpha)
+             self.calcForwardMessage(t, alpha)
              print alpha[t]
         
         #compute backward probabilities

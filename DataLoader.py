@@ -20,6 +20,7 @@ class DataLoader(object) :
             headline_temp = headline.split('\t')[1:]
             pre_str = headline_temp[0]
 
+            only_one = True
             for targetstr in headline_temp:
                 if targetstr.split(':')[0] == pre_str.split(':')[0]:
                     targets.append(self.buildIntervalFromStr(targetstr))
@@ -27,6 +28,8 @@ class DataLoader(object) :
                     targets_list.append(targets)
                     targets = [self.buildIntervalFromStr(targetstr)]
                 pre_str = targetstr
+            targets_list.append(targets)
+
             return targets_list
 
     def buildIntervalFromStr(self, s):
@@ -72,13 +75,9 @@ class DataLoader(object) :
             self,_datafile.close()
 
     def outputCNV(self, sample, targets, pathlist) :
-        output = file(sample, 'w')
-
         for i in range(len(targets)) :
-		    output.write(targets[i].getInfo() + pathlist[i] + '\n')
+		    sample.write(targets[i].getInfo() + '\t' + pathlist[i] + '\n')
 
-        output.close()
-        
         
 if __name__ == '__main__' :
     dataLoader = DataLoader("DATA.PCA_normalized.filtered.sample_zscores.RD.txt")
