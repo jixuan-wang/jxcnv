@@ -1,5 +1,7 @@
 from numpy import *
 from ModelParams import *
+import pdb
+import copy
 
 class Model (object) :
     def __init__(self, _model_params, _observations):
@@ -9,32 +11,40 @@ class Model (object) :
     def forwardBackward_Viterbi(self):
         s = ModelParams.getNumHiddenStates()
         o = len(self._observations)
+        print self._observations
         alpha = mat(zeros((o, s)))
         beta = mat(zeros((o, s)))
         gamma = mat(zeros((o, s)))
         
         # compute forward probabilities
         for t in range(o):
-             print 'Calculating forward message ' + str(t)
+             #print 'Calculating forward message ' + str(t)
              self.calcForwardMessage(t, alpha)
-             print alpha[t]
+             #print alpha[t]
         
         #compute backward probabilities
         for t in range(o)[::-1] :
-            print 'Calculating backward message ' + str(t)
+            #print 'Calculating backward message ' + str(t)
             self.calcBackwardMessage(t, beta)
-            print beta[t]
         
         for t in range(o) :
             gamma[t] = multiply(alpha[t], beta[t])
+
+            print 't: ' + str(t),
+            print ' gamma: ' + str(gamma[t]),
+            print ' alpha: ' + str(alpha[t]),
+            print ' beta: ' + str(beta[t])
+
 
         _vpath = []
         for t in range(o) :
             _vpath.append(argmax(gamma[t]))
 
         vpathlist = []
+        i = 0
         for v in _vpath :
             vpathlist.append(ModelParams.statestr[v])
+            i += 1
         return vpathlist
 
     def calcForwardMessage(self, t, alpha):
@@ -61,7 +71,7 @@ class Model (object) :
         if t == o - 1 :
             backwardMess = mat(ones((1, s)))  
         else :
-            incomingBackwardMess = beta[t+1]
+            incomingBackwardMess = copy.deepcopy(beta[t+1])
             self.multiplyMessageTimesEmissProbs(incomingBackwardMess, t+1)
             transMatTranspose = transpose(self._model_params.transitionMatirx(t))
 

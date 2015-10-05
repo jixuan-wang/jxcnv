@@ -73,9 +73,9 @@ class DataLoader(object) :
         if self._datafile:
             self,_datafile.close()
 
-    def outputCNV(self, sample, targets, pathlist) :
+    def outputCNV(self, sample, targets, pathlist, observations) :
         for i in range(len(targets)) :
-		    sample.write(targets[i].getInfo() + pathlist[i] + '\n')
+		    sample.write(targets[i].getInfo() + '\t' + pathlist[i] + '\t' + observations[i] + '\n')
         
         
 if __name__ == '__main__' :
