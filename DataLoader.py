@@ -27,6 +27,8 @@ class DataLoader(object) :
                     targets_list.append(targets)
                     targets = [self.buildIntervalFromStr(targetstr)]
                 pre_str = targetstr
+            targets_list.append(targets)
+
             return targets_list
 
     def buildIntervalFromStr(self, s):
@@ -72,12 +74,8 @@ class DataLoader(object) :
             self,_datafile.close()
 
     def outputCNV(self, sample, targets, pathlist) :
-        output = file(sample, 'w')
-
         for i in range(len(targets)) :
-		    output.write(targets[i].getInfo() + pathlist[i] + '\n')
-
-        output.close()
+		    sample.write(targets[i].getInfo() + pathlist[i] + '\n')
         
         
 if __name__ == '__main__' :
