@@ -20,7 +20,6 @@ class DataLoader(object) :
             headline_temp = headline.split('\t')[1:]
             pre_str = headline_temp[0]
 
-            only_one = True
             for targetstr in headline_temp:
                 if targetstr.split(':')[0] == pre_str.split(':')[0]:
                     targets.append(self.buildIntervalFromStr(targetstr))
