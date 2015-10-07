@@ -2,6 +2,7 @@ from numpy import *
 from ModelParams import *
 import Util
 from PreciseNonNegativeReal import *
+import copy
 
 class Model (object) :
     def __init__(self, _model_params, _observations):
@@ -19,13 +20,13 @@ class Model (object) :
         
         # compute forward probabilities
         for t in range(o):
-             print 'Calculating forward message ' + str(t)
+             print 'Calculating forward message ' + str(t),
              self.calcForwardMessage(t, alpha)
              print alpha[t]
         
         #compute backward probabilities
         for t in range(o)[::-1] :
-            print 'Calculating backward message ' + str(t)
+            print 'Calculating backward message ' + str(t),
             self.calcBackwardMessage(t, beta)
             print beta[t]
         
@@ -40,6 +41,7 @@ class Model (object) :
         vpathlist = []
         for v in _vpath :
             vpathlist.append(ModelParams.statestr[v])
+
         return vpathlist
 
     def calcForwardMessage(self, t, alpha):
@@ -68,7 +70,7 @@ class Model (object) :
         if t == o - 1 :
             backwardMess = Util.getMatrix(1, s, 1)[0]
         else :
-            incomingBackwardMess = beta[t+1]
+            incomingBackwardMess = copy.deepcopy(beta[t+1])
             self.multiplyMessageTimesEmissProbs(incomingBackwardMess, t+1)
             transMatTranspose = Util.transposeMatirx(self._model_params.transitionMatirx(t))
 
@@ -83,17 +85,3 @@ class Model (object) :
 
         for i in range(ModelParams.getNumHiddenStates()) :
             message[i] *= emissProbs[i]
-            a = [123]
-
-        
-
-
-
-
-
-
-
-
-        
-
-

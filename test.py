@@ -22,13 +22,12 @@ if __name__ == '__main__' :
         for targets in targets_list:
             target_index_end = target_index_begin + len(targets)
 
-            modelParams = ModelParams(params, targets)
+            modelParams = ModelParams(params, targets[target_index_begin:target_index_end])
             #the 'observations' of sample is splitted
             model = Model(modelParams, sample['observations'][target_index_begin:target_index_end])
             pathlist = model.forwardBackward_Viterbi()
-            dataloader.outputCNV(output, targets, pathlist)
-            sample = dataloader.getNextSample()
-
+            dataloader.outputCNV(output, targets[target_index_begin:target_index_end], pathlist, sample['observations'][target_index_begin:target_index_end])
             target_index_begin = target_index_end
 
         output.close()
+        sample = dataloader.getNextSample()
