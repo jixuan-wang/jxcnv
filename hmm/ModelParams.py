@@ -93,8 +93,3 @@ class ModelParams(object):
     def getNumHiddenStates():
         return len(ModelParams.state)
 
-
-if __name__ == '__main__':
-    #mp = ModelParams([1e-08,6,70,-3,1,0,1,3,1])
-    #print mp.getInitProbs()
-    print '123' 

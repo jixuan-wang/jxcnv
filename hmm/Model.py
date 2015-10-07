@@ -11,30 +11,24 @@ class Model (object) :
     def forwardBackward_Viterbi(self):
         s = ModelParams.getNumHiddenStates()
         o = len(self._observations)
-        print self._observations
         alpha = mat(zeros((o, s)))
         beta = mat(zeros((o, s)))
         gamma = mat(zeros((o, s)))
         
         # compute forward probabilities
         for t in range(o):
-             #print 'Calculating forward message ' + str(t)
+             print 'Calculating forward message ' + str(t),
              self.calcForwardMessage(t, alpha)
-             #print alpha[t]
+             print alpha[t]
         
         #compute backward probabilities
         for t in range(o)[::-1] :
-            #print 'Calculating backward message ' + str(t)
+            print 'Calculating backward message ' + str(t),
             self.calcBackwardMessage(t, beta)
+            print beta[t]
         
         for t in range(o) :
             gamma[t] = multiply(alpha[t], beta[t])
-
-            print 't: ' + str(t),
-            print ' gamma: ' + str(gamma[t]),
-            print ' alpha: ' + str(alpha[t]),
-            print ' beta: ' + str(beta[t])
-
 
         _vpath = []
         for t in range(o) :

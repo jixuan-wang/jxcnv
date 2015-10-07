@@ -7,7 +7,7 @@ class Interval(object):
 
 
     def distance(self, another):
-        if self._chr == another._chr:
+        if self._chr != another._chr:
             return float("inf")
         if self._bp2 < another._bp1:
             return another._bp1 - self._bp2
