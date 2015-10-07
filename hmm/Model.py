@@ -20,15 +20,15 @@ class Model (object) :
         
         # compute forward probabilities
         for t in range(o):
-             print 'Calculating forward message ' + str(t),
+             #print 'Calculating forward message ' + str(t),
              self.calcForwardMessage(t, alpha)
-             print alpha[t]
+             #print alpha[t]
         
         #compute backward probabilities
         for t in range(o)[::-1] :
-            print 'Calculating backward message ' + str(t),
+            #print 'Calculating backward message ' + str(t),
             self.calcBackwardMessage(t, beta)
-            print beta[t]
+            #print beta[t]
         
         for x in range(o) :
             for y in range(s):
@@ -40,7 +40,7 @@ class Model (object) :
 
         vpathlist = []
         for v in _vpath :
-            vpathlist.append(ModelParams.statestr[v])
+                vpathlist.append(ModelParams.statestr[v])
 
         return vpathlist
 

@@ -15,7 +15,10 @@ class PreciseNonNegativeReal:
             else:
                 if d < 0:
                     raise Exception("the argument muse be non-negative")
-                self.log10value = log10(d)
+                elif d == 0:
+                    self.log10value = float('-inf')
+                else:
+                    self.log10value = log10(d)
         else:
             self.log10value = d.log10value
 

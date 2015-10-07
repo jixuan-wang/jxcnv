@@ -73,6 +73,7 @@ class DataLoader(object) :
         if self._datafile:
             self,_datafile.close()
 
-    def outputCNV(self, sample, targets, pathlist, observations) :
+    def outputCNV(self, output, sample_id, targets, pathlist, observations) :
         for i in range(len(targets)) :
-		    sample.write(targets[i].getInfo() + '\t' + pathlist[i] + '\t' + observations[i] + '\n')
+            if pathlist[i] != 'DIPLOID':
+		        output.write(sample_id + '\t' + targets[i].getInfo() + '\t' + pathlist[i] + '\t' + observations[i] + '\n')
