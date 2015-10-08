@@ -63,7 +63,7 @@ def discover(args) :
     targets_list = dataloader.getTargetsList()
     output = file(outputfile, 'w')
     while sample :
-        if sample_req == '' || (sample_req != '' && sample['sample_id'] == sample_req):
+        if sample_req == '' or (sample_req != '' and sample['sample_id'] == sample_req):
             sample_flag = True
             #target_index is used to split observations sequence
             target_index_begin = 0
@@ -84,9 +84,9 @@ def discover(args) :
         sample = dataloader.getNextSample()
 
     output.close()
-    dataloader.close()
+    dataloader.closeFile()
 
-    if !sample_flag:
+    if not sample_flag:
         print 'Could not find the sample_id specified.'
 
 parser = argparse.ArgumentParser(prog='jxcnv', description='Designed by jx.')
@@ -104,7 +104,7 @@ cnv_parser = subparsers.add_parser('discover', help="Run HMM to discover CNVs")
 cnv_parser.add_argument('--params', required=True, help='Parameters used by HMM')
 cnv_parser.add_argument('--datafile', required=True, help='Read depth file.')
 cnv_parser.add_argument('--output', required=True, help='Output file.')
-cnv_parser.add_argument('--sample', required=False, default='' help='Optionally, users can choose one sample to run.')
+cnv_parser.add_argument('--sample', required=False, default='', help='Optionally, users can choose one sample to run.')
 cnv_parser.set_defaults(func=discover)
 
 args = parser.parse_args()
