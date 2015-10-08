@@ -52,31 +52,42 @@ def discover(args) :
     datafile = args.datafile
     outputfile = args.output
     paramsfile = args.params
+    sample_req = args.sample
+    sample_flag = False #used to check whether sample_req exists
+
+    print 'Loading data file...'
     dataloader = DataLoader(datafile)
     params = dataloader.getParams(paramsfile)
     dataloader.skipHeadline()
     sample = dataloader.getNextSample()
     targets_list = dataloader.getTargetsList()
+    output = file(outputfile, 'w')
     while sample :
-        output = file(sample['sample_id'], 'w')
-        #target_index is used to split observations sequence
-        target_index_begin = 0
-        target_index_end = 0
-        for targets in targets_list:
-            target_index_end = target_index_begin + len(targets)
+        if sample_req == '' || (sample_req != '' && sample['sample_id'] == sample_req):
+            sample_flag = True
+            #target_index is used to split observations sequence
+            target_index_begin = 0
+            target_index_end = 0
+            temp = 1
+            for targets in targets_list:
+                print 'Running HMM for sample[' + sample['sample_id'] + ']: ',
+                print 'chr' + targets[0]._chr + ' [' + str(temp) + '\\' + str(len(targets_list)) + ']'
+                temp += 1
+                target_index_end = target_index_begin + len(targets)
 
-            modelParams = ModelParams(params, targets)
-            #the 'observations' of sample is splitted
-            model = Model(modelParams, sample['observations'][target_index_begin:target_index_end])
-            pathlist = model.forwardBackward_Viterbi()
-            dataloader.outputCNV(output, targets, pathlist)
-            sample = dataloader.getNextSample()
+                modelParams = ModelParams(params, targets)
+                #the 'observations' of sample is splitted
+                model = Model(modelParams, sample['observations'][target_index_begin:target_index_end])
+                pathlist = model.forwardBackward_Viterbi()
+                dataloader.outputCNV(output, sample['sample_id'], targets, pathlist, sample['observations'][target_index_begin:target_index_end])
+                target_index_begin = target_index_end
+        sample = dataloader.getNextSample()
 
-            target_index_begin = target_index_end
+    output.close()
+    dataloader.close()
 
-        output.close()
-        
-
+    if !sample_flag:
+        print 'Could not find the sample_id specified.'
 
 parser = argparse.ArgumentParser(prog='jxcnv', description='Designed by jx.')
 subparsers = parser.add_subparsers()
@@ -93,6 +104,7 @@ cnv_parser = subparsers.add_parser('discover', help="Run HMM to discover CNVs")
 cnv_parser.add_argument('--params', required=True, help='Parameters used by HMM')
 cnv_parser.add_argument('--datafile', required=True, help='Read depth file.')
 cnv_parser.add_argument('--output', required=True, help='Output file.')
+cnv_parser.add_argument('--sample', required=False, default='' help='Optionally, users can choose one sample to run.')
 cnv_parser.set_defaults(func=discover)
 
 args = parser.parse_args()
