@@ -73,7 +73,7 @@ class DataLoader(object) :
         
     def closeFile(self):
         if self._datafile:
-            self,_datafile.close()
+            self._datafile.close()
 
     def outputCNV(self, output, sample_id, targets, pathlist, observations) :
         dup_begin_index = 0
@@ -87,11 +87,11 @@ class DataLoader(object) :
                 if i > dup_begin_index + 1:
                     full_interval = targets[dup_begin_index]._chr + ':' + str(targets[dup_begin_index]._bp1) + '-' + str(targets[i-1]._bp2)
                     for j in range(dup_begin_index-2 if dup_begin_index-2>0 else 0, dup_begin_index):
-                        output.write(sample_id + '\t' + pathlist[j] + '\t' + full_interval + '\tU-' + str(dup_begin_index-j) + '\t' + targets[j].getInfo() + '\t' + observations[j] +'\n')
+                        output.write(sample_id + '\t' + pathlist[dup_begin_index] + '\t' + full_interval + '\tU-' + str(dup_begin_index-j) + '\t' + targets[j].getInfo() + '\t' + observations[j] +'\n')
                     for j in range(dup_begin_index, i):
                         output.write(sample_id + '\t' + pathlist[j] + '\t' + full_interval + '\t' + str(j-dup_begin_index+1) + '\t' + targets[j].getInfo() + '\t' + observations[j]  + '\n')
                     for j in range(i, i+2 if i+2<len(targets) else len(targets)):
-                        output.write(sample_id + '\t' + pathlist[j] + '\t' + full_interval + '\tD+' + str(j-i+1) + '\t' + targets[j].getInfo() + '\t' + observations[j] + '\n')
+                        output.write(sample_id + '\t' + pathlist[dup_begin_index] + '\t' + full_interval + '\tD+' + str(j-i+1) + '\t' + targets[j].getInfo() + '\t' + observations[j] + '\n')
                 #dup_begin_index = 0
                 dup_begin_flag = False
 
@@ -99,11 +99,11 @@ class DataLoader(object) :
                 if i > del_begin_index + 1:
                     full_interval = targets[del_begin_index]._chr + ':' + str(targets[del_begin_index]._bp1) + '-' + str(targets[i-1]._bp2)
                     for j in range(del_begin_index-2 if del_begin_index-2>0 else 0, del_begin_index):
-                        output.write(sample_id + '\t' + pathlist[j] + '\t' + full_interval + '\tU-' + str(del_begin_index-j) + '\t' + targets[j].getInfo() + '\t' + observations[j] +'\n')
+                        output.write(sample_id + '\t' + pathlist[del_begin_index] + '\t' + full_interval + '\tU-' + str(del_begin_index-j) + '\t' + targets[j].getInfo() + '\t' + observations[j] +'\n')
                     for j in range(del_begin_index, i):
                         output.write(sample_id + '\t' + pathlist[j] + '\t' + full_interval + '\t' + str(j-del_begin_index+1) + '\t' + targets[j].getInfo() + '\t' + observations[j]  + '\n')
                     for j in range(i, i+2 if i+2<len(targets) else len(targets)):
-                        output.write(sample_id + '\t' + pathlist[j] + '\t' + full_interval + '\tD+' + str(j-i+1) + '\t' + targets[j].getInfo() + '\t' + observations[j] + '\n')
+                        output.write(sample_id + '\t' + pathlist[del_begin_index] + '\t' + full_interval + '\tD+' + str(j-i+1) + '\t' + targets[j].getInfo() + '\t' + observations[j] + '\n')
                 #del_begin_index = 0
                 del_begin_flag = False
 
