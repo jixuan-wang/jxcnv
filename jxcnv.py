@@ -62,6 +62,7 @@ def discover(args) :
     sample = dataloader.getNextSample()
     targets_list = dataloader.getTargetsList()
     output = file(outputfile, 'w')
+    output.write('SAMPLE_ID\tCNV\tFULL_INTERVAL\tINDEX\tINTERVAL\tREAD_DEPTH\n')
     while sample :
         if sample_req == '' or (sample_req != '' and sample['sample_id'] == sample_req):
             sample_flag = True
