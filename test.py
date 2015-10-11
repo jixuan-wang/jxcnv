@@ -1,4 +1,4 @@
-from DataLoader import *
+from DataManager import *
 from hmm.Model import *
 from hmm.ModelParams import *
 import numpy as np
@@ -10,7 +10,7 @@ if __name__ == '__main__' :
     paramsfile = 'params.txt'
 
     print 'Loading data file...'
-    dataloader = DataLoader(datafile)
+    dataloader = DataManager(datafile)
     params = dataloader.getParams(paramsfile)
     dataloader.skipHeadline()
     sample = dataloader.getNextSample()

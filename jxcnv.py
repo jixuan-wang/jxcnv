@@ -1,5 +1,5 @@
 import argparse
-from DataLoader import *
+from DataManager import *
 from hmm.Model import *
 from hmm.ModelParams import *
 import numpy as np
@@ -56,7 +56,7 @@ def discover(args) :
     sample_flag = False #used to check whether sample_req exists
 
     print 'Loading data file...'
-    dataloader = DataLoader(datafile)
+    dataloader = DataManager(datafile)
     params = dataloader.getParams(paramsfile)
     dataloader.skipHeadline()
     sample = dataloader.getNextSample()
