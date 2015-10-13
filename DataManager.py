@@ -116,12 +116,6 @@ class DataManager(object) :
                 del_begin_index = i
                 del_begin_flag = True 
 
-    def readVCFInfo(self, vcf_file, intervals_list):
-        vcf_reader = vcf.Reader(filename=vcf_file)
-        
-        for in_list in intervals_list:
-            for interval in in_list:
-                for record in vcf_reader.fetch(interval._chr, interval._bp1, interval._bp2):
 
                 
 
