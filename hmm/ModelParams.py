@@ -87,17 +87,17 @@ class ModelParams(object):
         emissProbs = []
         for i in range(self.getNumHiddenStates()) :
             if i == 0:
-                emissProbs.append(PreciseNonNegativeReal(getCH(1) * stats.norm.pdf(value, self._mean[i], self._sd[i])))
+                emissProbs.append(PreciseNonNegativeReal(self.getCH(1, t) * stats.norm.pdf(value, self._mean[i], self._sd[i])))
             else:
-                emissProbs.append(PreciseNonNegativeReal(getCH(2) * stats.norm.pdf(value, self._mean[i], self._sd[i])))
+                emissProbs.append(PreciseNonNegativeReal(self.getCH(2, t) * stats.norm.pdf(value, self._mean[i], self._sd[i])))
         return emissProbs
 
     # use these probabilities to penalize the heterozgosity at the regions of deletions
-    def getCH(self, i, t)
+    def getCH(self, i, t):
         if i ==0 or i == 1:
             return 10 ** (i - 3 - self.het_nums[t])
-        else if i >= 2:
-            return (1 - getCH(0) - getCH(1)) / 10
+        elif i >= 2:
+            return (1 - self.getCH(0, t) - self.getCH(1, t)) / 10
         
     
     def getInitProbs(self):

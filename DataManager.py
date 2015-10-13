@@ -10,7 +10,7 @@ class DataManager(object) :
             self._datafile = open(self._filename)
             self._hasSkipHeadline = False
         else:
-            raise Excetion('Data file does not exist')
+            raise Exception('Data file does not exist')
         
     def getTargetsList(self) :
         if self._filename :
