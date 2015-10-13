@@ -3,6 +3,7 @@ from DataManager import *
 from hmm.Model import *
 from hmm.ModelParams import *
 import numpy as np
+from VCFReader import *
 
 def svd(args):
 	filename = args.datafile 
@@ -53,6 +54,7 @@ def discover(args) :
     outputfile = args.output
     paramsfile = args.params
     sample_req = args.sample
+    vcf_file = args.vcf
     sample_flag = False #used to check whether sample_req exists
 
     print 'Loading data file...'
@@ -63,9 +65,18 @@ def discover(args) :
     targets_list = dataloader.getTargetsList()
     output = file(outputfile, 'w')
     output.write('SAMPLE_ID\tCNV\tFULL_INTERVAL\tINDEX\tINTERVAL\tREAD_DEPTH\n')
+
+    vcf_reader = None
+    if vcf_file != '':
+        vcf_reader = VCFReader(vcf_file)
+         
     while sample :
         if sample_req == '' or (sample_req != '' and sample['sample_id'] == sample_req):
             sample_flag = True
+            snp_info = list()
+            if vcf_reader:
+                print 'Load SNP information for: ' + sample['sample_id']
+                snp_info = vcf_reader.getSNPInfo(sample['sample_id'], targets_list)
             #target_index is used to split observations sequence
             target_index_begin = 0
             target_index_end = 0
@@ -76,10 +87,16 @@ def discover(args) :
                 temp += 1
                 target_index_end = target_index_begin + len(targets)
 
-                modelParams = ModelParams(params, targets)
+                modelParams = ModelParams(params, targets, snp_info[target_index_begin:target_index_end])
                 #the 'observations' of sample is splitted
                 model = Model(modelParams, sample['observations'][target_index_begin:target_index_end])
-                pathlist = model.forwardBackward_Viterbi()
+                pathlist = list()
+                
+                if vcf_reader:
+                    pathlist = model.forwardBackward_Viterbi(True)
+                else:
+                    pathlist = model.forwardBackward_Viterbi()
+
                 dataloader.outputCNV(output, sample['sample_id'], targets, pathlist, sample['observations'][target_index_begin:target_index_end])
                 target_index_begin = target_index_end
         sample = dataloader.getNextSample()
@@ -106,6 +123,7 @@ cnv_parser.add_argument('--params', required=True, help='Parameters used by HMM'
 cnv_parser.add_argument('--datafile', required=True, help='Read depth file.')
 cnv_parser.add_argument('--output', required=True, help='Output file.')
 cnv_parser.add_argument('--sample', required=False, default='', help='Optionally, users can choose one sample to run.')
+cnv_parser.add_argument('--vcf'. required=False, default='', help='Optionally, users can input snp information by specifing a vcf file')
 cnv_parser.set_defaults(func=discover)
 
 args = parser.parse_args()

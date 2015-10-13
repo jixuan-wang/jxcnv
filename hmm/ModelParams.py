@@ -9,7 +9,8 @@ class ModelParams(object):
     state = {'DEL':0, 'DIPLOID':1, 'DUP':2}
     statestr = ['DEL', 'DIPLOID', 'DUP'] 
 
-    def __init__(self, params, intervals):
+    def __init__(self, params, intervals, het_nums):
+        self.het_nums = het_nums
         self._p = float(params[0])
         self._e = int(params[1])
         self._d = int(params[2]) * Interval.KB
@@ -78,6 +79,25 @@ class ModelParams(object):
         for i in range(self.getNumHiddenStates()) :
             emissProbs.append(PreciseNonNegativeReal(stats.norm.pdf(value, self._mean[i], self._sd[i])))
         return emissProbs
+
+    
+    def getEmissProbsWithSNP(self, value, t) :
+        if isinstance(value, str):
+            value = float(value)
+        emissProbs = []
+        for i in range(self.getNumHiddenStates()) :
+            if i == 0:
+                emissProbs.append(PreciseNonNegativeReal(getCH(1) * stats.norm.pdf(value, self._mean[i], self._sd[i])))
+            else:
+                emissProbs.append(PreciseNonNegativeReal(getCH(2) * stats.norm.pdf(value, self._mean[i], self._sd[i])))
+        return emissProbs
+
+    # use these probabilities to penalize the heterozgosity at the regions of deletions
+    def getCH(self, i, t)
+        if i ==0 or i == 1:
+            return 10 ** (i - 3 - self.het_nums[t])
+        else if i >= 2:
+            return (1 - getCH(0) - getCH(1)) / 10
         
     
     def getInitProbs(self):

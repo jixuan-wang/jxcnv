@@ -11,7 +11,7 @@ class Model (object) :
     
     # IMPORTANT: the elements of alpha, beta, gamma are all
     # PreciseNonNegativeReal type
-    def forwardBackward_Viterbi(self):
+    def forwardBackward_Viterbi(self, if_snp):
         s = ModelParams.getNumHiddenStates()
         o = len(self._observations)
         alpha = Util.getMatrix(o, s) 
@@ -21,13 +21,13 @@ class Model (object) :
         # compute forward probabilities
         for t in range(o):
              #print 'Calculating forward message ' + str(t),
-             self.calcForwardMessage(t, alpha)
+             self.calcForwardMessage(t, alpha, if_snp)
              #print alpha[t]
         
         #compute backward probabilities
         for t in range(o)[::-1] :
             #print 'Calculating backward message ' + str(t),
-            self.calcBackwardMessage(t, beta)
+            self.calcBackwardMessage(t, beta, if_snp)
             #print beta[t]
         
         for x in range(o) :
@@ -44,7 +44,7 @@ class Model (object) :
 
         return vpathlist
 
-    def calcForwardMessage(self, t, alpha):
+    def calcForwardMessage(self, t, alpha, if_snp):
         forwardMess = alpha[t]
         s = ModelParams.getNumHiddenStates()
 
@@ -59,10 +59,10 @@ class Model (object) :
             # convert 'forwardMess' to list
             forwardMess = Util.mulMatrix([incomingForwardMess], transMat)[0]
         
-        self.multiplyMessageTimesEmissProbs(forwardMess, t)
+        self.multiplyMessageTimesEmissProbs(forwardMess, t, if_snp)
         alpha[t] = forwardMess
 
-    def calcBackwardMessage(self, t, beta) :
+    def calcBackwardMessage(self, t, beta, if_snp) :
         backwardMess = beta[t]
         o = len(self._observations)
         s = ModelParams.getNumHiddenStates()
@@ -71,7 +71,7 @@ class Model (object) :
             backwardMess = Util.getMatrix(1, s, 1)[0]
         else :
             incomingBackwardMess = copy.deepcopy(beta[t+1])
-            self.multiplyMessageTimesEmissProbs(incomingBackwardMess, t+1)
+            self.multiplyMessageTimesEmissProbs(incomingBackwardMess, t+1, if_snp)
             transMatTranspose = Util.transposeMatirx(self._model_params.transitionMatirx(t))
 
             # convert 'incomingBackwardMess' to matirx
@@ -80,8 +80,9 @@ class Model (object) :
 
         beta[t] = backwardMess
             
-    def multiplyMessageTimesEmissProbs(self, message, t):
+    def multiplyMessageTimesEmissProbs(self, message, t, if_snp):
         emissProbs = self._model_params.getEmissProbs(self._observations[t])
-
+        if if_snp:
+            emissProbs = self._model_params.getEmissProbsWithSNP(self._observations[t], t)
         for i in range(ModelParams.getNumHiddenStates()) :
             message[i] *= emissProbs[i]
