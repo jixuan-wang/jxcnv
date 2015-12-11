@@ -3,6 +3,7 @@ from ModelParams import *
 import Util
 from PreciseNonNegativeReal import *
 import copy
+import time
 
 class Model (object) :
     def __init__(self, _model_params, _observations):
@@ -21,8 +22,8 @@ class Model (object) :
         # compute forward probabilities
         for t in range(o):
              #print 'Calculating forward message ' + str(t),
-             self.calcForwardMessage(t, alpha, if_snp)
-             #print alpha[t]
+            self.calcForwardMessage(t, alpha, if_snp)
+            #print alpha[t]
         
         #compute backward probabilities
         for t in range(o)[::-1] :
@@ -31,8 +32,14 @@ class Model (object) :
             #print beta[t]
         
         for x in range(o) :
-            for y in range(s):
-                gamma[x][y] = PreciseNonNegativeReal(alpha[x][y] * beta[x][y])
+            if type(self._observations[x]) in (int,float) :
+                for y in range(s):
+                    gamma[x][y] = PreciseNonNegativeReal(alpha[x][y] * beta[x][y])
+                    # print x,self._observations[x],alpha[x][y],beta[x][y],gamma[x][y]
+                    # time.sleep(2)
+            else:
+                print x,self._observations[x]
+
 
         _vpath = []
         for t in range(o) :
@@ -82,6 +89,7 @@ class Model (object) :
             
     def multiplyMessageTimesEmissProbs(self, message, t, if_snp):
         emissProbs = self._model_params.getEmissProbs(self._observations[t])
+        # pdb.set_trace()
         if if_snp:
             emissProbs = self._model_params.getEmissProbsWithSNP(self._observations[t], t)
         for i in range(ModelParams.getNumHiddenStates()) :

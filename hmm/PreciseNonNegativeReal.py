@@ -140,12 +140,16 @@ class PreciseNonNegativeReal:
         return  self.compareReal(self.log10value, other.log10value)
 
     def compareReal(self, r1, r2):
-        diff = r1 - r2
-        if abs(diff) <= self.REAL_EPSILON:
-            return 0 # r1 == r2
+        try:
+            diff = r1 - r2
+            if abs(diff) <= self.REAL_EPSILON:
+                return 0 # r1 == r2
 
-        if diff > self.REAL_ZERO:
-            return 1
-        else:
-            return -1
+            if diff > self.REAL_ZERO:
+                return 1
+            else:
+                return -1
+        except Exception, e:
+            raise e
+        
         
