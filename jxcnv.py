@@ -1,5 +1,6 @@
 from __future__ import division
 import argparse
+import jxcnv_functions as jf
 from DataManager import *
 from hmm.Model import *
 from hmm.ModelParams import *
@@ -7,6 +8,103 @@ import numpy as np
 from VCFReader import *
 from ParameterEstimation import *
 import pdb
+
+def bamlist2RPKM(args):
+    try:
+        import pysam
+    except:
+        print 'Cannot load pysam module!'
+        sys.exit(0)
+    try:
+        # read target
+        target_fn = str(args.target)
+        targets = jf.loadTargets(target_fn)
+        num_target = len(targets)
+    except IOError:
+        print 'Cannot read target file: ', target_fn
+        sys.exit(0)
+
+    try:
+        rpkm_f = open(args.output, 'w')
+    except IOError:
+        sys.exit(0)
+
+    try:
+        bamlist_f = open(args.input)
+    except IOError:
+        sys.exit(0)
+
+    while line = bamlist_f.readline():
+        line = line.strip('\n')
+        bam_file = line.split('\t')[0]
+
+        print 'Counting total number of reads in bam file: ', bam_file
+        total_reads = float(pysam.view("-c", bam_file)[0].strip9'\n')
+        print 'Found %d reads in bam file: ' % total_reads, bam_file
+
+        f = pysam.Samfile(bam_file, 'rb')
+
+        if not f._hasIndex():
+            print 'No index found for ', bam_file
+            sys.exit(0)
+    
+        readcount = np.zeros(num_target)
+        exon_bp = np.zeros(num_target)
+        targetIDs = np.zeros(num_target)
+        counter = 0
+
+        # detect contig naming scheme here # TODO, add an optional "contigs.txt" file or automatically handle contig naming
+        bam_contigs = f.references
+        targets_contigs = [str(t) for t in set(map(operator.itemgetter("chr"), targets))]
+                    
+        targets2contigmap = {}
+                    
+        for targets_contig in targets_contigs:
+            if targets_contig in bam_contigs:
+                targets2contigmap[targets_contig] = targets_contig
+            elif jf.chrInt2Str(targets_contig) in bam_contigs:
+                targets2contigmap[targets_contig] = jf.chrInt2Str(targets_contig)
+            elif jf.chrInt2Str(targets_contig).replace("chr","") in bam_contigs:
+                targets2contigmap[targets_contig] = jf.chrInt2Str(targets_contig).replace("chr","")
+            else:
+                print "[ERROR] Could not find contig '%s' from %s in bam file! \n[ERROR] Perhaps the contig names for the targets are incompatible with the bam file ('chr1' vs. '1'), or unsupported contig naming is used?" % (targets_contig, target_fn)
+                sys.exit(0)
+
+        print 'Calculating RPKM values...'
+        
+        for t in targets:
+            t_chr = targets2contigmap[str(t['chr'])]
+
+            t_start = t['start']
+            t_stop = t['stop']
+            
+            try:
+                iter = f.fetch(t_chr, t_start, t_stop)
+            except:
+                print "[ERROR] Could not retrieve mappings for region %s:%d-%d. Check that contigs are named correctly and the bam file is properly indexed" % (t_chr,t_start,t_stop)
+                sys.exit(0)
+
+            for i in iter:
+                if i.posi+1 >= t_start:
+                    readcount[counter] += 1
+
+            exon_bp[counter] = t_stop - t_start
+            targetIDs[counter] = counter + 1
+            counter += 1
+
+        # calculate RPKM values for all targets 
+        rpkm = (10**9*(readcount)/(exon_bp))/(total_reads)
+        
+        rpkm_f.write(bam_file)
+        for rv in rpkm:
+            rpkm_v.write('\t' + rv)
+        rpkm_f.write('\n')
+
+    rpkm_f.close()
+    bamlist_f.close()
+    
+       
+       
 
 def svd(args):
 	filename = args.datafile 
@@ -161,6 +259,13 @@ def discover(args) :
 
 parser = argparse.ArgumentParser(prog='jxcnv', description='Designed by jx.')
 subparsers = parser.add_subparsers()
+
+#BAM List -> RPKM
+svd_parser = subparsers.add_parser('rpkm', help="Create RPKM matrix from a BAM list")
+svd_parser.add_argument('--target', required=True, help='Target definition file')
+svd_parser.add_argument('--input', required=True, help='BAM file list, each line for each sample')
+svd_parser.add_argument('--output', required=True, help='File to write RPKM matrix')
+svd_parser.set_defaults(func=bamlist2RPKM)
 
 #SVD
 svd_parser = subparsers.add_parser('svd', help="SVD")
