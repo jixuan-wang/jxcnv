@@ -9,10 +9,13 @@ def loadTargets(target_filename):
 
     while line = targetfile.readline():
         line = line.strip('\n')
-        temp1 = line.split(':')
-        temp2 = temp1[1].split('-')
-        targets.append({'targetID': target_id, 'chr': temp1[0], 'start': temp2[0], 'stop': temp2[1]})
-        target_id += 1
+        #temp1 = line.split(':')
+        #temp2 = temp1[1].split('-')
+        #targets.append({'targetID': target_id, 'chr': temp1[0], 'start': temp2[0], 'stop': temp2[1]})
+        #target_id += 1
+        temp = line.split('\t')
+        targets.append({'targetID': temp[3], 'chr': temp[0], 'start': temp[1], 'stop': temp[2]})
+
 
     return targets
 
