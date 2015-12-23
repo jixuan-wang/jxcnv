@@ -1,9 +1,12 @@
 from __future__ import division
+import os
 import argparse
+import glob
 import jxcnv_functions as jf
 from DataManager import *
 from hmm.Model import *
 from hmm.ModelParams import *
+import operator 
 import numpy as np
 from VCFReader import *
 from ParameterEstimation import *
@@ -24,27 +27,25 @@ def bamlist2RPKM(args):
         print 'Cannot read target file: ', target_fn
         sys.exit(0)
 
-    try:
-        rpkm_f = open(args.output, 'w')
-    except IOError:
-        sys.exit(0)
+    if not os.path.exists(args.output):
+        os.mkdir(args.output)
 
     try:
         bamlist_f = open(args.input)
     except IOError:
         sys.exit(0)
 
-    while line = bamlist_f.readline():
+    for line in bamlist_f.readlines():
         line = line.strip('\n')
         bam_file = line.split('\t')[0]
 
         print 'Counting total number of reads in bam file: ', bam_file
-        total_reads = float(pysam.view("-c", bam_file)[0].strip9'\n')
+        total_reads = float(pysam.view("-c", bam_file)[0].strip('\n'))
         print 'Found %d reads in bam file: ' % total_reads, bam_file
 
-        f = pysam.Samfile(bam_file, 'rb')
+        f = pysam.AlignmentFile(bam_file, 'rb')
 
-        if not f._hasIndex():
+        if not f.has_index():
             print 'No index found for ', bam_file
             sys.exit(0)
     
@@ -85,7 +86,7 @@ def bamlist2RPKM(args):
                 sys.exit(0)
 
             for i in iter:
-                if i.posi+1 >= t_start:
+                if i.pos+1 >= t_start:
                     readcount[counter] += 1
 
             exon_bp[counter] = t_stop - t_start
@@ -95,60 +96,164 @@ def bamlist2RPKM(args):
         # calculate RPKM values for all targets 
         rpkm = (10**9*(readcount)/(exon_bp))/(total_reads)
         
-        rpkm_f.write(bam_file)
-        for rv in rpkm:
-            rpkm_v.write('\t' + rv)
-        rpkm_f.write('\n')
+        rpkm_f = open(args.output+'/'+os.path.splitext(bam_file)[0].split('/')[-1]+'.rpkm', 'w')
+        rpkm_f.write('chr\tstart\tstop\trpkm\n')
+        for i in range(len(rpkm)):
+            rpkm_f.write(targets[i]['chr'] + '\t' + str(targets[i]['start']) + '\t' + str(targets[i]['stop']) + '\t' + str(rpkm[i]) + '\n')
+    	rpkm_f.close()
 
-    rpkm_f.close()
     bamlist_f.close()
     
-       
-       
+def normalize(args): 
+    rpkm_matrix = str(args.rpkm_matrix)
+    output = rpkm_matrix + '.normalized'
+    if args.output:
+        output = str(args.output) + '.normalized'
+    targets = jf.loadTargetsFromFirstCol(rpkm_matrix)
+    
+    print 'Loading matrix...'
+    result = jf.loadRPKMMatrix(rpkm_matrix)
+    rpkm = result['data']
+    samples = result['samples']
+
+    #Fileter targets which median of RPKM < min_rpkm
+
+    #Calculate GC Percentage
+    print "Calculate GC Percentage..."
+    GC_percentage = jf.calGCPercentage(targets, args.ref_file)
+    GC_index = {}
+    # exclude targets with GC percentage == -1
+    excludedByGC = []
+    for ind,gc in GC_percentage:
+        if gc == -1:
+            excludedByGC.append(ind)
+        elif GC_index.has_key(gc):
+            GC_index[gc].append(ind)
+        else:
+            GC_index[gc] = [ind]
+
+    print 'Normalizing by GC percentage...'
+    corrected_rpkm = np.zeros([len(rpkm), len(rpkm[0])], dtype=np.float)
+    for i in range(len(samples)):
+        print 'Normalizing RPKM for sample: ' + samples[i]
+        overall_median = np.median(rpkm[:, i])
+        for gc in GC_index.keys():
+            t_ind = GC_index[gc]
+            t_median = np.mean(rpkm[t_ind, i]) 
+            if t_median == 0:
+                print 'WARNING. Median == 0, sample: %s, GC: %d%' %(samples[i], gc)
+            else:
+                corrected_rpkm[t_ind, i] = rpkm[t_ind, i] * overall_median / t_median
+        
+    #Calculate Mapping ability
+    map_ability = jf.calMapAbility(targets, args.map_file)
+    map_index = {}
+    excludedByMap = []
+    for ind,_map in map_ability:
+        if _map == -1:
+            excludedByMap.append(ind)
+        elif map_index.has_key(_map):
+            map_index[_map].append(ind)
+        else:
+            map_index[_map] = [ind]
+
+    print 'Normalizing by Mapping ability...'
+    for i in range(len(samples)):
+        print 'Normalizing RPKM for sample %s' %samples[i]
+        overall_median = np.median(corrected_rpkm[:, i])
+        for _map in map_index.keys():
+            t_ind = map_index[_map]
+            t_median = np.mean(corrected_rpkm[t_ind, i])
+            if t_median == 0:
+                print 'WARNING. Median == 0, sample: %s, Mapping ability: %d%' %(samples[i], _map)
+            else:
+                corrected_rpkm[t_ind, i] = corrected_rpkm[t_ind, i] * overall_median / t_median
+
+    #Calculate exome length
+    
+
+def RPKM2Matrix(args):
+    rpkm_dir = str(args.rpkm_dir)
+    rpkm_files = glob.glob(rpkm_dir + "/*")
+    if len(rpkm_files) == 0:
+        print 'Cannot find any rpkm files'
+        sys.exit(0)
+
+    try:
+        # read target
+        target_fn = str(args.target)
+        targets = jf.loadTargetsStr(target_fn)
+        num_target = len(targets)
+    except IOError:
+        print 'Cannot read target file: ', target_fn
+        sys.exit(0)
+   
+    samples = {}
+    for f in rpkm_files:
+        s = '.'.join(f.split('/')[-1].split('.')[0:-1])
+        samples[s] = f
+
+    RPKM_matrix = np.zeros([num_target, len(samples)], dtype=np.float)
+
+    for i,s in enumerate(samples.keys()):
+        t = np.loadtxt(samples[s], dtype=np.float, delimiter="\t", skiprows=1, usecols=[3])
+        RPKM_matrix[:,i] = t
+        print "Successfully read RPKM for" + s
+    
+    output = 'RPKM_matrix.raw'
+    if args.output:
+        output = args.output+'.raw'
+    output_f = open(output, 'w')
+    output_f.write('Targets\t' + '\t'.join(samples.keys()) + '\n')
+    #np.savetxt(output, RPKM_matrix, fmt='%.10f', delimiter='\t', header='\t'.join(samples.keys()), comments='')
+    for i in range(len(RPKM_matrix)):
+        output_f.write(targets[i] + '\t' + '\t'.join(str(r) for r in RPKM_matrix[i]) + '\n')
+
+    output_f.close()
 
 def svd(args):
-	filename = args.datafile 
-	
-	# count the columns number of the data file
-	f = open(filename)
-	line = f.readline()
-	colsnum = len(line.split('\t'))
+    filename = args.datafile 
+    
+    # count the columns number of the data file
+    f = open(filename)
+    line = f.readline()
+    colsnum = len(line.split('\t'))
+    
+    # skip 1st row and 1st column
+    data = np.loadtxt(filename, dtype=np.float, delimiter='\t', skiprows=1, usecols=range(1, colsnum)) 
+    # test for conifer
+    # data = np.loadtxt(filename, dtype=np.float, delimiter='\t')
+    
+    ### for test
+    data = np.transpose(data) 
+    
+    # svd transform
+    # comp_removed = args.svd
+    U, S, Vt = np.linalg.svd(data, full_matrices=False)
+    
+    # new_S = np.diag(np.hstack([np.zeros([comp_removed]), S[comp_removed:]]))
+    index = S < 0.7 * np.mean(S)
+    new_S = np.diag(S * index)
+    
+    # reconstruct data matrix
+    data = np.dot(U, np.dot(new_S, Vt))
+       
+    # save to files
+    file_u = open(args.output + '.U', 'w')
+    file_s = open(args.output + '.S', 'w')
+    file_vt = open(args.output + '.Vt', 'w')
+    file_svd = open(args.output + '.SVD', 'w')
+    
+    np.savetxt(file_u, U, delimiter='\t')
+    np.savetxt(file_s, S, delimiter='\t')
+    np.savetxt(file_vt, Vt, delimiter='\t')
+    np.savetxt(file_svd, np.transpose(data), delimiter='\t')
 
-	# skip 1st row and 1st column
-	data = np.loadtxt(filename, dtype=np.float, delimiter='\t', skiprows=1, usecols=range(1, colsnum)) 
-	# test for conifer
-	# data = np.loadtxt(filename, dtype=np.float, delimiter='\t')
+    file_u.close()
+    file_s.close()
+    file_vt.close()
+    file_svd.close()	
 
-	### for test
-	data = np.transpose(data) 
-
-	# svd transform
-	# comp_removed = args.svd
-	U, S, Vt = np.linalg.svd(data, full_matrices=False)
-	
-	# new_S = np.diag(np.hstack([np.zeros([comp_removed]), S[comp_removed:]]))
-	index = S < 0.7 * np.mean(S)
-	new_S = np.diag(S * index)
-	
-	# reconstruct data matrix
-	data = np.dot(U, np.dot(new_S, Vt))
-	   
-	# save to files
-	file_u = open(args.output + '.U', 'w')
-	file_s = open(args.output + '.S', 'w')
-	file_vt = open(args.output + '.Vt', 'w')
-	file_svd = open(args.output + '.SVD', 'w')
-
-	np.savetxt(file_u, U, delimiter='\t')
-	np.savetxt(file_s, S, delimiter='\t')
-	np.savetxt(file_vt, Vt, delimiter='\t')
-	np.savetxt(file_svd, np.transpose(data), delimiter='\t')
-
-	file_u.close()
-	file_s.close()
-	file_vt.close()
-	file_svd.close()	
-	
 def discover(args) :
     datafile = args.datafile
     outputfile = args.output
@@ -266,6 +371,22 @@ svd_parser.add_argument('--target', required=True, help='Target definition file'
 svd_parser.add_argument('--input', required=True, help='BAM file list, each line for each sample')
 svd_parser.add_argument('--output', required=True, help='File to write RPKM matrix')
 svd_parser.set_defaults(func=bamlist2RPKM)
+
+#RPKM files -> Matrix
+svd_parser = subparsers.add_parser('merge_rpkm', help="Merge RPKM files to a matrix")
+svd_parser.add_argument('--rpkm_dir', required=True, help='RPKM files')
+svd_parser.add_argument('--target', required=True, help='Target definition file')
+svd_parser.add_argument('--output', required=False, help='Matrix file')
+svd_parser.set_defaults(func=RPKM2Matrix)
+
+#normalize RPKM
+svd_parser = subparsers.add_parser('norm_rpkm', help="Normalize RPKM values")
+svd_parser.add_argument('--rpkm_matrix', required=True, help='Matrix of RPKM values')
+svd_parser.add_argument('--ref_file', required=True, help='Reference file for the calculation of GC percentage')
+svd_parser.add_argument('--map_file', required=True, help='Mapping ability file.')
+svd_parser.add_argument('--output', required=False, help='Normalized RPKM matrix')
+svd_parser.set_defaults(func=normalize)
+
 
 #SVD
 svd_parser = subparsers.add_parser('svd', help="SVD")
