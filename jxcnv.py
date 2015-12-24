@@ -120,7 +120,11 @@ def normalize(args):
 
     #Calculate GC Percentage
     print "Calculate GC Percentage..."
-    GC_percentage = jf.calGCPercentage(targets, args.ref_file)
+    #GC_percentage = jf.calGCPercentage(targets, args.ref_file)
+
+    #np.savetxt('GC_percentage', GC_percentage, fmt="%d", delimiter='\t', newline='\n', header='',footer='',comments='')
+    GC_percentage = np.loadtxt(open('GC_percentage'), dtype=np.int, delimiter='\t',skiprows=0)
+
     GC_index = {}
     # exclude targets with GC percentage == -1
     excludedByGC = []
@@ -141,12 +145,18 @@ def normalize(args):
             t_ind = GC_index[gc]
             t_median = np.mean(rpkm[t_ind, i]) 
             if t_median == 0:
-                print 'WARNING. Median == 0, sample: %s, GC: %d%' %(samples[i], gc)
+                print 'WARNING. Median == 0, sample: %s, GC: %d' %(samples[i], gc)
             else:
                 corrected_rpkm[t_ind, i] = rpkm[t_ind, i] * overall_median / t_median
         
+    np.savetxt('rpkm_norm_by_gc', corrected_rpkm, fmt="%.15e", delimiter='\t', newline='\n')
+    
     #Calculate Mapping ability
-    map_ability = jf.calMapAbility(targets, args.map_file)
+    #map_ability = jf.calMapAbility(targets, args.map_file)
+
+    map_ability = np.loadtxt(open('map_ability'), dtype=np.int, delimiter='\t',skiprows=0)
+    #np.savetxt('map_ability', map_ability, fmt="%d", delimiter='\t', newline='\n')
+
     map_index = {}
     excludedByMap = []
     for ind,_map in map_ability:
@@ -165,11 +175,37 @@ def normalize(args):
             t_ind = map_index[_map]
             t_median = np.mean(corrected_rpkm[t_ind, i])
             if t_median == 0:
-                print 'WARNING. Median == 0, sample: %s, Mapping ability: %d%' %(samples[i], _map)
+                print 'WARNING. Median == 0, sample: %s, Mapping ability: %d' %(samples[i], _map)
             else:
                 corrected_rpkm[t_ind, i] = corrected_rpkm[t_ind, i] * overall_median / t_median
 
+    np.savetxt('rpkm_norm_by_map', corrected_rpkm, fmt="%.15e", delimiter='\t', newline='\n')
+
     #Calculate exome length
+    exon_length = jf.calExonLength(targets)
+    np.savetxt('exon_length', exon_length, fmt="%d", delimiter='\t', newline='\n')
+
+    length_index = {}
+    for ind,_length in exon_length:
+        if length_index.has_key(_length):
+            length_index[_length].append(ind)
+        else:
+            length_index[_length] = [ind]
+
+    print 'Normalizing by exon length...'
+    for i in range(len(samples)):
+        print 'Normalizing RPKM for sample %s' %samples[i]
+        overall_median = np.median(corrected_rpkm[:, i])
+        for _length in length_index.keys():
+            t_ind = length_index[_length]
+            t_median = np.mean(corrected_rpkm[t_ind, i])
+            if t_median == 0:
+                print 'WARNING. Median == 0, sample: %s, Exome length: %d' %(samples[i], _length)
+            else:
+                corrected_rpkm[t_ind, i] = corrected_rpkm[t_ind, i] * overall_median / t_median
+    np.savetxt('rpkm_norm_by_exon_length', corrected_rpkm, fmt="%.15e", delimiter='\t', newline='\n')
+        
+    
     
 
 def RPKM2Matrix(args):

@@ -1,6 +1,7 @@
-import numpy
+import numpy as np
 import pysam
 import pdb
+import bx.bbi.bigwig_file
 
 def loadMatrixFromFile(filename, skiprows, skipcols, type='float', delimiter='\t'):
     return
@@ -50,11 +51,12 @@ def loadRPKMMatrix(filename):
     line = line.strip()
     colsnum = len(line.split('\t'))
 
-    data = np.loadtxt(self._datafile, dtype=np.float, delimiter='\t', skiprows=0, usecols=range(1, colsnum)) 
+    data = np.loadtxt(f, dtype=np.float, delimiter='\t', skiprows=0, usecols=range(1, colsnum)) 
     return {'samples': line.split('\t')[1:], 'data': data}
     
 
 def chrInt2Str(chromosome_int):
+    return 'chr' + str(chromosome_int)
     if int(chromosome_int) == 23:
         return 'chrX'
     elif int(chromosome_int) == 24:
@@ -88,19 +90,30 @@ def calGCPercentage(targets, ref_file):
     
     return GC_percentage
 
-def calMaAbility(targets, map_file):
-    bw = bx.bbi.bigwig_file.BigWigFile(open(MAP_file, "rb"))
+def calMapAbility(targets, map_file):
+    bw = bx.bbi.bigwig_file.BigWigFile(open(map_file, "rb"))
     map_ability = []
     
-    for i in range(len(targets));
+    for i in range(len(targets)):
         t = targets[i] 
         map_summary = bw.query(chrInt2Str(t['chr']), t['start'], t['stop'], 1)
         try:
-            _map = int(MAP_summary[0]['mean']*100+0.5)
+            _map = int(map_summary[0]['mean']*100+0.5)
         except:
             _map = -1
 
         map_ability.append([i, _map])
+        print i, _map
+    return map_ability
+
+def calExonLength(targets):
+    exon_length = []
+    for i in range(len(targets)):
+        t = targets[i]
+        l = np.round((t['stop']-t['start']+1)/50)*50
+        exon_length.append([i, l])
+    return exon_length
+
 
 def groupBy(data):
     result = {}
