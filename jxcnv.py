@@ -120,65 +120,80 @@ def normalize(args):
 
     #Calculate GC Percentage
     print "Calculate GC Percentage..."
-    #GC_percentage = jf.calGCPercentage(targets, args.ref_file)
+    GC_percentage = jf.calGCPercentage(targets, args.ref_file)
 
     #np.savetxt('GC_percentage', GC_percentage, fmt="%d", delimiter='\t', newline='\n', header='',footer='',comments='')
-    GC_percentage = np.loadtxt(open('GC_percentage'), dtype=np.int, delimiter='\t',skiprows=0)
+    #GC_percentage = np.loadtxt(open('GC_percentage'), dtype=np.int, delimiter='\t',skiprows=0)
 
     GC_index = {}
     # exclude targets with GC percentage == -1
     excludedByGC = []
+    normalGC = []
     for ind,gc in GC_percentage:
         if gc == -1:
             excludedByGC.append(ind)
-        elif GC_index.has_key(gc):
-            GC_index[gc].append(ind)
         else:
-            GC_index[gc] = [ind]
+            normalGC.append(ind)
+            if GC_index.has_key(gc):
+                GC_index[gc].append(ind)
+            else:
+                GC_index[gc] = [ind]
+
 
     print 'Normalizing by GC percentage...'
     corrected_rpkm = np.zeros([len(rpkm), len(rpkm[0])], dtype=np.float)
     for i in range(len(samples)):
         print 'Normalizing RPKM for sample: ' + samples[i]
-        overall_median = np.median(rpkm[:, i])
+        overall_median = np.median(rpkm[normalGC, i])
         for gc in GC_index.keys():
             t_ind = GC_index[gc]
             t_median = np.mean(rpkm[t_ind, i]) 
             if t_median == 0:
                 print 'WARNING. Median == 0, sample: %s, GC: %d' %(samples[i], gc)
+                corrected_rpkm[t_ind, i] = 0
             else:
                 corrected_rpkm[t_ind, i] = rpkm[t_ind, i] * overall_median / t_median
         
+    #Delete targets with GC percentage == -1
+    targets = [targets[i] for i in range(len(targets)) if i not in excludedByGC]
+    corrected_rpkm = corrected_rpkm[normalGC, :]
     np.savetxt('rpkm_norm_by_gc', corrected_rpkm, fmt="%.15e", delimiter='\t', newline='\n')
     
     #Calculate Mapping ability
-    #map_ability = jf.calMapAbility(targets, args.map_file)
+    map_ability = jf.calMapAbility(targets, args.map_file)
 
-    map_ability = np.loadtxt(open('map_ability'), dtype=np.int, delimiter='\t',skiprows=0)
+    #map_ability = np.loadtxt(open('map_ability'), dtype=np.int, delimiter='\t',skiprows=0)
     #np.savetxt('map_ability', map_ability, fmt="%d", delimiter='\t', newline='\n')
 
     map_index = {}
     excludedByMap = []
+    normalMap = []
     for ind,_map in map_ability:
         if _map == -1:
             excludedByMap.append(ind)
-        elif map_index.has_key(_map):
-            map_index[_map].append(ind)
         else:
-            map_index[_map] = [ind]
+            normalMap.append(ind)
+            if map_index.has_key(_map):
+                map_index[_map].append(ind)
+            else:
+                map_index[_map] = [ind]
 
     print 'Normalizing by Mapping ability...'
     for i in range(len(samples)):
         print 'Normalizing RPKM for sample %s' %samples[i]
-        overall_median = np.median(corrected_rpkm[:, i])
+        overall_median = np.median(corrected_rpkm[normalMap, i])
         for _map in map_index.keys():
             t_ind = map_index[_map]
             t_median = np.mean(corrected_rpkm[t_ind, i])
             if t_median == 0:
                 print 'WARNING. Median == 0, sample: %s, Mapping ability: %d' %(samples[i], _map)
+                corrected_rpkm[t_ind, i] = 0
             else:
                 corrected_rpkm[t_ind, i] = corrected_rpkm[t_ind, i] * overall_median / t_median
 
+    #Delete targets with map ability == -1
+    targets = [targets[i] for i in range(len(targets)) if i not in excludedByMap]
+    corrected_rpkm = corrected_rpkm[normalMap, :]
     np.savetxt('rpkm_norm_by_map', corrected_rpkm, fmt="%.15e", delimiter='\t', newline='\n')
 
     #Calculate exome length
@@ -201,6 +216,7 @@ def normalize(args):
             t_median = np.mean(corrected_rpkm[t_ind, i])
             if t_median == 0:
                 print 'WARNING. Median == 0, sample: %s, Exome length: %d' %(samples[i], _length)
+                corrected_rpkm[t_ind, i] = 0
             else:
                 corrected_rpkm[t_ind, i] = corrected_rpkm[t_ind, i] * overall_median / t_median
     np.savetxt('rpkm_norm_by_exon_length', corrected_rpkm, fmt="%.15e", delimiter='\t', newline='\n')
@@ -256,6 +272,7 @@ def svd(args):
     colsnum = len(line.split('\t'))
     
     # skip 1st row and 1st column
+    print 'Loading file...'
     data = np.loadtxt(filename, dtype=np.float, delimiter='\t', skiprows=1, usecols=range(1, colsnum)) 
     # test for conifer
     # data = np.loadtxt(filename, dtype=np.float, delimiter='\t')
@@ -265,6 +282,7 @@ def svd(args):
     
     # svd transform
     # comp_removed = args.svd
+    print 'SVD...'
     U, S, Vt = np.linalg.svd(data, full_matrices=False)
     
     # new_S = np.diag(np.hstack([np.zeros([comp_removed]), S[comp_removed:]]))
@@ -280,6 +298,7 @@ def svd(args):
     file_vt = open(args.output + '.Vt', 'w')
     file_svd = open(args.output + '.SVD', 'w')
     
+    print 'Saving file...'
     np.savetxt(file_u, U, delimiter='\t')
     np.savetxt(file_s, S, delimiter='\t')
     np.savetxt(file_vt, Vt, delimiter='\t')
@@ -405,7 +424,7 @@ subparsers = parser.add_subparsers()
 svd_parser = subparsers.add_parser('rpkm', help="Create RPKM matrix from a BAM list")
 svd_parser.add_argument('--target', required=True, help='Target definition file')
 svd_parser.add_argument('--input', required=True, help='BAM file list, each line for each sample')
-svd_parser.add_argument('--output', required=True, help='File to write RPKM matrix')
+svd_parser.add_argument('--output', required=True, help='Directory for RPKM files')
 svd_parser.set_defaults(func=bamlist2RPKM)
 
 #RPKM files -> Matrix
