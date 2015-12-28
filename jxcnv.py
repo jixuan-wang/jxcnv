@@ -106,11 +106,17 @@ def bamlist2RPKM(args):
     
 def normalize(args): 
     rpkm_matrix = str(args.rpkm_matrix)
+    raw_dir = os.path.dirname(rpkm_matrix)
+    if raw_dir != '':
+        raw_dir = raw_dir + '/'
+
     output = rpkm_matrix + '.normalized'
     if args.output:
-        output = str(args.output) + '.normalized'
-    targets = jf.loadTargetsFromFirstCol(rpkm_matrix)
-    
+        output = raw_dir + str(args.output) + '.normalized'
+    result = jf.loadTargetsFromFirstCol(rpkm_matrix)
+    targets = result['targets']
+    targets_str = result['targets_str']
+
     print 'Loading matrix...'
     result = jf.loadRPKMMatrix(rpkm_matrix)
     rpkm = result['data']
@@ -121,15 +127,16 @@ def normalize(args):
     #Calculate GC Percentage
     print "Calculate GC Percentage..."
     GC_percentage = jf.calGCPercentage(targets, args.ref_file)
+    jf.saveNormValues(raw_dir + 'GC_percentage', targets_str, GC_percentage, 'GC content')
 
-    #np.savetxt('GC_percentage', GC_percentage, fmt="%d", delimiter='\t', newline='\n', header='',footer='',comments='')
-    #GC_percentage = np.loadtxt(open('GC_percentage'), dtype=np.int, delimiter='\t',skiprows=0)
+    #GC_percentage = jf.loadNormValues(raw_dir + 'GC_percentage')
 
     GC_index = {}
     # exclude targets with GC percentage == -1
     excludedByGC = []
     normalGC = []
-    for ind,gc in GC_percentage:
+    for ind in range(len(GC_percentage)):
+        gc = GC_percentage[ind]
         if gc == -1:
             excludedByGC.append(ind)
         else:
@@ -143,7 +150,7 @@ def normalize(args):
     print 'Normalizing by GC percentage...'
     corrected_rpkm = np.zeros([len(rpkm), len(rpkm[0])], dtype=np.float)
     for i in range(len(samples)):
-        print 'Normalizing RPKM for sample: ' + samples[i]
+        print 'Normalizing RPKM by GC content for sample: ' + samples[i]
         overall_median = np.median(rpkm[normalGC, i])
         for gc in GC_index.keys():
             t_ind = GC_index[gc]
@@ -156,19 +163,21 @@ def normalize(args):
         
     #Delete targets with GC percentage == -1
     targets = [targets[i] for i in range(len(targets)) if i not in excludedByGC]
+    targets_str = [targets_str[i] for i in range(len(targets_str)) if i not in excludedByGC]
     corrected_rpkm = corrected_rpkm[normalGC, :]
-    np.savetxt('rpkm_norm_by_gc', corrected_rpkm, fmt="%.15e", delimiter='\t', newline='\n')
+    jf.saveRPKMMatrix(raw_dir+'rpkm_norm_by_gc', targets_str, samples, corrected_rpkm)
     
     #Calculate Mapping ability
     map_ability = jf.calMapAbility(targets, args.map_file)
+    jf.saveNormValues(raw_dir + 'mapping_ability', targets_str, map_ability, 'Mapping ability')
 
-    #map_ability = np.loadtxt(open('map_ability'), dtype=np.int, delimiter='\t',skiprows=0)
-    #np.savetxt('map_ability', map_ability, fmt="%d", delimiter='\t', newline='\n')
+    #map_ability = np.loadtxt(open(raw_dir+'map_ability'), dtype=np.int, delimiter='\t',skiprows=0)
 
     map_index = {}
     excludedByMap = []
     normalMap = []
-    for ind,_map in map_ability:
+    for ind in range(len(map_ability)):
+        _map = map_ability[ind]
         if _map == -1:
             excludedByMap.append(ind)
         else:
@@ -180,7 +189,7 @@ def normalize(args):
 
     print 'Normalizing by Mapping ability...'
     for i in range(len(samples)):
-        print 'Normalizing RPKM for sample %s' %samples[i]
+        print 'Normalizing RPKM by mapping ability for sample %s' %samples[i]
         overall_median = np.median(corrected_rpkm[normalMap, i])
         for _map in map_index.keys():
             t_ind = map_index[_map]
@@ -193,15 +202,17 @@ def normalize(args):
 
     #Delete targets with map ability == -1
     targets = [targets[i] for i in range(len(targets)) if i not in excludedByMap]
+    targets_str = [targets_str[i] for i in range(len(targets_str)) if i not in excludedByMap]
     corrected_rpkm = corrected_rpkm[normalMap, :]
-    np.savetxt('rpkm_norm_by_map', corrected_rpkm, fmt="%.15e", delimiter='\t', newline='\n')
+    jf.saveRPKMMatrix(raw_dir+'rpkm_norm_by_map', targets_str, samples, corrected_rpkm)
 
     #Calculate exome length
     exon_length = jf.calExonLength(targets)
-    np.savetxt('exon_length', exon_length, fmt="%d", delimiter='\t', newline='\n')
+    jf.saveNormValues(raw_dir + 'exon_length', targets_str, exon_length, 'Exon length')
 
     length_index = {}
-    for ind,_length in exon_length:
+    for ind in range(len(exon_length)):
+        _length = exon_length[ind]
         if length_index.has_key(_length):
             length_index[_length].append(ind)
         else:
@@ -209,7 +220,7 @@ def normalize(args):
 
     print 'Normalizing by exon length...'
     for i in range(len(samples)):
-        print 'Normalizing RPKM for sample %s' %samples[i]
+        print 'Normalizing RPKM for by exon length for sample %s' %samples[i]
         overall_median = np.median(corrected_rpkm[:, i])
         for _length in length_index.keys():
             t_ind = length_index[_length]
@@ -219,7 +230,7 @@ def normalize(args):
                 corrected_rpkm[t_ind, i] = 0
             else:
                 corrected_rpkm[t_ind, i] = corrected_rpkm[t_ind, i] * overall_median / t_median
-    np.savetxt('rpkm_norm_by_exon_length', corrected_rpkm, fmt="%.15e", delimiter='\t', newline='\n')
+    jf.saveRPKMMatrix(raw_dir+'rpkm_norm_by_exon_length', targets_str, samples, corrected_rpkm)
         
     
     

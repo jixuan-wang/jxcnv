@@ -36,14 +36,15 @@ def loadTargetsStr(target_filename):
 
 def loadTargetsFromFirstCol(filename):
     f = open(filename)
-    lines = f.readlines()
+    targets_str = np.loadtxt(f, dtype=np.str, delimiter='\t', skiprows=1, usecols=(0,)) 
     targets = []
-    for line in lines[1:len(lines)]:
+    for line in targets_str:
         chr = line.split('\t')[0].split(':')[0]
         start = int(line.split('\t')[0].split(':')[1].split('-')[0])
         stop = int(line.split('\t')[0].split(':')[1].split('-')[1])
         targets.append({'chr': chr, 'start': start, 'stop': stop})
-    return targets
+
+    return {'targets': targets, 'targets_str': targets_str}
 
 def loadRPKMMatrix(filename):
     f = open(filename)
@@ -53,6 +54,31 @@ def loadRPKMMatrix(filename):
 
     data = np.loadtxt(f, dtype=np.float, delimiter='\t', skiprows=0, usecols=range(1, colsnum)) 
     return {'samples': line.split('\t')[1:], 'data': data}
+
+def saveRPKMMatrix(filename, targets, samples, rpkm):
+    rpkm_f = open(filename, 'w')
+    rpkm_f.write('Targets\t' + '\t'.join(samples) + '\n')
+    if len(targets) != len(rpkm):
+        print 'Error when saving rpkm. The row numbers do not match'
+        sys.exit(0)
+
+    for i in range(len(rpkm)):
+        rpkm_f.write(targets[i] + '\t' + '\t'.join(str(r) for r in rpkm[i]) + '\n')
+    rpkm_f.close()
+
+def loadNormValues(filename):
+    return np.loadtxt(open(filename), dtype=np.int, delimiter='\t', skiprows=1, usecols=(1,)) 
+
+def saveNormValues(filename, targets, values, header):
+    f = open(filename, 'w')
+    f.write('Targets\t' + header + '\n')
+    if len(targets) != len(values):
+        print 'Error when saving normalization values. The row numbers do not match'
+        sys.exit(0)
+
+    for i in range(len(targets)):
+        f.write(targets[i] + '\t' + str(values[i]) + '\n')
+    f.close()
     
 
 def chrInt2Str(chromosome_int):
@@ -67,8 +93,14 @@ def chrInt2Str(chromosome_int):
 def calGCPercentage(targets, ref_file):
     fasta_f = pysam.FastaFile(ref_file)
     GC_percentage = []
-
+    chr = targets[0]['chr']
+    print 'Calculating GC content for targets in chr ' + chr
+    
     for i in range(len(targets)):
+        if(targets[i]['chr'] != chr):
+            chr = targets[i]['chr']
+            print 'Calculating GC content for targets in chr ' + chr
+            
         r_region = fasta_f.fetch(targets[i]['chr'], targets[i]['start'], targets[i]['stop'])
         reg_len = targets[i]['stop'] - targets[i]['start'] + 1
         GC = 0
@@ -85,16 +117,23 @@ def calGCPercentage(targets, ref_file):
         else:
             GC_p = GC * 100 / reg_len
 
-        GC_percentage.append([i, GC_p])
-        print i, GC_p
+        GC_percentage.append(GC_p)
     
     return GC_percentage
 
 def calMapAbility(targets, map_file):
     bw = bx.bbi.bigwig_file.BigWigFile(open(map_file, "rb"))
     map_ability = []
+    chr = targets[0]['chr']
+    print 'Calculating mapping ability for targets in chr ' + chr
     
     for i in range(len(targets)):
+        t = targets[i] 
+
+        if(t[i]['chr'] != chr):
+            chr = t[i]['chr']
+            print 'Calculate mapping ability for targets in chr ' + chr
+
         t = targets[i] 
         map_summary = bw.query(chrInt2Str(t['chr']), t['start'], t['stop'], 1)
         try:
@@ -102,16 +141,23 @@ def calMapAbility(targets, map_file):
         except:
             _map = -1
 
-        map_ability.append([i, _map])
-        print i, _map
+        map_ability.append(_map)
     return map_ability
 
 def calExonLength(targets):
     exon_length = []
+    chr = targets[0]['chr']
+    print 'Calculating exon length for targets in chr ' + chr
+
     for i in range(len(targets)):
         t = targets[i]
+
+        if(t[i]['chr'] != chr):
+            chr = t[i]['chr']
+            print 'Calculating exon length for targets in chr ' + chr
+
         l = np.round((t['stop']-t['start']+1)/50)*50
-        exon_length.append([i, l])
+        exon_length.append(l)
     return exon_length
 
 
