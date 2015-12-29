@@ -2,6 +2,7 @@ import numpy as np
 import pysam
 import pdb
 import bx.bbi.bigwig_file
+import sys
 
 def loadMatrixFromFile(filename, skiprows, skipcols, type='float', delimiter='\t'):
     return
@@ -46,24 +47,43 @@ def loadTargetsFromFirstCol(filename):
 
     return {'targets': targets, 'targets_str': targets_str}
 
+def loadValuesByCol(filename, col):
+    if not os.path.exists(filename):
+        print filename, 'does not exists!'
+        sys.exit(0)
+    return np.loadtxt(open(filename), dtype=np.int, delimiter='\t', skiprows=1, usecols=(col,))
+
 def loadRPKMMatrix(filename):
     f = open(filename)
     line = f.readline()
     line = line.strip()
     colsnum = len(line.split('\t'))
+    samples = line.split('\t')[4:]
+    
+    f.seek(0)
+    rpkm = np.loadtxt(f, dtype=np.float, delimiter='\t', skiprows=1, usecols=range(4, colsnum)) 
+    f.seek(0)
+    annotation = np.loadtxt(f, dtype=np.int, delimiter='\t', skiprows=1, usecols=range(1, 4)) 
+    f.seek(0)
+    targets_str = np.loadtxt(f, dtype=np.str, delimiter='\t', skiprows=1, usecols=(0,)) 
+    targets = []
+    for line in targets_str:
+        chr = line.split('\t')[0].split(':')[0]
+        start = int(line.split('\t')[0].split(':')[1].split('-')[0])
+        stop = int(line.split('\t')[0].split(':')[1].split('-')[1])
+        targets.append({'chr': chr, 'start': start, 'stop': stop})
+    
+    return {'samples': samples, 'rpkm': rpkm, 'annotation': annotation, 'targets': targets, 'targets_str': targets_str}
 
-    data = np.loadtxt(f, dtype=np.float, delimiter='\t', skiprows=0, usecols=range(1, colsnum)) 
-    return {'samples': line.split('\t')[1:], 'data': data}
-
-def saveRPKMMatrix(filename, targets, samples, rpkm):
+def saveRPKMMatrix(filename, samples, targets, rpkm):
     rpkm_f = open(filename, 'w')
-    rpkm_f.write('Targets\t' + '\t'.join(samples) + '\n')
-    if len(targets) != len(rpkm):
+    rpkm_f.write('Matrix\t' + '\t'.join(targets) + '\n')
+    if len(samples) != len(rpkm):
         print 'Error when saving rpkm. The row numbers do not match'
         sys.exit(0)
 
-    for i in range(len(rpkm)):
-        rpkm_f.write(targets[i] + '\t' + '\t'.join(str(r) for r in rpkm[i]) + '\n')
+    for i in range(len(samples)):
+        rpkm_f.write(samples[i] + '\t' + '\t'.join(str(r) for r in rpkm[i]) + '\n')
     rpkm_f.close()
 
 def loadNormValues(filename):
@@ -152,8 +172,8 @@ def calExonLength(targets):
     for i in range(len(targets)):
         t = targets[i]
 
-        if(t[i]['chr'] != chr):
-            chr = t[i]['chr']
+        if(t['chr'] != chr):
+            chr = t['chr']
             print 'Calculating exon length for targets in chr ' + chr
 
         l = np.round((t['stop']-t['start']+1)/50)*50
@@ -172,3 +192,4 @@ def groupBy(data):
         else:
             result[val] = [ind]
     return {'exlude': exclude, 'dict': result}
+

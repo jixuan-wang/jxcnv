@@ -10,6 +10,7 @@ import operator
 import numpy as np
 from VCFReader import *
 from ParameterEstimation import *
+import fileinput
 import pdb
 
 def bamlist2RPKM(args):
@@ -104,6 +105,74 @@ def bamlist2RPKM(args):
 
     bamlist_f.close()
     
+def filter_rpkm(args):
+    rpkm_matrix = str(args.rpkm_matrix)
+    raw_dir = os.path.dirname(rpkm_matrix)
+    if raw_dir != '':
+        raw_dir = raw_dir + '/'
+
+    output = rpkm_matrix
+    if args.output:
+        output = raw_dir + str(args.output)
+
+    print 'Loading targets...'
+    temp = jf.loadTargetsFromFirstCol(rpkm_matrix)
+    targets = temp['targets']
+    targets_str = temp['targets_str']
+
+    print 'Loading parameters from ' + args.filter_params
+    f = open(args.filter_params)
+    params = f.readline().split('\t')
+    min_gc = int(params[0])
+    max_gc = int(params[1])
+    min_map = int(params[2])
+    max_exon = int(params[3])
+
+    #Fileter targets which median of RPKM < min_rpkm
+
+    print "Calculating GC content..."
+    GC_percentage = jf.calGCPercentage(targets, args.ref_file)
+    #jf.saveNormValues(raw_dir + 'GC_percentage', targets_str, GC_percentage, 'GC content')
+    #GC_percentage = jf.loadNormValues(raw_dir + 'GC_percentage')
+
+    print 'Calculating mapping ability...'
+    map_ability = jf.calMapAbility(targets, args.map_file)
+    #jf.saveNormValues(raw_dir + 'mapping_ability', targets_str, map_ability, 'Mapping ability')
+    #map_ability = jf.loadNormValues(raw_dir + 'mapping_ability')
+
+    print 'Calculating exon length...'
+    exon_length = jf.calExonLength(targets)
+    #jf.saveNormValues(raw_dir + 'exon_length', targets_str, exon_length, 'Exon length')
+
+    print 'Filtering targets by GC content, mapping ability and exon length'
+    matrix = open(rpkm_matrix)
+    n_lines = []
+    e_lines = []
+    lines = matrix.readlines()
+    t = lines[0].index('\t')
+    title = lines[0][0:t] + '\t' + '\t'.join(['GC Content', 'Mapping Ability', 'Exon Length']) + lines[0][t:]
+    for n in range(len(lines)-1):
+        line = lines[n+1]
+        t = line.index('\t')
+        gc = GC_percentage[n]
+        m = map_ability[n]
+        el = exon_length[n]
+        l = line[0:t] + '\t' + '\t'.join([str(gc), str(m), str(el)]) + line[t:]
+        if gc < min_gc or gc > max_gc or m < min_map or el > max_exon:
+            e_lines.append(l)
+        else:
+            n_lines.append(l)
+
+    n_file = open(output + '.normal', 'w')
+    n_file.write(title)
+    n_file.writelines(n_lines)
+    n_file.close()
+
+    e_file = open(output + '.filtered', 'w')
+    e_file.write(title)
+    e_file.writelines(e_lines)
+    e_file.close()
+                
 def normalize(args): 
     rpkm_matrix = str(args.rpkm_matrix)
     raw_dir = os.path.dirname(rpkm_matrix)
@@ -113,45 +182,33 @@ def normalize(args):
     output = rpkm_matrix + '.normalized'
     if args.output:
         output = raw_dir + str(args.output) + '.normalized'
-    result = jf.loadTargetsFromFirstCol(rpkm_matrix)
-    targets = result['targets']
-    targets_str = result['targets_str']
 
     print 'Loading matrix...'
     result = jf.loadRPKMMatrix(rpkm_matrix)
-    rpkm = result['data']
+    rpkm = result['rpkm']
     samples = result['samples']
+    annotation = result['annotation']
+    targets = result['targets']
+    targets_str = result['targets_str']
 
-    #Fileter targets which median of RPKM < min_rpkm
-
-    #Calculate GC Percentage
-    print "Calculate GC Percentage..."
-    GC_percentage = jf.calGCPercentage(targets, args.ref_file)
-    jf.saveNormValues(raw_dir + 'GC_percentage', targets_str, GC_percentage, 'GC content')
-
-    #GC_percentage = jf.loadNormValues(raw_dir + 'GC_percentage')
+    GC_percentage = annotation[:, 0]
+    map_ability = annotation[:, 1]
+    exon_length = annotation[:, 2]
 
     GC_index = {}
-    # exclude targets with GC percentage == -1
-    excludedByGC = []
-    normalGC = []
     for ind in range(len(GC_percentage)):
         gc = GC_percentage[ind]
-        if gc == -1:
-            excludedByGC.append(ind)
-        else:
-            normalGC.append(ind)
-            if GC_index.has_key(gc):
-                GC_index[gc].append(ind)
-            else:
-                GC_index[gc] = [ind]
 
+        if GC_index.has_key(gc):
+            GC_index[gc].append(ind)
+        else:
+            GC_index[gc] = [ind]
 
     print 'Normalizing by GC percentage...'
     corrected_rpkm = np.zeros([len(rpkm), len(rpkm[0])], dtype=np.float)
     for i in range(len(samples)):
         print 'Normalizing RPKM by GC content for sample: ' + samples[i]
-        overall_median = np.median(rpkm[normalGC, i])
+        overall_median = np.median(rpkm[:, i])
         for gc in GC_index.keys():
             t_ind = GC_index[gc]
             t_median = np.mean(rpkm[t_ind, i]) 
@@ -160,37 +217,20 @@ def normalize(args):
                 corrected_rpkm[t_ind, i] = 0
             else:
                 corrected_rpkm[t_ind, i] = rpkm[t_ind, i] * overall_median / t_median
-        
-    #Delete targets with GC percentage == -1
-    targets = [targets[i] for i in range(len(targets)) if i not in excludedByGC]
-    targets_str = [targets_str[i] for i in range(len(targets_str)) if i not in excludedByGC]
-    corrected_rpkm = corrected_rpkm[normalGC, :]
-    jf.saveRPKMMatrix(raw_dir+'rpkm_norm_by_gc', targets_str, samples, corrected_rpkm)
-    
-    #Calculate Mapping ability
-    map_ability = jf.calMapAbility(targets, args.map_file)
-    jf.saveNormValues(raw_dir + 'mapping_ability', targets_str, map_ability, 'Mapping ability')
-
-    #map_ability = np.loadtxt(open(raw_dir+'map_ability'), dtype=np.int, delimiter='\t',skiprows=0)
 
     map_index = {}
-    excludedByMap = []
-    normalMap = []
     for ind in range(len(map_ability)):
         _map = map_ability[ind]
-        if _map == -1:
-            excludedByMap.append(ind)
+
+        if map_index.has_key(_map):
+            map_index[_map].append(ind)
         else:
-            normalMap.append(ind)
-            if map_index.has_key(_map):
-                map_index[_map].append(ind)
-            else:
-                map_index[_map] = [ind]
+            map_index[_map] = [ind]
 
     print 'Normalizing by Mapping ability...'
     for i in range(len(samples)):
         print 'Normalizing RPKM by mapping ability for sample %s' %samples[i]
-        overall_median = np.median(corrected_rpkm[normalMap, i])
+        overall_median = np.median(corrected_rpkm[:, i])
         for _map in map_index.keys():
             t_ind = map_index[_map]
             t_median = np.mean(corrected_rpkm[t_ind, i])
@@ -199,16 +239,6 @@ def normalize(args):
                 corrected_rpkm[t_ind, i] = 0
             else:
                 corrected_rpkm[t_ind, i] = corrected_rpkm[t_ind, i] * overall_median / t_median
-
-    #Delete targets with map ability == -1
-    targets = [targets[i] for i in range(len(targets)) if i not in excludedByMap]
-    targets_str = [targets_str[i] for i in range(len(targets_str)) if i not in excludedByMap]
-    corrected_rpkm = corrected_rpkm[normalMap, :]
-    jf.saveRPKMMatrix(raw_dir+'rpkm_norm_by_map', targets_str, samples, corrected_rpkm)
-
-    #Calculate exome length
-    exon_length = jf.calExonLength(targets)
-    jf.saveNormValues(raw_dir + 'exon_length', targets_str, exon_length, 'Exon length')
 
     length_index = {}
     for ind in range(len(exon_length)):
@@ -230,8 +260,9 @@ def normalize(args):
                 corrected_rpkm[t_ind, i] = 0
             else:
                 corrected_rpkm[t_ind, i] = corrected_rpkm[t_ind, i] * overall_median / t_median
-    jf.saveRPKMMatrix(raw_dir+'rpkm_norm_by_exon_length', targets_str, samples, corrected_rpkm)
-        
+
+    print 'Saving matrix..'
+    jf.saveRPKMMatrix(output, samples, targets_str, np.transpose(corrected_rpkm))
     
     
 
@@ -276,15 +307,27 @@ def RPKM2Matrix(args):
 
 def svd(args):
     filename = args.datafile 
-    
+    f_dir = os.path.dirname(filename)
+    if f_dir != '':
+        f_dir = f_dir + '/'
+
+    output = filename
+    if args.output:
+        output = f_dir + str(args.output)
+   
     # count the columns number of the data file
     f = open(filename)
-    line = f.readline()
-    colsnum = len(line.split('\t'))
+    temp = f.readline().split('\t')
+    colsnum = len(temp)
     
     # skip 1st row and 1st column
     print 'Loading file...'
     data = np.loadtxt(filename, dtype=np.float, delimiter='\t', skiprows=1, usecols=range(1, colsnum)) 
+    # loading targets str
+    targets = jf.loadTargetsStr(filename)
+    # names of samples
+    samples = temp[1:-1] 
+
     # test for conifer
     # data = np.loadtxt(filename, dtype=np.float, delimiter='\t')
     
@@ -304,21 +347,25 @@ def svd(args):
     data = np.dot(U, np.dot(new_S, Vt))
        
     # save to files
-    file_u = open(args.output + '.U', 'w')
-    file_s = open(args.output + '.S', 'w')
-    file_vt = open(args.output + '.Vt', 'w')
-    file_svd = open(args.output + '.SVD', 'w')
+    file_u = open(output + '.U', 'w')
+    file_s = open(output + '.S', 'w')
+    file_vt = open(output + '.Vt', 'w')
+    #file_svd = open(f_dir + args.output + '.SVD', 'w')
     
-    print 'Saving file...'
+    print 'Saving SVD files...'
     np.savetxt(file_u, U, delimiter='\t')
     np.savetxt(file_s, S, delimiter='\t')
     np.savetxt(file_vt, Vt, delimiter='\t')
-    np.savetxt(file_svd, np.transpose(data), delimiter='\t')
-
+    #np.savetxt(file_svd, np.transpose(data), delimiter='\t')
     file_u.close()
     file_s.close()
     file_vt.close()
-    file_svd.close()	
+
+    print 'Saving matrix..'
+    jf.saveRPKMMatrix(output + '.SVD', samples, targets, np.transpose(data))
+
+
+
 
 def discover(args) :
     datafile = args.datafile
@@ -414,7 +461,6 @@ def discover(args) :
                     pathlist = model.forwardBackward_Viterbi(if_snp = True)
                 else:
                     pathlist = model.forwardBackward_Viterbi(if_snp = False)
-                # pdb.set_trace()
                 dataloader.outputCNVaux(output_aux, sample['sample_id'], targets, pathlist, sample_observations[target_index_begin:target_index_end])
                 dataloader.outputCNV(output, sample['sample_id'], targets, pathlist, sample_observations[target_index_begin:target_index_end])
 
@@ -445,11 +491,18 @@ svd_parser.add_argument('--target', required=True, help='Target definition file'
 svd_parser.add_argument('--output', required=False, help='Matrix file')
 svd_parser.set_defaults(func=RPKM2Matrix)
 
-#normalize RPKM
-svd_parser = subparsers.add_parser('norm_rpkm', help="Normalize RPKM values")
+# Filter matrix by GC content, mapping ability and exon length
+svd_parser = subparsers.add_parser('filter', help="Filter matrix by GC content, mapping ability and exon length")
 svd_parser.add_argument('--rpkm_matrix', required=True, help='Matrix of RPKM values')
 svd_parser.add_argument('--ref_file', required=True, help='Reference file for the calculation of GC percentage')
 svd_parser.add_argument('--map_file', required=True, help='Mapping ability file.')
+svd_parser.add_argument('--filter_params', required=True, help='Parameters of filtering')
+svd_parser.add_argument('--output', required=False, help='Filtered matrix')
+svd_parser.set_defaults(func=filter_rpkm)
+
+#normalize RPKM
+svd_parser = subparsers.add_parser('norm_rpkm', help="Normalize RPKM values")
+svd_parser.add_argument('--rpkm_matrix', required=True, help='Matrix of RPKM values')
 svd_parser.add_argument('--output', required=False, help='Normalized RPKM matrix')
 svd_parser.set_defaults(func=normalize)
 
@@ -457,7 +510,7 @@ svd_parser.set_defaults(func=normalize)
 #SVD
 svd_parser = subparsers.add_parser('svd', help="SVD")
 svd_parser.add_argument('--datafile', required=True, help='')
-svd_parser.add_argument('--output', required=True, help='')
+svd_parser.add_argument('--output', required=False, help='')
 # svd_parser.add_argument('--svd', type=int, required=True, help='Number of components to remove')
 svd_parser.set_defaults(func=svd)
 
