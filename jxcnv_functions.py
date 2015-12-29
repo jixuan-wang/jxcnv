@@ -150,8 +150,8 @@ def calMapAbility(targets, map_file):
     for i in range(len(targets)):
         t = targets[i] 
 
-        if(t[i]['chr'] != chr):
-            chr = t[i]['chr']
+        if(t['chr'] != chr):
+            chr = t['chr']
             print 'Calculate mapping ability for targets in chr ' + chr
 
         t = targets[i] 
