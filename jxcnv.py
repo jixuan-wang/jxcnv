@@ -320,9 +320,9 @@ def svd(args):
     temp = f.readline().split('\t')
     colsnum = len(temp)
     
-    # skip 1st row and 1st column
+    # skip 1st row and 4 columns
     print 'Loading file...'
-    data = np.loadtxt(filename, dtype=np.float, delimiter='\t', skiprows=1, usecols=range(1, colsnum)) 
+    data = np.loadtxt(filename, dtype=np.float, delimiter='\t', skiprows=1, usecols=range(4, colsnum)) 
     # loading targets str
     targets = jf.loadTargetsStr(filename)
     # names of samples
