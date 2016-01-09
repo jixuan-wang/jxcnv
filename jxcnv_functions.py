@@ -47,6 +47,10 @@ def loadTargetsFromFirstCol(filename):
 
     return {'targets': targets, 'targets_str': targets_str}
 
+def loadTargetsStrFromFirstCol(filename):
+    f = open(filename)
+    return np.loadtxt(f, dtype=np.str, delimiter='\t', skiprows=1, usecols=(0,)) 
+
 def loadValuesByCol(filename, col):
     if not os.path.exists(filename):
         print filename, 'does not exists!'
@@ -87,7 +91,7 @@ def saveRPKMMatrix(filename, samples, targets, rpkm):
     rpkm_f.close()
 
 def loadNormValues(filename):
-    return np.loadtxt(open(filename), dtype=np.int, delimiter='\t', skiprows=1, usecols=(1,)) 
+    return np.loadtxt(open(filename), dtype=np.int, delimiter='\t', skiprows=0, usecols=(1,)) 
 
 def saveNormValues(filename, targets, values, header):
     f = open(filename, 'w')
@@ -192,4 +196,3 @@ def groupBy(data):
         else:
             result[val] = [ind]
     return {'exlude': exclude, 'dict': result}
-

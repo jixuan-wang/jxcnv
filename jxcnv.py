@@ -101,7 +101,7 @@ def bamlist2RPKM(args):
         rpkm_f.write('chr\tstart\tstop\trpkm\n')
         for i in range(len(rpkm)):
             rpkm_f.write(targets[i]['chr'] + '\t' + str(targets[i]['start']) + '\t' + str(targets[i]['stop']) + '\t' + str(rpkm[i]) + '\n')
-    	rpkm_f.close()
+        rpkm_f.close()
 
     bamlist_f.close()
     
@@ -127,18 +127,19 @@ def filter_rpkm(args):
     max_gc = int(params[1])
     min_map = int(params[2])
     max_exon = int(params[3])
+    min_rpkm = float(params[4])
 
     #Fileter targets which median of RPKM < min_rpkm
 
     print "Calculating GC content..."
-    GC_percentage = jf.calGCPercentage(targets, args.ref_file)
+    #GC_percentage = jf.calGCPercentage(targets, args.ref_file)
     #jf.saveNormValues(raw_dir + 'GC_percentage', targets_str, GC_percentage, 'GC content')
-    #GC_percentage = jf.loadNormValues(raw_dir + 'GC_percentage')
+    GC_percentage = jf.loadNormValues(raw_dir + 'GC_percentage')
 
     print 'Calculating mapping ability...'
-    map_ability = jf.calMapAbility(targets, args.map_file)
+    #map_ability = jf.calMapAbility(targets, args.map_file)
     #jf.saveNormValues(raw_dir + 'mapping_ability', targets_str, map_ability, 'Mapping ability')
-    #map_ability = jf.loadNormValues(raw_dir + 'mapping_ability')
+    map_ability = jf.loadNormValues(raw_dir + 'map_ability')
 
     print 'Calculating exon length...'
     exon_length = jf.calExonLength(targets)
@@ -152,13 +153,16 @@ def filter_rpkm(args):
     t = lines[0].index('\t')
     title = lines[0][0:t] + '\t' + '\t'.join(['GC Content', 'Mapping Ability', 'Exon Length']) + lines[0][t:]
     for n in range(len(lines)-1):
+        # pdb.set_trace()
         line = lines[n+1]
         t = line.index('\t')
         gc = GC_percentage[n]
         m = map_ability[n]
         el = exon_length[n]
+        rpkm_line = line.strip().split('\t')[1:]
+        rpkm_line_median = np.median([float(s) for s in rpkm_line])
         l = line[0:t] + '\t' + '\t'.join([str(gc), str(m), str(el)]) + line[t:]
-        if gc < min_gc or gc > max_gc or m < min_map or el > max_exon:
+        if gc < min_gc or gc > max_gc or m < min_map or el > max_exon or rpkm_line_median < min_rpkm:
             e_lines.append(l)
         else:
             n_lines.append(l)
@@ -264,8 +268,6 @@ def normalize(args):
     print 'Saving matrix..'
     jf.saveRPKMMatrix(output, samples, targets_str, np.transpose(corrected_rpkm))
     
-    
-
 def RPKM2Matrix(args):
     rpkm_dir = str(args.rpkm_dir)
     rpkm_files = glob.glob(rpkm_dir + "/*")
@@ -306,7 +308,7 @@ def RPKM2Matrix(args):
     output_f.close()
 
 def svd(args):
-    filename = args.datafile 
+    filename = args.rpkm_matrix 
     f_dir = os.path.dirname(filename)
     if f_dir != '':
         f_dir = f_dir + '/'
@@ -317,26 +319,27 @@ def svd(args):
    
     # count the columns number of the data file
     f = open(filename)
-    temp = f.readline().split('\t')
+    temp = f.readline().strip().split('\t')
     colsnum = len(temp)
     
     # skip 1st row and 4 columns
     print 'Loading file...'
     data = np.loadtxt(filename, dtype=np.float, delimiter='\t', skiprows=1, usecols=range(4, colsnum)) 
     # loading targets str
-    targets = jf.loadTargetsStr(filename)
+    targets = jf.loadTargetsStrFromFirstCol(filename)
     # names of samples
-    samples = temp[1:-1] 
+    samples = temp[4:] 
 
     # test for conifer
     # data = np.loadtxt(filename, dtype=np.float, delimiter='\t')
     
     ### for test
-    data = np.transpose(data) 
+    #data = np.transpose(data) 
     
     # svd transform
     # comp_removed = args.svd
     print 'SVD...'
+    # pdb.set_trace()
     U, S, Vt = np.linalg.svd(data, full_matrices=False)
     
     # new_S = np.diag(np.hstack([np.zeros([comp_removed]), S[comp_removed:]]))
@@ -345,7 +348,7 @@ def svd(args):
     
     # reconstruct data matrix
     data = np.dot(U, np.dot(new_S, Vt))
-       
+
     # save to files
     file_u = open(output + '.U', 'w')
     file_s = open(output + '.S', 'w')
@@ -363,9 +366,6 @@ def svd(args):
 
     print 'Saving matrix..'
     jf.saveRPKMMatrix(output + '.SVD', samples, targets, np.transpose(data))
-
-
-
 
 def discover(args) :
     datafile = args.datafile
@@ -421,29 +421,40 @@ def discover(args) :
             remove_list = []
             if mode == 'baseline' or mode == 'reference' or mode == 'ref':
                 baseline_list = ndarray.tolist(baseline_np)
-                sample['observations'][:-1] = [ float(x) for x in sample['observations'][:-1]]
-                sample_observations = [(v/baseline_list[i]) for i, v in enumerate(sample['observations'][:-1])]
+                sample['observations'] = [ float(x) for x in sample['observations']]
+                try:
+                    sample_observations = [(v/baseline_list[i]) for i, v in enumerate(sample['observations'])]
+                except Exception, e:
+                    print e
+                    pdb.set_trace()
+                    pass
             else:
                 # sample_observations  = [np.round(float(x)*10000,decimals=0) for x in sample['observations'][:-1]]
                 # sample_observations  = [float(x) for x in sample['observations'][:-1]]
             
-                for i,value in enumerate(sample['observations'][:-1]):
+                for i,value in enumerate(sample['observations']):
                     if np.isnan(float(value)) :
                         remove_list.append(i)
                     else:
                         sample_observations.append(float(value))
 
             #Parameters estimation                
+            # pdb.set_trace()
             # parameterLoader = ParameterEstimation(sample_observations)
             # parameterList = parameterLoader.fit(sample_observations)
             # print "Estimated Paramters: ",parameterList
-            ## print 'The parameters for negative bionomial model',parameterList
-            ## params_NB_mu = parameterList[0] #6.532982
-            ## params_NB_fi = parameterList[1] #1/3.466830 
-            ## params.append(params_NB_mu)
-            ## params.append(params_NB_fi)
+            # ## print 'The parameters for negative bionomial model',parameterList
+            # params_NB_mu = parameterList[0] #6.532982
+            # params_NB_fi = parameterList[1] #1/3.466830 
+            # params.append(params_NB_mu)
+            # params.append(params_NB_fi)
+            
+            # if mode == 'svd' or mode == 'SVD':
+            sample_observations = ndarray.tolist(stats.zscore(sample_observations))
+
 
             for targets in targets_list:
+                #if targets[0]._chr == 'X' or targets[0]._chr == 'Y':
                 print 'Running HMM for sample[' + sample['sample_id'] + ']: ',
                 print 'chr' + targets[0]._chr + ' [' + str(temp) + '|' + str(len(targets_list)) + ']'
 
@@ -509,7 +520,7 @@ svd_parser.set_defaults(func=normalize)
 
 #SVD
 svd_parser = subparsers.add_parser('svd', help="SVD")
-svd_parser.add_argument('--datafile', required=True, help='')
+svd_parser.add_argument('--rpkm_matrix', required=True, help='')
 svd_parser.add_argument('--output', required=False, help='')
 # svd_parser.add_argument('--svd', type=int, required=True, help='Number of components to remove')
 svd_parser.set_defaults(func=svd)
