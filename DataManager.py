@@ -56,7 +56,7 @@ class DataManager(object) :
         if samplestr :
             samplestr.strip('\n')
             samlist = samplestr.split('\t')
-            sample = {'sample_id':samlist[0], 'observations':samlist[1:]}
+            sample = {'sample_id':samlist[0].split('.')[0], 'sample_pop':samlist[0].split('.')[1], 'observations':samlist[1:]}
             
             return sample
         return None

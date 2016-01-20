@@ -38,7 +38,9 @@ def bamlist2RPKM(args):
 
     for line in bamlist_f.readlines():
         line = line.strip('\n')
-        bam_file = line.split('\t')[0]
+        temp = line.split('\t')
+        sample_name = temp[0] + '.' + temp[2]
+        bam_file = line.split('\t')[1]
 
         print 'Counting total number of reads in bam file: ', bam_file
         total_reads = float(pysam.view("-c", bam_file)[0].strip('\n'))
@@ -97,7 +99,9 @@ def bamlist2RPKM(args):
         # calculate RPKM values for all targets 
         rpkm = (10**9*(readcount)/(exon_bp))/(total_reads)
         
-        rpkm_f = open(args.output+'/'+os.path.splitext(bam_file)[0].split('/')[-1]+'.rpkm', 'w')
+        #rpkm_f = open(args.output+'/'+os.path.splitext(bam_file)[0].split('/')[-1]+'.rpkm', 'w')
+        rpkm_f = open(args.output+'/'+sample_name+'.rpkm', 'w')
+        
         rpkm_f.write('chr\tstart\tstop\trpkm\n')
         for i in range(len(rpkm)):
             rpkm_f.write(targets[i]['chr'] + '\t' + str(targets[i]['start']) + '\t' + str(targets[i]['stop']) + '\t' + str(rpkm[i]) + '\n')
@@ -372,8 +376,11 @@ def discover(args) :
     outputfile = args.output
     paramsfile = args.params
     sample_req = args.sample
+    hetsnp = args.hetsnp
+    tagsnp = args.tagsnp
     vcf_file = args.vcf
     mode = args.mode
+
     sample_flag = False #used to check whether sample_req exists
 
     # Build a reference set 
@@ -398,18 +405,29 @@ def discover(args) :
     output = file(outputfile,'w')
     output.write('SAMPLE_ID\tCNV_TYPE\tINTERVAL\tCHROMOSOME\tSTART\tSTOP\tLENGTH\n')
 
-    vcf_reader = None
+    if (hetsnp or tagsnp) and vcf_file == ''
+        print 'Error: please indicate a vcf file!'
+        system.exit(0)
+
     if vcf_file != '':
         vcf_reader = VCFReader(vcf_file)
-     
+
+    if tagsnp:
+        cnp_dict = vcf_reader.loadTagSNP()
+
     while sample :
         if sample_req == '' or (sample_req != '' and sample['sample_id'] == sample_req):
             sample_flag = True
-            snp_info = list()
-            if vcf_reader:
+
+            if hetsnp:
                 print 'Parsing SNV information from VCF file for: ' + sample['sample_id']
                 snp_info = vcf_reader.getSNPInfo(sample['sample_id'], targets_list)
                 # print snp_info
+            if tagsnp:
+                chr_targets = dataloader.getChrTargets()
+                cnp_list = vcf_reader.findTagSNPForSample(sample['sample_pop'], cnp_dict)
+                tagsnp_info = vcf_reader.findExonWithTagSNP(cnp_list, targets_list, overlap_threshold)
+
             #target_index is used to split observations sequence
             target_index_begin = 0
             target_index_end = 0
@@ -533,6 +551,8 @@ cnv_parser.add_argument('--mode',required=True, default='SVD', help='Data normal
 cnv_parser.add_argument('--output', required=True, help='Output file.')
 cnv_parser.add_argument('--sample', required=False, default='', help='Optionally, users can choose one sample to run.')
 cnv_parser.add_argument('--vcf', required=False, default='', help='Optionally, users can input snp information by specifing a vcf file')
+cnv_parser.add_argument('--hetsnp', type=bool, required=False, default=False, help='')
+cnv_parser.add_argument('--tagsnp', type=bool, required=False, default=False, help='')
 cnv_parser.set_defaults(func=discover)
 
 args = parser.parse_args()
