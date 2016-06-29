@@ -1,4 +1,20 @@
 import vcf
+import pdb
+
+def min(a, b):
+        return a if a <= b else b
+
+def max(a, b):
+    return a if a >= b else b
+
+def chrStr2Int(chr):
+    chr = chr.replace('chr','')
+    if chr == 'X' or chr == 'x':
+        return 23
+    elif chr == 'Y' or chr == 'y':
+        return 24
+    else:
+        return int(chr)
 
 class VCFReader:
     def __init__(self, vcf_file):
@@ -27,20 +43,23 @@ class VCFReader:
             for in_list in intervals_list:
                 for interval in in_list:
                     # The start and end coordinates are in the zero-based, half-open coordinate system
-                    records = self.vcf_reader.fetch(self.chrInt2Str(interval._chr), interval._bp1, interval._bp2 + 1) 
-                    if records:
-                        het_num = 0
-                        for record in records:
-                            genotype = record.genotype(sample_id)
-                            if genotype and genotype.is_het:
-                                het_num += 1    
-                        snp_info.append(het_num)
-                    else:
-                        snp_info.append(0)
+                    try:
+                        records = self.vcf_reader.fetch(self.chrInt2Str(interval._chr), interval._bp1, interval._bp2 + 1) 
+                        if records:
+                            het_num = 0
+                            for record in records:
+                                genotype = record.genotype(sample_id)
+                                if genotype and genotype.is_het:
+                                    het_num += 1    
+                            snp_info.append(het_num)
+                        else:
+                            snp_info.append(0)
+                    except Exception, e:
+                        print 'WARRNING:',e                    
                         
         return snp_info
     
-    def loadTagSNP(filename):
+    def loadTagSNP(self, filename):
         tagsnp_f=open(filename,'r')
         cnp_dict = {}
 
@@ -63,24 +82,44 @@ class VCFReader:
 
         return cnp_dict
 
-    def findTagSNPForSample(sample_name, sample_id, cnp_dict):
-        cnp_list = []
+    def findTagSNPForSample(self, sample_p, sample_id, cnp_dict):
+        # cnp_list = []
 
+        # if self.vcf_reader:
+        #     for cnp in cnp_dict[sample_p]:
+        #         for vcf_snp in self.vcf_reader.fetch(cnp[1], cnp[4]-1, cnp[4]):  # TODO: Modify for multi-sample VCF file. INDEX begins from 0?
+        #             if len(str(vcf_snp)) !=0:
+        #                 cnp_list.append(cnp)
+
+        # return cnp_list 
+
+        #Renjie modified
+        cnp_list = []
+        
         if self.vcf_reader:
             for cnp in cnp_dict[sample_p]:
-                for vcf_snp in self.vcf_reader.fetch(cnp[1], cnp[4]-1, cnp[4]):  # TODO: Modify for multi-sample VCF file. INDEX begins from 0?
-                    if len(str(vcf_snp)) !=0:
-                        cnp_list.append(cnp)
+                records = self.vcf_reader.fetch(cnp[1], cnp[4]-1, cnp[4]) 
+                if records:
+                    for record in records:
+                        #Renjie added try ... except
+                        try:
+                            genotype = record.genotype(sample_id)['GT']
+                            # pdb.set_trace()
+                            if not genotype == '0|0' and not genotype == '0/0':
+                                cnp_list.append(cnp) 
+                        except Exception, e:
+                            print 'WARRNING:',e   
 
         return cnp_list 
 
-    def findExonWithTagSNP(cnp_list, targets_list, overlap_threshold):
+
+    def findExonWithTagSNP(self, cnp_list, targets_list, overlap_threshold):
         overlap_exon = []
         overlap_exon_unique = []
         
         tagsnp_result = {} 
-        chr_list
-        
+
+        chr_list = []
         chr_targets = {}
         for targets in targets_list:
             tar_chr = chrStr2Int(targets[0]._chr)
@@ -95,7 +134,7 @@ class VCFReader:
             cnp_start = cnp[2]
             cnp_stop = cnp[3]
             snp_pos = cnp[4]
-            R2 = cnp[5]
+            R2 = float(cnp[5])
             population = cnp[6]
 
             try:
@@ -104,7 +143,7 @@ class VCFReader:
             except KeyError:
                 print 'Error: No chromosome %s in exome_region_dict' %cnp_chr
 
-            for i, exon in targets:
+            for i, exon in enumerate(targets):
                 exon_chr = exon._chr
                 exon_start = exon._bp1 + 1 #for bed file
                 exon_stop = exon._bp2 + 1 #for bed file
@@ -119,32 +158,18 @@ class VCFReader:
                     overlap_ratio = float(o_stop - o_start + 1) / float(exon_size)
 
                     if overlap_ratio >= overlap_threshold:
-                        results[i] = R2 #TODO if one exon is overlapped twice, how to merge several R2 values ?
-                        temp = cnp[:]
-                        temp.extend(exon)
-                        overlap_exon.append(temp)
-                        print temp
-                        #store the unique data
-                        if exon not in overlap_exon_unique:
-                            overlap_exon_unique.append(exon)
+                        if R2 >= 0.8 and R2 > results[i]:
+                            results[i] = R2 #TODO if one exon is overlapped twice, how to merge several R2 values ?
+                            temp = cnp[:]
+                            e_list = [exon._chr, exon._bp1, exon._bp2]
+                            temp.extend(e_list)
+                            overlap_exon.append(temp)
+                            #print temp
+                            #store the unique data
+                            if e_list not in overlap_exon_unique:
+                                overlap_exon_unique.append(e_list)
         tagsnp_info = []
         for chr in chr_list:
             tagsnp_info.append(tagsnp_result[chr])
 
         return tagsnp_info
-
-    def min(a, b):
-        return a if a <= b else b
-
-    def max(a, b):
-        return a if a >= b else b
-
-    def chrStr2Int(chr):
-        chr = chr.replace('chr','')
-        if chr == 'X' or chr == 'x':
-            return 23
-        elif chr == 'Y' or chr == 'y':
-            return 24
-        else:
-            return int(chr)
-

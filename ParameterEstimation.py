@@ -27,23 +27,37 @@ class ParameterEstimation(object):
 		f1 = np.sum(special.psi(data+r)) - n*special.psi(r) + n*np.log(r/(r+sm))
 		return np.array([f0, f1])
 
-	def fit(self, data, p = None, r = None):
+	def fit(self, data, remove_lower, remove_upper):
 		# pdb.set_trace()
+		p = None
+		r = None
 		# data = data[:-1]
 		data = [float(i) for i in data]
-		
+		data.sort()
+		data_len = len(data)
+		data_selected = data[int(data_len*remove_lower):int(data_len*remove_upper)]
+
 		if p is None or r is None:
-			av = np.average(data)
-			va = np.var(data)
+			av = np.average(data_selected)
+			va = np.var(data_selected)
 			r = (av*av)/(va-av)
 			p = (va-av)/(va)
-		sm = np.sum(data)/len(data)
-		x = optimize.fsolve(self.mleFun, np.array([p, r]), args=(data, sm))
+		sm = np.sum(data_selected)/len(data_selected)
+		x = optimize.fsolve(self.mleFun, np.array([p, r]), args=(data_selected, sm))
 		self.p = x[0]
 		self.r = x[1]
 		mu = self.p*self.r/(1-self.p)
 		fi = 1/self.r
 		return np.array([mu,fi])
+
+	def gaussian_fit(self,data,remove_lower,remove_upper):
+		data = [float(i) for i in data]
+		data.sort()
+		data_len = len(data)
+		data_selected = data[int(data_len*remove_lower):int(data_len*remove_upper)]
+		mu = np.average(data_selected)
+		sd = np.std(data_selected)
+		return np.array([mu, sd])
 
 	def pdf(self, k):
 		return self.nbin(k, self.p, self.r).astype('float64')

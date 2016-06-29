@@ -3,11 +3,14 @@ import pysam
 import pdb
 import bx.bbi.bigwig_file
 import sys
+import os
 
 def loadMatrixFromFile(filename, skiprows, skipcols, type='float', delimiter='\t'):
     return
 
 def loadTargets(target_filename):
+	#Renjie modified
+
     targetfile = open(target_filename)
     targets = []
     target_id = 1
@@ -19,8 +22,9 @@ def loadTargets(target_filename):
         #targets.append({'targetID': target_id, 'chr': temp1[0], 'start': temp2[0], 'stop': temp2[1]})
         #target_id += 1
         temp = line.split('\t')
-        targets.append({'targetID': int(temp[3]), 'chr': temp[0], 'start': int(temp[1]), 'stop': int(temp[2])})
-
+        #targets.append({'targetID': int(temp[3]), 'chr': temp[0], 'start': int(temp[1]), 'stop': int(temp[2])})
+		
+        targets.append({'chr': temp[0], 'start': int(temp[1]), 'stop': int(temp[2])})
 
     return targets
 
@@ -91,7 +95,8 @@ def saveRPKMMatrix(filename, samples, targets, rpkm):
     rpkm_f.close()
 
 def loadNormValues(filename):
-    return np.loadtxt(open(filename), dtype=np.int, delimiter='\t', skiprows=0, usecols=(1,)) 
+    #Renjie revised
+    return np.loadtxt(open(filename), dtype=np.int, delimiter='\t', skiprows=1, usecols=(1,)) 
 
 def saveNormValues(filename, targets, values, header):
     f = open(filename, 'w')
@@ -196,3 +201,36 @@ def groupBy(data):
         else:
             result[val] = [ind]
     return {'exlude': exclude, 'dict': result}
+
+def filter_list_by_list(list, filter):
+    return [list[x] for x in range(len(list)) if x not in filter]
+
+def output_to_file(results,file_name):
+    path = os.getcwd() 
+
+    if not os.path.exists(path):
+        os.mkdir(path)
+
+    file_name = path + '/' + file_name
+    fp = open(file_name,'w')
+    if type(results) == list:
+        for result_line in results:
+            if type(result_line) != list:
+                fp.write(str(result_line))
+            else:
+                for each_one in result_line:
+                    fp.write(str(each_one))
+                    fp.write('\t')
+            fp.write('\n')
+
+    elif type(results) == dict:
+        for key in results.keys():
+            for result_line in results[key]:
+                for each_one in result_line:
+                    fp.write(str(each_one))
+                    fp.write('\t')
+                fp.write('\n')
+    else:
+        print 'unsupport results type!'
+    print 'The variable has already output to %s\n\n'%file_name
+    fp.close()
