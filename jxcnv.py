@@ -27,7 +27,6 @@ def bamlist2RPKM(args):
         sys.exit(0)
     try:
         # read target
-		# pdb.set_trace()
 		target_fn = str(args.target)
 		targets = jf.loadTargets(target_fn)
 		num_target = len(targets)
@@ -47,7 +46,7 @@ def bamlist2RPKM(args):
         line = line.strip('\n')
         temp = line.split('\t')
         sample_name = temp[0] + '.' + temp[2]
-        bam_file = line.split('\t')[1]
+        bam_file = temp[1]
         
         # print 'Counting total number of reads in bam file: ', bam_file
         # total_reads = float(pysam.view("-c", bam_file)[0].strip('\n'))
@@ -85,7 +84,6 @@ def bamlist2RPKM(args):
         counter = 0
         for t in targets:
             t_chr = targets2contigmap[str(t['chr'])]
-
             t_start = t['start']
             t_stop = t['stop']
             
@@ -180,11 +178,10 @@ def filter_rpkm(args):
     if raw_dir != '':
         raw_dir = raw_dir + '/'
 
-    output = rpkm_matrix
+    output = rpkm_matrix 
     if args.output:
         # output = raw_dir + str(args.output)
         output = str(args.output)
-    # pdb.set_trace()
     print 'Loading targets...'
     temp = jf.loadTargetsFromFirstCol(rpkm_matrix)
     targets = temp['targets']
@@ -199,7 +196,6 @@ def filter_rpkm(args):
     max_exon = int(params[3])
     min_rpkm = float(params[4])
 
-    #Fileter targets which median of RPKM < min_rpkm
     print "Calculating GC content..."
     try:
         GC_percentage = jf.loadNormValues(raw_dir + 'GC_percentage')
@@ -276,6 +272,7 @@ def normalize(args):
     map_ability = annotation[:, 1]
     exon_length = annotation[:, 2]
 
+    print 'Normalizing by GC percentage...'
     GC_index = {}
     for ind in range(len(GC_percentage)):
         gc = GC_percentage[ind]
@@ -285,7 +282,6 @@ def normalize(args):
         else:
             GC_index[gc] = [ind]
 
-    print 'Normalizing by GC percentage...'
     corrected_rpkm = np.zeros([len(rpkm), len(rpkm[0])], dtype=np.float)
     for i in range(len(samples)):
         print 'Normalizing RPKM by GC content for sample: ' + samples[i]
@@ -309,6 +305,7 @@ def normalize(args):
 
     # jf.saveRPKMMatrix(output+'.GC', samples, targets_str, corrected_rpkm)
 
+    print 'Normalizing by Mapping ability...'
     map_index = {}
     for ind in range(len(map_ability)):
         _map = map_ability[ind]
@@ -318,7 +315,6 @@ def normalize(args):
         else:
             map_index[_map] = [ind]
 
-    print 'Normalizing by Mapping ability...'
     for i in range(len(samples)):
         print 'Normalizing RPKM by mapping ability for sample %s' %samples[i]
         overall_median = np.median(corrected_rpkm[:, i])
@@ -337,6 +333,7 @@ def normalize(args):
     np.savetxt(file_MAP_normalized, corrected_rpkm, delimiter='\t', header='\t'.join(samples),comments='')
     file_MAP_normalized.close()
 
+    print 'Normalizing by exon length...'
     length_index = {}
     for ind in range(len(exon_length)):
         _length = exon_length[ind]
@@ -345,7 +342,6 @@ def normalize(args):
         else:
             length_index[_length] = [ind]
 
-    print 'Normalizing by exon length...'
     for i in range(len(samples)):
         print 'Normalizing RPKM for by exon length for sample %s' %samples[i]
         overall_median = np.median(corrected_rpkm[:, i])

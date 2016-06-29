@@ -9,20 +9,13 @@ def loadMatrixFromFile(filename, skiprows, skipcols, type='float', delimiter='\t
     return
 
 def loadTargets(target_filename):
-	#Renjie modified
-
     targetfile = open(target_filename)
     targets = []
     target_id = 1
 
     for line in targetfile.readlines():
         line = line.strip('\n')
-        #temp1 = line.split(':')
-        #temp2 = temp1[1].split('-')
-        #targets.append({'targetID': target_id, 'chr': temp1[0], 'start': temp2[0], 'stop': temp2[1]})
-        #target_id += 1
         temp = line.split('\t')
-        #targets.append({'targetID': int(temp[3]), 'chr': temp[0], 'start': int(temp[1]), 'stop': int(temp[2])})
 		
         targets.append({'chr': temp[0], 'start': int(temp[1]), 'stop': int(temp[2])})
 
