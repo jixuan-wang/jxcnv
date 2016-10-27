@@ -678,6 +678,10 @@ def merge_results(args):
                     temp[1] = svd_temp[1]
                 start = svd_start if svd_start <= dis_start else dis_start
                 stop = svd_stop if svd_stop >= dis_stop else dis_stop
+		if svd_chr == 23:
+                    svd_chr = 'X'
+                elif svd_chr == 24:
+                    svd_chr = 'Y'
                 temp[2] = str(svd_chr) + ':' + str(start) + ':' + str(stop)
                 temp[3] = str(svd_chr)
                 temp[4] = str(start)
