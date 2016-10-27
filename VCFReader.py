@@ -21,7 +21,7 @@ class VCFReader:
         try:
             vfile = open(vcf_file, 'r')
             self.vcf_reader = vcf.Reader(vfile)
-        except IOException:
+        except IOError:
             print 'This VCF file does not exist: ' + vcf_file
 
     def chrInt2Str(self, chromosome_int):
