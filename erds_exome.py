@@ -16,7 +16,7 @@ import sys
 import time
 
 def bamlist2RPKM(args):
-    MAQ = 20 #TODO: set the MAQ as a input parameter.
+    MAQ = args.maq 
     print "MAQ threshold:",MAQ
 
     try:
@@ -424,7 +424,7 @@ def discover(args) :
     else:
         tagsnp = False
 
-    datafile = args.datafile 
+    datafile = args.rpkm_matrix
     f_dir = os.path.dirname(datafile)
     if f_dir != '':
         f_dir = f_dir + '/'
@@ -678,7 +678,7 @@ def merge_results(args):
                     temp[1] = svd_temp[1]
                 start = svd_start if svd_start <= dis_start else dis_start
                 stop = svd_stop if svd_stop >= dis_stop else dis_stop
-		if svd_chr == 23:
+                if svd_chr == 23:
                     svd_chr = 'X'
                 elif svd_chr == 24:
                     svd_chr = 'Y'
@@ -702,6 +702,7 @@ subparsers = parser.add_subparsers()
 #BAM List -> RPKM
 svd_parser = subparsers.add_parser('rpkm', help="Create RPKM matrix from a BAM list")
 svd_parser.add_argument('--target', required=True, help='Target definition file')
+svd_parser.add_argument('--maq', required=False, type=int, default=20, help='MAQ threshold')
 svd_parser.add_argument('--input', required=True, help='BAM file list, each line for each sample')
 svd_parser.add_argument('--output', required=True, help='Directory for RPKM files')
 svd_parser.set_defaults(func=bamlist2RPKM)
@@ -738,7 +739,7 @@ svd_parser.set_defaults(func=svd)
 #CNV discover
 cnv_parser = subparsers.add_parser('discover', help="Run HMM to discover CNVs")
 cnv_parser.add_argument('--params', required=True, help='Parameters used by HMM')
-cnv_parser.add_argument('--datafile', required=True, help='Read depth file.')
+cnv_parser.add_argument('--rpkm_matrix', required=True, help='RPKM matrix.')
 cnv_parser.add_argument('--mode',required=True, default='SVD', help='Data normalization by SVD or baseline mode.')
 cnv_parser.add_argument('--output', required=True, help='Output file.')
 cnv_parser.add_argument('--sample', required=False, default='', help='Optionally, users can choose one sample to run.')
